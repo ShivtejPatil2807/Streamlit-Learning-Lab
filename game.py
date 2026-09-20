@@ -162,7 +162,7 @@ def show_pattern_stage():
             correct_answer = next_a**2 + next_b**2
             if answer == correct_answer:
                 st.session_state.pattern_completed = True
-                st.success("Verify Pattern")
+                st.success("✅ Verification successful!")
                 start_stage_four()
                 st.rerun()
             else:
