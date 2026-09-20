@@ -163,7 +163,7 @@ full [official docs](https://docs.streamlit.io/).
 - [Streamlit Community Cloud (free deployment)](https://streamlit.io/cloud)
 - [Streamlit forum](https://discuss.streamlit.io/)
 
-## Featured Project: Simple Guess Game
+## Featured Project: Guess Quest
 
 <p align="center">
 
