@@ -26,8 +26,8 @@ topics = [
     "✍️ Text & Markdown", "🔘 Input Widgets", "📐 Layouts", "📊 Data Display",
     "📈 Charts", "📁 File Handling", "🎨 UI & Styling", "💬 Status & Messages",
     "🧠 Session State", "📝 Forms", "⚡ Caching", "💬 Chat Elements",
-    "🔄 Navigation", "🔐 Authentication", "🧪 Mini Projects",
-]
+    "🔄 Navigation", "🔐 Authentication",]
+
 cols = st.columns(3)
 for i, topic in enumerate(topics):
     cols[i % 3].write(f"- {topic}")
