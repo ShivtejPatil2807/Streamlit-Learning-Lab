@@ -212,7 +212,7 @@ The project combines Python game logic, Streamlit components, HTML-based layouts
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/ShivtejPatil2807/Streamlit-Cookbook.git
+git clone https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab.git
 ```
 
 ### 2. Navigate to the Project Directory
