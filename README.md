@@ -218,7 +218,7 @@ git clone https://github.com/ShivtejPatil2807/Streamlit-Cookbook.git
 ### 2. Navigate to the Project Directory
 
 ```bash
-cd Simple-Guess-Game
+cd Guess Quest
 ```
 
 ### 3. Install Dependencies
