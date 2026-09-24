@@ -34,5 +34,5 @@ st.caption("Provide a local file path, URL, or bytes to try this one — no samp
 st.divider()
 st.header("5. st.video()")
 st.write("Embeds a video player for a video file or URL.")
+st.code('st.video('https://youtu.be/RjiqbTLW9_E?si=MrzlHQytg_ww6Hkf')')
 st.video('https://youtu.be/RjiqbTLW9_E?si=MrzlHQytg_ww6Hkf')
-# st.caption("Provide a local file path, URL or bytes to try this one — no sample here.")
