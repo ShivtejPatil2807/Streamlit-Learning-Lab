@@ -16,12 +16,6 @@ if uploaded:
 st.divider()
 st.header("2. st.download_button()")
 st.write("Lets the user download a file you generate.")
-
-file_path = r"C:\Users\Shivtej\Downloads\streamlit_functions_reference.txt"
-
-with open(file_path, "rb") as file:
-    file_data = file.read()
-
 st.code('st.download_button("Download File", data=file_data, file_name="streamlit_functions_reference.txt")')
 st.download_button("Download File",data=file_data,file_name="streamlit_functions_reference.txt")
 
