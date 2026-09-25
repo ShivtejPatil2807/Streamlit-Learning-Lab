@@ -16,8 +16,8 @@ if uploaded:
 st.divider()
 st.header("2. st.download_button()")
 st.write("Lets the user download a file you generate.")
-st.code('st.download_button("Download sample text", "Hello, Streamlit!", "sample.txt")')
-st.download_button("Download sample text", "Hello, Streamlit!", "sample.txt")
+st.code('st.download_button("C:\Users\Shivtej\Downloads\streamlit_functions_reference.txt")')
+st.download_button("C:\Users\Shivtej\Downloads\streamlit_functions_reference.txt")
 
 st.divider()
 st.header("3. st.image()")
