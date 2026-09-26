@@ -16,8 +16,16 @@ if uploaded:
 st.divider()
 st.header("2. st.download_button()")
 st.write("Lets the user download a file you generate.")
-st.code('st.download_button("Download File", data=file_data, file_name="streamlit_functions_reference.txt")')
-st.download_button("Download File",data=file_data,file_name="streamlit_functions_reference.txt")
+st.write("Or fetch the file's content from a URL instead of a local path:")
+file_url = "https://github.com/streamlit/streamlit"
+url_data = requests.get(file_url).content
+ 
+st.code(
+    'file_url = "https://github.com/streamlit/streamlit"\n'
+    'url_data = requests.get(file_url).content\n\n'
+    'st.download_button("Download from URL", data=url_data, file_name="README.md")'
+)
+st.download_button("Download from URL", data=url_data, file_name="README.md")
 
 st.divider()
 st.header("3. st.image()")
