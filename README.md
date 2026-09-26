@@ -1,4 +1,12 @@
-# 📚 Streamlit Learning Lab
+<p align="left">
+  <img src="https://streamlit.io/images/brand/streamlit-mark-color.svg" width="100"/>
+</p>
+
+# Welcome to Streamlit
+
+A faster way to build and share data apps.
+
+## 📚 Streamlit Learning Lab
 
 A hands-on, beginner-friendly reference repo for learning **Streamlit** —
 one function at a time, with real, runnable examples.
