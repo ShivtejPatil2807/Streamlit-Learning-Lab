@@ -39,7 +39,9 @@ bottom** and updates the page automatically.
 - 📊 Built for data — plays naturally with pandas, NumPy, matplotlib, and ML models 
 - 🌐 Easy to deploy — including free hosting on [Streamlit Community Cloud](https://streamlit.io/cloud)
 
-**Install it:**
+**Installation**
+
+Open a terminal and run :
 ```bash
 pip install streamlit
 ```
