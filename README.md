@@ -129,13 +129,16 @@ don't need to register pages anywhere; just drop a new `.py` file into
 
 ```bash
 # 1. Clone the repo
+
 git clone https://github.com/ShivtejPatil2807/Streamlit-Cookbook.git
 cd Streamlit-Cookbook
 
 # 2. Install dependencies
+
 pip install -r requirements.txt
 
 # 3. Run the app
+
 streamlit run Home.py
 ```
 
