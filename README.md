@@ -220,41 +220,6 @@ The project combines Python game logic, Streamlit components, HTML-based layouts
 10. If the player fails, the game-over screen is displayed.
 11. The player can start another game.
 
-## Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab.git
-```
-
-### 2. Navigate to the Project Directory
-
-```bash
-cd Guess Quest
-```
-
-### 3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-### 4. install Streamlit 
-
-```bash
-pip install streamlit
-```
-
-### 5. Run the Application
-
-```bash
-streamlit run game.py
-```
-
-### 6. Open the Application
-
-After running the command, Streamlit will provide a local URL in the terminal. Open that URL in your web browser to start playing the game.
-
 ## Live Demo
 
 **Play the game online:** [Simple Guess Game](https://guess-quest.streamlit.app/)
