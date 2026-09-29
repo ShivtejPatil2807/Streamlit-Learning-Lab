@@ -54,7 +54,6 @@ streamlit run Home.py
 ---
 
 ## Quickstart
-
 ## A little example
 Create a new file named streamlit_app.py in your project directory with the following code:
 
