@@ -53,6 +53,24 @@ streamlit run Home.py
 
 ---
 
+## Quickstart
+
+## A little example
+Create a new file named streamlit_app.py in your project directory with the following code:
+
+```bash
+
+import streamlit as st
+
+x = st.slider("Select a value")
+st.write(x, "squared is", x * x)
+```
+
+Now run it to open the app!
+```bash
+
+$ streamlit run streamlit_app.py
+```
 ## How this repo works
 
 This repo covers Streamlit **topic by topic**. Every page follows the exact
