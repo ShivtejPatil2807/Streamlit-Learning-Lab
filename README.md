@@ -34,7 +34,6 @@ No setup needed — just open the link, pick a topic from the sidebar, and see e
 - [Project structure](#project-structure)
 - [Running locally](#running-locally)
 - [Core Streamlit concepts](#core-streamlit-concepts)
-- [Featured project: Guess Quest](#featured-project-guess-quest)
 - [Who this is for](#who-this-is-for)
 - [Further reading](#further-reading)
 - [License](#license)
@@ -126,7 +125,6 @@ Click any topic below to jump straight to its file and start learning.
 ```text
 Streamlit-Cookbook/
 ├── Home.py                  # Landing page + topic index
-├── game.py                  # Guess Quest game
 ├── requirements.txt         # Python dependencies
 ├── README.md                # You are here
 ├── .gitignore
@@ -179,60 +177,6 @@ Good to know before diving in:
 - **State doesn't persist by default:** normal Python variables reset on every rerun. Use `st.session_state` to remember values between reruns (topic 9).
 - **Layout is just more function calls:** `st.columns()`, `st.tabs()`, and `st.sidebar` arrange widgets without any CSS.
 - **Caching avoids repeated work:** wrap slow functions (data loading, model inference) with `@st.cache_data` or `@st.cache_resource` so they only run once (topic 11).
-
----
-
-## Featured project: Guess Quest
-
-### Introduction
-
-Guess Quest is an interactive, multi-stage number guessing web app built with Python and Streamlit, enhanced with HTML and CSS for a modern, visually engaging interface.
-
-Players move through five stages: a number guessing challenge, an instructions stage, a mathematical pattern puzzle, a verification challenge, and a high-stakes final guessing round with limited attempts.
-
-The project combines Python game logic, Streamlit components, HTML-based layouts, and custom CSS. It also demonstrates random number generation, conditional logic, functions, forms, session state, user input handling, and stage-based progression.
-
-### Live demo
-
-🎮 **Play the game online:** [Guess Quest](https://guess-quest.streamlit.app/)
-
-### Features
-
-- **User login:** players enter a username before starting.
-- **Random number generation:** a new secret number is generated for each game.
-- **Number guessing:** players enter guesses to find the secret number.
-- **Guess hints:** feedback tells the player whether a guess is too high or too low.
-- **Pattern challenge:** players identify a hidden mathematical pattern and calculate the missing answer.
-- **Randomized challenges:** pattern puzzles use randomly generated numbers.
-- **Winning message:** a success screen is shown when the player completes all stages.
-- **Game-over screen:** shown if the player fails.
-- **Play again:** players can restart at any time.
-- **Session state:** game progress is kept in `st.session_state` for the whole session.
-
-### How it works
-
-1. The player enters a username.
-2. The game starts after the username is submitted.
-3. A random number is generated for the guessing stage.
-4. The player enters a guess and gets feedback on the result.
-5. The player progresses through the game stages.
-6. The player reads the instructions before continuing.
-7. The pattern challenge shows a sequence of mathematical equations.
-8. The player identifies the hidden pattern and calculates the missing answer.
-9. After completing all stages, the success screen is displayed.
-10. If the player fails, the game-over screen is displayed.
-11. The player can start another game.
-
-### Future improvements
-
-- Add difficulty levels
-- Add a score system
-- Add a leaderboard
-- Add a timer for each stage
-- Store player scores
-- Add more game stages
-
----
 
 ## Who this is for
 
