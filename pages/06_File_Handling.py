@@ -1,47 +1,44 @@
+import numpy as np
+import pandas as pd
 import streamlit as st
-import requests
 
-st.set_page_config(page_title="File Handling", page_icon="📁")
+from core.components import demo, lesson_page
 
-st.title("📁 File Handling Functions")
-st.write("These functions let users upload files, or let you show/offer files.")
+lesson_page(6, "These functions let users upload files, or let you show and offer files.")
 
-st.divider()
-st.header("1. st.file_uploader()")
-st.write("Lets the user upload a file from their device.")
-st.code('st.file_uploader("Upload a CSV file", type="csv")')
-uploaded = st.file_uploader("Upload a CSV file", type="csv")
-if uploaded:
-    st.write("File name:", uploaded.name)
 
-st.divider()
-st.header("2. st.download_button()")
-st.write("Lets the user download a file you generate.")
-st.write("Or fetch the file's content from a URL instead of a local path:")
-file_url = "https://github.com/streamlit/streamlit"
-url_data = requests.get(file_url).content
- 
-st.code(
-    'file_url = "https://github.com/streamlit/streamlit"\n'
-    'url_data = requests.get(file_url).content\n\n'
-    'st.download_button("Download from URL", data=url_data, file_name="README.md")'
-)
-st.download_button("Download from URL", data=url_data, file_name="README.md")
+@demo("st.file_uploader()", "Lets the user upload a file from their device.")
+def _():
+    uploaded = st.file_uploader("Upload a CSV file", type="csv")
+    if uploaded:
+        st.write("File name:", uploaded.name)
 
-st.divider()
-st.header("3. st.image()")
-st.write("Displays an image from a file, URL, or array.")
-st.code('st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqxQHsJ5GXalp3VMSKLn4LIYdt5mO_8GF9RymX4I-yF_GGESoVS29rYXM&s=10", caption="Sample image")')
-st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqxQHsJ5GXalp3VMSKLn4LIYdt5mO_8GF9RymX4I-yF_GGESoVS29rYXM&s=10", caption="Sample image")
 
-st.divider()
-st.header("4. st.audio()")
-st.write("Embeds an audio player for a sound file or URL.")
-st.code('st.audio(audio_bytes_or_path)')
-st.caption("Provide a local file path, URL, or bytes to try this one — no sample here.")
+@demo("st.download_button()", "Lets the user download a file that your app generates.")
+def _():
+    marks = pd.DataFrame({"Name": ["Shivtej", "Tejas"], "Marks": [70, 90]})
+    st.download_button(
+        "Download as CSV",
+        data=marks.to_csv(index=False),
+        file_name="marks.csv",
+        mime="text/csv",
+    )
 
-st.divider()
-st.header("5. st.video()")
-st.write("Embeds a video player for a video file or URL.")
-st.code('st.video("https://youtu.be/RjiqbTLW9_E?si=MrzlHQytg_ww6Hkf")')
-st.video('https://youtu.be/RjiqbTLW9_E?si=MrzlHQytg_ww6Hkf')
+
+@demo("st.image()", "Displays an image from a file, URL, or array.")
+def _():
+    pixels = np.random.rand(120, 240, 3)  # height x width x RGB
+    st.image(pixels, caption="Random pixels from a NumPy array")
+
+
+@demo("st.audio()", "Embeds an audio player for a sound file, URL, or array.")
+def _():
+    sample_rate = 44100
+    t = np.linspace(0, 1, sample_rate)
+    tone = 0.3 * np.sin(2 * np.pi * 440 * t)  # one second of the note A
+    st.audio(tone, sample_rate=sample_rate)
+
+
+@demo("st.video()", "Embeds a video player for a video file or URL.")
+def _():
+    st.video("https://youtu.be/RjiqbTLW9_E?si=MrzlHQytg_ww6Hkf")

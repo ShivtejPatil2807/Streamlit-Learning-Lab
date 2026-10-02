@@ -1,78 +1,65 @@
 import streamlit as st
 
-st.set_page_config(page_title="Input Widgets", page_icon="🔘")
+from core.components import demo, lesson_page
 
-st.title("🔘 Input Widgets")
-st.write("Widgets let the user send information back into your app.")
+lesson_page(2, "Widgets let the user send information back into your app.")
 
-st.divider()
-st.header("1. st.button()")
-st.write("A clickable button. Returns True only on the run right after it's clicked.")
-st.code('st.button("Click me")')
-if st.button("Click me"):
-    st.success("Button was clicked!")
 
-st.divider()
-st.header("2. st.checkbox()")
-st.write("A box the user can tick on or off.")
-st.code('st.checkbox("I agree")')
-agree = st.checkbox("I agree")
-st.write("Checked:", agree)
+@demo("st.button()", "A clickable button. Returns True only on the run right after it's clicked.")
+def _():
+    if st.button("Click me"):
+        st.success("Button was clicked!")
 
-st.divider()
-st.header("3. st.radio()")
-st.write("Lets the user pick exactly one option from a list.")
-st.code('st.radio("Pick one", ["Python", "Java", "C++"])')
-choice = st.radio("Pick one", ["Python", "Java", "C++"])
-st.write("You picked:", choice)
 
-st.divider()
-st.header("4. st.selectbox()")
-st.write("A dropdown menu — pick one option to save space.")
-st.code('st.selectbox("Choose a city", ["Kolhapur", "Pune", "Mumbai"])')
-city = st.selectbox("Choose a city", ["Kolhapur", "Pune", "Mumbai"])
-st.write("City selected:", city)
+@demo("st.checkbox()", "A box the user can tick on or off.")
+def _():
+    agree = st.checkbox("I agree")
+    st.write("Checked:", agree)
 
-st.divider()
-st.header("5. st.multiselect()")
-st.write("Like selectbox, but the user can pick several options.")
-st.code('st.multiselect("Pick languages", ["Python", "JS", "Go", "Rust"])')
-langs = st.multiselect("Pick languages", ["Python", "JS", "Go", "Rust"])
-st.write("Selected:", langs)
 
-st.divider()
-st.header("6. st.slider()")
-st.write("Lets the user drag to pick a number in a range.")
-st.code('st.slider("Pick a number", 0, 100, 50)')
-num = st.slider("Pick a number", 0, 100, 50)
-st.write("Value:", num)
+@demo("st.radio()", "Lets the user pick exactly one option from a list.")
+def _():
+    choice = st.radio("Pick one", ["Python", "Java", "C++"])
+    st.write("You picked:", choice)
 
-st.divider()
-st.header("7. st.text_input()")
-st.write("A single-line box for typing short text.")
-st.code('st.text_input("Enter your name")')
-name = st.text_input("Enter your name")
-st.write("Hello,", name if name else "stranger")
 
-st.divider()
-st.header("8. st.text_area()")
-st.write("A multi-line box for typing longer text.")
-st.code('st.text_area("Write a message")')
-msg = st.text_area("Write a message")
-st.write("You wrote:", msg)
+@demo("st.selectbox()", "A dropdown menu: pick one option and save space.")
+def _():
+    city = st.selectbox("Choose a city", ["Kolhapur", "Pune", "Mumbai"])
+    st.write("City selected:", city)
 
-st.divider()
-st.header("9. st.number_input()")
-st.write("A box for entering a number, with up/down arrows.")
-st.code('st.number_input("Enter your age", min_value=0, max_value=120)')
-age = st.number_input("Enter your age", min_value=0, max_value=120)
-st.write("Age:", age)
 
-st.divider()
-st.header("10. st.date_input()")
-st.write("Lets the user pick a date from a calendar.")
-st.code('st.date_input("Pick a date")')
-date = st.date_input("Pick a date")
-st.write("Date chosen: ", date)
- 
+@demo("st.multiselect()", "Like selectbox, but the user can pick several options.")
+def _():
+    langs = st.multiselect("Pick languages", ["Python", "JS", "Go", "Rust"])
+    st.write("Selected:", langs)
 
+
+@demo("st.slider()", "Lets the user drag to pick a number in a range.")
+def _():
+    num = st.slider("Pick a number", 0, 100, 50)
+    st.write("Value:", num)
+
+
+@demo("st.text_input()", "A single-line box for typing short text.")
+def _():
+    name = st.text_input("Enter your name")
+    st.write("Hello,", name if name else "stranger")
+
+
+@demo("st.text_area()", "A multi-line box for typing longer text.")
+def _():
+    msg = st.text_area("Write a message")
+    st.write("You wrote:", msg)
+
+
+@demo("st.number_input()", "A box for entering a number, with up/down arrows.")
+def _():
+    age = st.number_input("Enter your age", min_value=0, max_value=120)
+    st.write("Age:", age)
+
+
+@demo("st.date_input()", "Lets the user pick a date from a calendar.")
+def _():
+    date = st.date_input("Pick a date")
+    st.write("Date chosen:", date)

@@ -1,36 +1,37 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
 
-st.set_page_config(page_title="Data Display", page_icon="📊")
+from core.components import demo, lesson_page, show_setup
 
-st.title("📊 Data Display Functions")
-st.write("These functions show data — tables, numbers, and raw structures.")
+lesson_page(4, "These functions show data: tables, numbers, and raw structures.")
 
-df = pd.DataFrame({
-    "Name": ["Shivtej", "Tejas", "Amit"],
-    "Score": [70, 85, 78],
-})
 
-st.divider()
-st.header("1. st.dataframe()")
-st.write("Displays an interactive table — sortable and scrollable.")
-st.code('st.dataframe(df)')
-st.dataframe(df)
+@show_setup
+def make_df():
+    return pd.DataFrame({
+        "Name": ["Shivtej", "Tejas", "Amit"],
+        "Score": [70, 85, 78],
+    })
 
-st.divider()
-st.header("2. st.table()")
-st.write("Displays a static (non-interactive) table.")
-st.code('st.table(df)')
-st.table(df)
 
-st.divider()
-st.header("3. st.metric()")
-st.write("Shows a single number, with an optional change indicator.")
-st.code('st.metric("Average Score", "84.3", "+2.1")')
-st.metric("Average Score", "84.3", "+2.1")
+df = make_df()
 
-st.divider()
-st.header("4. st.json()")
-st.write("Displays a dictionary or JSON-like data in a readable, collapsible format.")
-st.code('st.json({"name": "Shivtej", "skills": ["Python", "Streamlit"]})')
-st.json({"name": "Shivtej", "skills": ["Python", "Streamlit"]})
+
+@demo("st.dataframe()", "Displays an interactive table, sortable and scrollable.")
+def _():
+    st.dataframe(df)
+
+
+@demo("st.table()", "Displays a static (non-interactive) table.")
+def _():
+    st.table(df)
+
+
+@demo("st.metric()", "Shows a single number, with an optional change indicator.")
+def _():
+    st.metric("Average Score", "84.3", "+2.1")
+
+
+@demo("st.json()", "Displays a dictionary or JSON-like data in a readable, collapsible format.")
+def _():
+    st.json({"name": "Shivtej", "skills": ["Python", "Streamlit"]})
