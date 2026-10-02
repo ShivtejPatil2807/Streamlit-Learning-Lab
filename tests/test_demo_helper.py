@@ -124,8 +124,8 @@ def test_r8_show_setup_returns_the_function_unchanged(tmp_path):
         def make_value():
             return 42
 
-        st.write(make_value())
+        st.write(f"value is {make_value()}")
         ''',
     )
     assert at.expander[0].label == "Sample data used on this page"
-    assert any(m.value == "42" for m in at.markdown)
+    assert any(m.value == "value is 42" for m in at.markdown)
