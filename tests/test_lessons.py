@@ -3,7 +3,8 @@
 Pure Python: no Streamlit needed.
 """
 from conftest import PAGES_DIR
-from core.lessons import CATEGORIES, LEVELS, LESSONS, total_functions
+
+from core.lessons import CATEGORIES, LESSONS, LEVELS, total_functions
 
 
 def test_r1_numbers_are_unique_and_contiguous():
