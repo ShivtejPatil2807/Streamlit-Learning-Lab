@@ -41,21 +41,23 @@ def card_top(lesson) -> str:
 
 # ---------- Hero ----------
 st.markdown(
-    "".join(
-        [
-            '<div class="lab-hero">',
-            '<div class="lab-kicker">📚 INTERACTIVE STREAMLIT COURSE</div>',
-            "<h1>Streamlit Learning Lab</h1>",
-            "<p>Learn one function at a time. Read it, copy the code, and watch it run "
-            "right on the page.</p>",
-            '<div class="lab-steps">',
-            '<span class="lab-step">📖 Learn</span><span class="lab-arrow">→</span>',
-            '<span class="lab-step">💻 Code</span><span class="lab-arrow">→</span>',
-            '<span class="lab-step">▶️ Try</span><span class="lab-arrow">→</span>',
-            '<span class="lab-step">🎯 Challenge</span>',
-            "</div></div>",
-        ]
-    ),
+    """
+    <div class="lab-hero">
+        <div class="lab-kicker">📚 INTERACTIVE STREAMLIT COURSE</div>
+        <h1>Streamlit Learning Lab</h1>
+        "<p>Learn one function at a time. Read it, copy the code, and watch it run ",
+        "right on the page.</p>",
+        <div class="lab-steps">
+            <span class="lab-step">📖 Learn</span>
+            <span class="lab-arrow">→</span>
+            <span class="lab-step">💻 Code</span>
+            <span class="lab-arrow">→</span>
+            <span class="lab-step">▶️ Try</span>
+            <span class="lab-arrow">→</span>
+            <span class="lab-step">🎯 Challenge</span>
+        </div>
+    </div>
+    """,
     unsafe_allow_html=True,
 )
 
