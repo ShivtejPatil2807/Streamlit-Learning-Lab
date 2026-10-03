@@ -1,7 +1,9 @@
+import html
+
 import streamlit as st
 
 from core.lessons import CATEGORIES, LESSONS, LEVELS, total_functions
-from core.theme import apply_theme
+from core.theme import apply_theme, chips, level_pill, pill
 
 st.set_page_config(page_title="Streamlit Learning Lab", page_icon="📚", layout="wide")
 apply_theme()
@@ -18,15 +20,42 @@ def toggle_done(number: int) -> None:
         completed.discard(number)
 
 
+def card_top(lesson) -> str:
+    """The text part of a lesson card, as one block of HTML."""
+    badges = level_pill(lesson.level) + pill(lesson.category, "category")
+    if lesson.number in completed:
+        badges += pill("✓ Done", "beginner")
+    return "".join(
+        [
+            '<div class="lab-card-title">',
+            f'<span class="lab-card-icon">{lesson.icon}</span>',
+            '<span class="lab-card-name">',
+            f'<span class="lab-card-num">{lesson.number:02d}</span>{html.escape(lesson.title)}',
+            "</span></div>",
+            f'<div class="lab-meta">{badges}</div>',
+            f'<p class="lab-summary">{html.escape(lesson.summary)}</p>',
+            f'<div class="lab-chips">{chips(lesson.functions[:4])}</div>',
+        ]
+    )
+
+
 # ---------- Hero ----------
 st.markdown(
-    """
-    <div class="hero">
-        <h1>📚 Streamlit Learning Lab</h1>
-        <p>A hands-on reference for learning Streamlit. Pick a topic, read the code,
-        and see the live result right below it.</p>
-    </div>
-    """,
+    "".join(
+        [
+            '<div class="lab-hero">',
+            '<div class="lab-kicker">📚 INTERACTIVE STREAMLIT COURSE</div>',
+            "<h1>Streamlit Learning Lab</h1>",
+            "<p>Learn one function at a time. Read it, copy the code, and watch it run "
+            "right on the page.</p>",
+            '<div class="lab-steps">',
+            '<span class="lab-step">📖 Learn</span><span class="lab-arrow">→</span>',
+            '<span class="lab-step">💻 Code</span><span class="lab-arrow">→</span>',
+            '<span class="lab-step">▶️ Try</span><span class="lab-arrow">→</span>',
+            '<span class="lab-step">🎯 Challenge</span>',
+            "</div></div>",
+        ]
+    ),
     unsafe_allow_html=True,
 )
 
@@ -36,6 +65,15 @@ c1.metric("Lessons", len(LESSONS))
 c2.metric("Functions covered", total_functions())
 c3.metric("Completed", f"{len(completed)} / {len(LESSONS)}")
 st.progress(len(completed) / len(LESSONS))
+
+# ---------- Next up ----------
+remaining = [lesson for lesson in LESSONS if lesson.number not in completed]
+if remaining:
+    next_lesson = remaining[0]
+    st.caption(f"Next up: {next_lesson.number}. {next_lesson.title}")
+    st.page_link(next_lesson.path, label=f"Continue with {next_lesson.title}", icon="▶️")
+else:
+    st.success("🎉 You finished every lesson. Well done!")
 
 st.divider()
 
@@ -67,10 +105,7 @@ if not results:
 cols = st.columns(3)
 for i, lesson in enumerate(results):
     with cols[i % 3].container(border=True):
-        st.markdown(f"### {lesson.icon} {lesson.number:02d}. {lesson.title}")
-        st.caption(f"{lesson.category} · {lesson.level}")
-        st.write(lesson.summary)
-        st.caption(" · ".join(f"`{fn}`" for fn in lesson.functions[:4]))
+        st.markdown(card_top(lesson), unsafe_allow_html=True)
         st.page_link(lesson.path, label="Open lesson", icon="➡️")
         st.checkbox(
             "Mark as done",
@@ -84,8 +119,13 @@ for i, lesson in enumerate(results):
 with st.expander("How does each lesson work?"):
     st.markdown(
         """
-        1. **Title**: the name of the function
-        2. **Code**: the exact code that produces the result
-        3. **Output**: the live result, rendered right below the code
+        Every function has three tabs:
+
+        1. **📖 Learn**: what the function does
+        2. **💻 Code**: the exact code that produces the result
+        3. **▶️ Try**: the live result, running on the page
+
+        At the end of each lesson, answer the **🎯 Challenge** and tick
+        **Mark this lesson as done** to fill the progress bar.
         """
     )

@@ -5,8 +5,10 @@ from streamlit.testing.v1 import AppTest
 from core.lessons import LESSONS, total_functions
 
 
-def load_home() -> AppTest:
+def load_home(completed=None) -> AppTest:
     at = AppTest.from_file(str(HOME), default_timeout=30)
+    if completed is not None:
+        at.session_state["completed"] = completed
     at.run()
     assert not at.exception, at.exception
     return at
@@ -15,6 +17,17 @@ def load_home() -> AppTest:
 def cards(at: AppTest) -> int:
     """One 'Mark as done' checkbox is drawn per lesson card."""
     return len(at.checkbox)
+
+def html_blocks(at: AppTest, marker: str) -> list[str]:
+    """Markdown blocks that contain an element with this CSS class."""
+    return [m.value for m in at.markdown if f'class="{marker}"' in m.value]
+
+def test_r1_hero_shows_title_and_the_steps():
+    at = load_home()
+    hero = html_blocks(at, "lab-hero")[0]
+    assert "Streamlit Learning Lab" in hero
+    for step in ("Learn", "Code", "Try", "Challenge"):
+        assert step in hero
 
 
 def test_r2_stats_show_lessons_functions_and_completed():
@@ -66,6 +79,13 @@ def test_r7_filters_combine():
     assert cards(at) == expected > 0
 
 
+def test_r8_completed_lesson_card_shows_a_done_label():
+    at = load_home(completed={1})
+    cards_html = html_blocks(at, "lab-card-title")
+    assert len(cards_html) == len(LESSONS)
+    assert sum("✓ Done" in block for block in cards_html) == 1
+    assert "✓ Done" in cards_html[0]
+
 def test_r9_no_match_shows_a_warning():
     at = load_home()
     at.text_input[0].set_value("zzzz-no-such-lesson").run()
@@ -78,3 +98,15 @@ def test_r10_mark_as_done_updates_the_completed_count():
     at.checkbox[0].check().run()
     values = {m.label: m.value for m in at.metric}
     assert values["Completed"] == f"1 / {len(LESSONS)}"
+
+
+def test_r12_next_up_points_to_the_first_unfinished_lesson():
+    at = load_home(completed={1, 2})
+    assert any(c.value == "Next up: 3. Layouts" for c in at.caption)
+    assert len(at.success) == 0
+
+
+def test_r13_all_done_shows_a_success_message():
+    at = load_home(completed={lesson.number for lesson in LESSONS})
+    assert len(at.success) == 1
+    assert not any("Next up" in c.value for c in at.caption)

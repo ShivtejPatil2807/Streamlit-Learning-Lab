@@ -22,7 +22,7 @@ import streamlit as st
 
 from core.challenges import CHALLENGES
 from core.lessons import LESSONS
-from core.theme import apply_theme
+from core.theme import apply_theme, level_pill, pill
 
 _COUNTER_KEY = "_demo_count"
 
@@ -38,6 +38,14 @@ def lesson_page(number: int, intro: str | None = None) -> None:
     apply_theme()
     st.session_state[_COUNTER_KEY] = 0  # restart numbering on every run
     st.title(f"{lesson.icon} {lesson.title}")
+    st.markdown(
+        '<div class="lab-meta">'
+        + level_pill(lesson.level)
+        + pill(lesson.category, "category")
+        + pill(f"Lesson {number} of {len(LESSONS)}", "category")
+        + "</div>",
+        unsafe_allow_html=True,
+    )
     st.write(intro or lesson.summary)
 
 

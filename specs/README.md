@@ -10,6 +10,7 @@ requirement it covers (for example `R3`).
 | [002-demo-helper.md](002-demo-helper.md) | `core/components.py` | Implemented |
 | [003-home-page.md](003-home-page.md) | `Home.py` | Implemented |
 | [004-challenges-and-progress.md](004-challenges-and-progress.md) | `core/challenges.py`, `lesson_footer` | Implemented |
+| [005-visual-style.md](005-visual-style.md) | `core/theme.py`, `.streamlit/config.toml` | Implemented |
 
 ## How to write a new spec
 
