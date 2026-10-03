@@ -3,14 +3,15 @@
 **File:** `core/components.py`  **Status:** Implemented
 
 ## Purpose
-Show the code and its live output from a single source, so what is displayed
-can never differ from what runs.
+Show the explanation, the code and its live output from a single source, so
+what is displayed can never differ from what runs.
 
 ## Public functions
 - `lesson_page(number, intro=None)` page setup
 - `demo(title, description, *, run=True, caption=None)` decorator
 - `section(title, description=None)` numbered section without code
 - `show_setup(func)` shows a helper's code in an expander
+- `lesson_footer(number)` challenges and "done" checkbox (see spec 004)
 
 ## Requirements
 - **R1** `lesson_page` is the first Streamlit call on a page. It sets the tab
@@ -25,6 +26,10 @@ can never differ from what runs.
 - **R6** With `run=False` the function is never called.
 - **R7** `caption`, when given, appears after the output.
 - **R8** `show_setup` returns the function unchanged so it can still be called.
+- **R9** Every `demo` has three tabs, in this order: Learn, Code, Try.
+- **R10** The Learn tab shows the description, the Code tab shows the code, and
+  the Try tab shows the live output.
+- **R11** With `run=False` the Try tab shows a note saying the demo is not run.
 
 ## Limits
 - The decorated function must be defined in a `.py` file (its source has to be

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from core.components import demo, lesson_page, show_setup
+from core.components import demo, lesson_footer, lesson_page, show_setup
 
 lesson_page(5, "Streamlit has built-in chart functions that need no extra setup.")
 
@@ -42,3 +42,6 @@ def _():
         "lon": [74.2433, 73.8567],
     })
     st.map(map_data)
+
+
+lesson_footer(5)

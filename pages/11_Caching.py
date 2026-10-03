@@ -2,7 +2,7 @@ import time
 
 import streamlit as st
 
-from core.components import demo, lesson_page, section
+from core.components import demo, lesson_footer, lesson_page, section
 
 lesson_page(
     11,
@@ -76,3 +76,6 @@ def _():
         st.cache_data.clear()
         st.cache_resource.clear()
         st.success("Caches cleared - the next run will be slow again.")
+
+
+lesson_footer(11)

@@ -1,6 +1,6 @@
 import streamlit as st
 
-from core.components import demo, lesson_page
+from core.components import demo, lesson_footer, lesson_page
 
 lesson_page(
     14,
@@ -50,3 +50,6 @@ def _():
         st.login()
 
     st.write(st.user)  # access the logged-in user's info
+
+
+lesson_footer(14)

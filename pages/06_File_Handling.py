@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from core.components import demo, lesson_page
+from core.components import demo, lesson_footer, lesson_page
 
 lesson_page(6, "These functions let users upload files, or let you show and offer files.")
 
@@ -42,3 +42,6 @@ def _():
 @demo("st.video()", "Embeds a video player for a video file or URL.")
 def _():
     st.video("https://youtu.be/RjiqbTLW9_E?si=MrzlHQytg_ww6Hkf")
+
+
+lesson_footer(6)

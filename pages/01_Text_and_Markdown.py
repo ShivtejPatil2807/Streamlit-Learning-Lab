@@ -1,6 +1,6 @@
 import streamlit as st
 
-from core.components import demo, lesson_page
+from core.components import demo, lesson_footer, lesson_page
 
 lesson_page(1, "This page shows the basic functions Streamlit gives you to display text.")
 
@@ -55,3 +55,6 @@ def _():
 def _():
     with st.expander("View Explanation"):
         st.write("This content can be expanded.")
+
+
+lesson_footer(1)

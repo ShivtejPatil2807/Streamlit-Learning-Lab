@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-from core.components import demo, lesson_page, show_setup
+from core.components import demo, lesson_footer, lesson_page, show_setup
 
 lesson_page(4, "These functions show data: tables, numbers, and raw structures.")
 
@@ -35,3 +35,6 @@ def _():
 @demo("st.json()", "Displays a dictionary or JSON-like data in a readable, collapsible format.")
 def _():
     st.json({"name": "Shivtej", "skills": ["Python", "Streamlit"]})
+
+
+lesson_footer(4)

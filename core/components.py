@@ -8,14 +8,19 @@ Every lesson page follows the same pattern:
     def _():
         st.line_chart(chart_data)
 
-The body of the decorated function is BOTH shown as code AND executed, so the
-code on screen can never drift out of sync with the live output.
+    lesson_footer(5)
+
+Each demo has three tabs: Learn (the explanation), Code (the code) and
+Try (the live result). The body of the decorated function is BOTH shown as
+code AND executed, so the code on screen can never drift out of sync with the
+live output. lesson_footer adds the challenge questions and a "done" checkbox.
 """
 import inspect
 import textwrap
 
 import streamlit as st
 
+from core.challenges import CHALLENGES
 from core.lessons import LESSONS
 from core.theme import apply_theme
 
@@ -58,19 +63,26 @@ def _body(func) -> str:
 
 
 def demo(title: str, description: str, *, run: bool = True, caption: str | None = None):
-    """Decorator: Title -> Code -> Output for one Streamlit function.
+    """Decorator: Learn -> Code -> Try for one Streamlit function.
 
     run=False shows the code without executing it (for things that need setup,
     like st.login()).  caption adds small grey text under the output.
     """
 
     def decorator(func):
-        section(title, description)
-        st.code(_body(func), language="python")
-        if run:
-            func()
-        if caption:
-            st.caption(caption)
+        section(title)
+        learn_tab, code_tab, try_tab = st.tabs(["📖 Learn", "💻 Code", "▶️ Try"])
+        with learn_tab:
+            st.write(description)
+        with code_tab:
+            st.code(_body(func), language="python")
+        with try_tab:
+            if run:
+                func()
+            else:
+                st.info("This demo is not run here. Copy the code to try it in your own app.")
+            if caption:
+                st.caption(caption)
         return func
 
     return decorator
@@ -81,3 +93,44 @@ def show_setup(func):
     with st.expander("Sample data used on this page"):
         st.code(_body(func), language="python")
     return func
+
+
+def lesson_footer(number: int) -> None:
+    """End of a lesson: challenge questions and a 'mark as done' checkbox.
+
+    Completed lessons are stored in st.session_state["completed"], the same set
+    the Home page reads, so progress shows up there.
+    """
+    st.divider()
+
+    challenges = CHALLENGES.get(number, [])
+    if challenges:
+        st.subheader("🎯 Challenge")
+        for index, item in enumerate(challenges):
+            choice = st.radio(
+                item.question,
+                item.options,
+                index=None,
+                key=f"challenge_{number}_{index}",
+            )
+            if choice is not None:
+                if item.options.index(choice) == item.answer:
+                    st.success(f"Correct! {item.explanation}")
+                else:
+                    st.error("Not quite. Try again.")
+
+    completed = st.session_state.setdefault("completed", set())
+    key = f"page_done_{number}"
+
+    def _toggle() -> None:
+        if st.session_state[key]:
+            completed.add(number)
+        else:
+            completed.discard(number)
+
+    st.checkbox(
+        "Mark this lesson as done",
+        value=number in completed,
+        key=key,
+        on_change=_toggle,
+    )

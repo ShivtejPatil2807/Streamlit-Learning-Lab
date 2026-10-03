@@ -1,6 +1,6 @@
 import streamlit as st
 
-from core.components import demo, lesson_page, section
+from core.components import demo, lesson_footer, lesson_page, section
 
 lesson_page(13, "These functions move users between pages in a multipage app.")
 
@@ -27,3 +27,6 @@ section(
     "01_Text_and_Markdown.py, 02_Input_Widgets.py, and so on.",
 )
 st.code("your-app/\n├── Home.py\n└── pages/\n    ├── 01_Text_and_Markdown.py\n    └── 02_Input_Widgets.py")
+
+
+lesson_footer(13)

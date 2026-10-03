@@ -1,6 +1,6 @@
 import streamlit as st
 
-from core.components import demo, lesson_page
+from core.components import demo, lesson_footer, lesson_page
 
 lesson_page(
     10,
@@ -21,3 +21,6 @@ def _():
 
     if submitted:
         st.write(f"Hi {name}, you are {age} years old.")
+
+
+lesson_footer(10)
