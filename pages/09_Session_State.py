@@ -1,6 +1,6 @@
 import streamlit as st
 
-from core.components import demo, lesson_page
+from core.components import demo, lesson_footer, lesson_page
 
 lesson_page(
     9,
@@ -38,3 +38,6 @@ def _():
 def _():
     st.text_input("Your name", key="username")
     st.write("Stored value:", st.session_state.get("username", ""))
+
+
+lesson_footer(9)

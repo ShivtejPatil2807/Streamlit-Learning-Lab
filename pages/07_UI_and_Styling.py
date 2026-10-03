@@ -1,6 +1,6 @@
 import streamlit as st
 
-from core.components import demo, lesson_page, section
+from core.components import demo, lesson_footer, lesson_page, section
 
 lesson_page(7, "These functions change how your app looks and feels.")
 
@@ -36,3 +36,6 @@ def _():
 )
 def _():
     st.image("https://placehold.co/400x80", use_container_width=True)
+
+
+lesson_footer(7)

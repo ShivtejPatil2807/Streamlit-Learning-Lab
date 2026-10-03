@@ -1,6 +1,6 @@
 import streamlit as st
 
-from core.components import demo, lesson_page
+from core.components import demo, lesson_footer, lesson_page
 
 lesson_page(12, "These functions are built specifically for chatbot-style interfaces.")
 
@@ -22,3 +22,6 @@ def _():
     prompt = st.chat_input("Say something")
     if prompt:
         st.write(f"You said: {prompt}")
+
+
+lesson_footer(12)

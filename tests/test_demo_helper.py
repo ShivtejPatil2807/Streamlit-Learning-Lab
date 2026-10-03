@@ -129,3 +129,55 @@ def test_r8_show_setup_returns_the_function_unchanged(tmp_path):
     )
     assert at.expander[0].label == "Sample data used on this page"
     assert any(m.value == "value is 42" for m in at.markdown)
+
+
+def test_r9_every_demo_has_learn_code_try_tabs(tmp_path):
+    at = run_page(
+        tmp_path,
+        '''
+        lesson_page(1)
+
+        @demo("st.first()", "one")
+        def _():
+            st.write("A")
+
+        @demo("st.second()", "two")
+        def _():
+            st.write("B")
+        ''',
+    )
+    labels = [tab.label for tab in at.tabs]
+    assert labels == ["📖 Learn", "💻 Code", "▶️ Try"] * 2
+
+
+def test_r10_description_goes_in_learn_and_output_in_try(tmp_path):
+    at = run_page(
+        tmp_path,
+        '''
+        lesson_page(1)
+
+        @demo("st.write()", "my description")
+        def _():
+            st.write("LIVE OUTPUT")
+        ''',
+    )
+    learn, code, try_tab = at.tabs
+    assert any(m.value == "my description" for m in learn.markdown)
+    assert code.code[0].value == 'st.write("LIVE OUTPUT")'
+    assert any(m.value == "LIVE OUTPUT" for m in try_tab.markdown)
+    assert not any(m.value == "LIVE OUTPUT" for m in learn.markdown)
+
+
+def test_r11_run_false_shows_a_note_in_the_try_tab(tmp_path):
+    at = run_page(
+        tmp_path,
+        '''
+        lesson_page(1)
+
+        @demo("st.write()", "text", run=False)
+        def _():
+            st.write("SHOULD NOT RUN")
+        ''',
+    )
+    try_tab = at.tabs[2]
+    assert len(try_tab.info) == 1

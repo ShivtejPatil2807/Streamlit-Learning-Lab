@@ -2,7 +2,7 @@ import time
 
 import streamlit as st
 
-from core.components import demo, lesson_page
+from core.components import demo, lesson_footer, lesson_page
 
 lesson_page(8, "These functions give the user feedback about what's happening.")
 
@@ -50,3 +50,6 @@ def _():
 def _():
     if st.button("Launch balloons"):
         st.balloons()
+
+
+lesson_footer(8)

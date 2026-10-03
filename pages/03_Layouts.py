@@ -1,6 +1,6 @@
 import streamlit as st
 
-from core.components import demo, lesson_page
+from core.components import demo, lesson_footer, lesson_page
 
 lesson_page(3, "Layout functions control where things appear on the page.")
 
@@ -37,3 +37,6 @@ def _():
     placeholder = st.empty()
     placeholder.write("Original text")
     placeholder.write("Replaced text")
+
+
+lesson_footer(3)

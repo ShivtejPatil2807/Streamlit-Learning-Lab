@@ -1,6 +1,6 @@
 import streamlit as st
 
-from core.components import demo, lesson_page
+from core.components import demo, lesson_footer, lesson_page
 
 lesson_page(2, "Widgets let the user send information back into your app.")
 
@@ -63,3 +63,6 @@ def _():
 def _():
     date = st.date_input("Pick a date")
     st.write("Date chosen:", date)
+
+
+lesson_footer(2)
