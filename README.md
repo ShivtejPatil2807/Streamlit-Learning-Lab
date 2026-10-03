@@ -5,14 +5,21 @@
 <h1 align="center">📚 Streamlit Learning Lab</h1>
 
 <p align="center">
-  A hands-on, beginner-friendly reference repo for learning <b>Streamlit</b> —<br>
+  A hands-on, beginner-friendly reference for learning <b>Streamlit</b> —<br>
   one function at a time, with real, runnable examples.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white" alt="Python"/>
+  <a href="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml">
+    <img src="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml/badge.svg" alt="CI status"/>
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.12%2B-blue?logo=python&logoColor=white" alt="Python 3.12+"/>
   <img src="https://img.shields.io/badge/Streamlit-App-red?logo=streamlit&logoColor=white" alt="Streamlit"/>
   <img src="https://img.shields.io/badge/License-Educational-green" alt="License"/>
+</p>
+
+<p align="center">
+  <img src="docs/screenshot-home.png" alt="The Streamlit Learning Lab home page" width="800"/>
 </p>
 
 ---
@@ -21,22 +28,37 @@
 
 **[Open the live app and learn from here](https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/)**
 
-No setup needed — just open the link, pick a topic from the sidebar, and see every function's code and output side by side in your browser.
+No setup needed. Open the link, pick a lesson, and see every function's explanation, code and live result side by side in your browser.
 
 ---
 
 ## 📑 Table of contents
 
+- [What you get](#what-you-get)
 - [What is Streamlit?](#what-is-streamlit)
-- [Installation and quickstart](#installation-and-quickstart)
-- [How this repo works](#how-this-repo-works)
+- [How each lesson works](#how-each-lesson-works)
 - [Topics covered](#topics-covered)
-- [Project structure](#project-structure)
 - [Running locally](#running-locally)
+- [Project structure](#project-structure)
+- [Development](#development)
 - [Core Streamlit concepts](#core-streamlit-concepts)
 - [Who this is for](#who-this-is-for)
 - [Further reading](#further-reading)
 - [License](#license)
+
+---
+
+## What you get
+
+- **14 lessons** covering the everyday Streamlit functions, from text to authentication
+- **An interactive Home page** with search, category and level filters, and a progress bar
+- **Learn → Code → Try tabs** on every function, so you read it, copy it and run it
+- **A challenge at the end of each lesson** to check what you learned
+- **Tests and CI**: every change is checked automatically on GitHub
+
+<p align="center">
+  <img src="docs/screenshot-lesson.png" alt="A lesson page showing the Learn, Code and Try tabs" width="800"/>
+</p>
 
 ---
 
@@ -56,44 +78,19 @@ You write a normal `.py` script using Streamlit's functions (`st.title()`, `st.b
 
 ---
 
-## Installation and quickstart
+## How each lesson works
 
-**1. Install Streamlit**
+Every function on every page has the same three tabs:
 
-```bash
-pip install streamlit
-```
+| Tab | What it shows |
+|-----|---------------|
+| 📖 **Learn** | A short explanation of what the function does |
+| 💻 **Code** | The exact code, with a copy button |
+| ▶️ **Try** | The live result, running right on the page |
 
-**2. Create your first app**
+The code you see is the code that runs. Both come from the same function, so they can never drift apart.
 
-Create a file named `streamlit_app.py` in your project directory with the following code:
-
-```python
-import streamlit as st
-
-x = st.slider("Select a value")
-st.write(x, "squared is", x * x)
-```
-
-**3. Run it**
-
-```bash
-streamlit run streamlit_app.py
-```
-
-Your browser opens the app automatically. 🎉
-
----
-
-## How this repo works
-
-This repo covers Streamlit **topic by topic**. Every page follows the same three-part pattern for each function, so you always know what you're looking at:
-
-1. **Title:** the name of the function
-2. **Code:** the exact code that produces the result
-3. **Output:** the live result, rendered right below the code
-
-Click any topic below to jump straight to its file and start learning.
+At the bottom of each lesson there is a short **🎯 Challenge** (multiple choice) and a **Mark this lesson as done** checkbox. Completed lessons count towards the progress bar on the Home page.
 
 ---
 
@@ -120,42 +117,12 @@ Click any topic below to jump straight to its file and start learning.
 
 ---
 
-## Project structure
-
-```text
-Streamlit-Cookbook/
-├── Home.py                  # Landing page + topic index
-├── requirements.txt         # Python dependencies
-├── README.md                # You are here
-├── .gitignore
-├── assets/                  # Images/media used by example pages
-└── pages/                   # Each file = one sidebar page (auto-detected)
-    ├── 01_Text_and_Markdown.py
-    ├── 02_Input_Widgets.py
-    ├── 03_Layouts.py
-    ├── 04_Data_Display.py
-    ├── 05_Charts.py
-    ├── 06_File_Handling.py
-    ├── 07_UI_and_Styling.py
-    ├── 08_Status_and_Messages.py
-    ├── 09_Session_State.py
-    ├── 10_Forms.py
-    ├── 11_Caching.py
-    ├── 12_Chat_Elements.py
-    ├── 13_Navigation.py
-    └── 14_Authentication.py
-```
-
-Streamlit automatically turns every file inside `pages/` into a sidebar entry. The numbered prefixes only control the order. You don't need to register pages anywhere: drop a new `.py` file into `pages/` and it shows up.
-
----
-
 ## Running locally
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/ShivtejPatil2807/Streamlit-Cookbook.git
-cd Streamlit-Cookbook
+git clone https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab.git
+cd Streamlit-Learning-Lab
 
 # 2. Install dependencies
 pip install -r requirements.txt
@@ -168,15 +135,59 @@ Your browser opens automatically at `http://localhost:8501`.
 
 ---
 
+## Project structure
+
+```text
+Streamlit-Learning-Lab/
+├── Home.py                    # Landing page: search, filters, progress
+├── core/                      # Shared code used by every page
+│   ├── lessons.py             #   registry of all lessons
+│   ├── components.py          #   lesson_page, demo (Learn/Code/Try), lesson_footer
+│   ├── challenges.py          #   multiple-choice questions for each lesson
+│   └── theme.py               #   shared styling
+├── pages/                     # One file per lesson (auto-detected by Streamlit)
+│   ├── 01_Text_and_Markdown.py
+│   ├── ...
+│   └── 14_Authentication.py
+├── specs/                     # What each part of the app must do
+├── tests/                     # Automated tests that check the specs
+├── .github/workflows/ci.yml   # Runs ruff and the tests on every push and PR
+├── .streamlit/config.toml     # Theme and server settings
+├── assets/                    # Images and data used by the lessons
+├── docs/                      # Screenshots for this README
+├── pyproject.toml             # ruff and pytest settings
+├── requirements.txt           # Dependencies to run the app
+└── requirements-dev.txt       # Adds pytest and ruff for development
+```
+
+Streamlit turns every file inside `pages/` into a sidebar entry. The numbered prefixes control the order. To add a lesson, create the page, add an entry to `core/lessons.py` and a challenge to `core/challenges.py`. The tests tell you if something is missing.
+
+---
+
+## Development
+
+```bash
+pip install -r requirements-dev.txt
+
+python -m pytest -v     # run the tests
+ruff check .            # check the code style
+```
+
+- **Specs** in [`specs/`](specs/) describe what each part must do as short numbered requirements (R1, R2, ...). Each test names the requirement it checks.
+- **CI** runs ruff and the tests on Python 3.12 and 3.14 for every pull request and every push to `main`.
+- Changes go through a branch and a pull request. Merge once the checks are green.
+
+---
+
 ## Core Streamlit concepts
 
 Good to know before diving in:
 
 - **Script reruns, not page reloads:** every interaction reruns your whole `.py` file from top to bottom. Streamlit is fast enough that this feels instant.
 - **Widgets return values:** `x = st.slider(...)` gives you the current value directly. No callbacks are needed for simple cases.
-- **State doesn't persist by default:** normal Python variables reset on every rerun. Use `st.session_state` to remember values between reruns (topic 9).
+- **State doesn't persist by default:** normal Python variables reset on every rerun. Use `st.session_state` to remember values between reruns (lesson 9).
 - **Layout is just more function calls:** `st.columns()`, `st.tabs()`, and `st.sidebar` arrange widgets without any CSS.
-- **Caching avoids repeated work:** wrap slow functions (data loading, model inference) with `@st.cache_data` or `@st.cache_resource` so they only run once (topic 11).
+- **Caching avoids repeated work:** wrap slow functions (data loading, model inference) with `@st.cache_data` or `@st.cache_resource` so they only run once (lesson 11).
 
 ## Who this is for
 
