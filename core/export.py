@@ -92,19 +92,13 @@ def build_script(number: int, pages_dir: Path = PAGES_DIR) -> str:
                 intro = lesson.summary
                 if len(call.args) > 1:
                     intro = ast.literal_eval(call.args[1])
-                blocks.append(
-                    "\n".join(
-                        [
-                            (
-
-                                f"st.set_page_config(page_title={_lit(lesson.title)}, "
-                                f"page_icon={_lit(lesson.icon)})"
-                            ),
-                            f"st.title({_lit(f'{lesson.icon} {lesson.title}')})",
-                            f"st.write({_lit(intro)})",
-                        ]
-                    )
+                    config = (
+                    f"st.set_page_config(page_title={_lit(lesson.title)}, "
+                    f"page_icon={_lit(lesson.icon)})"
                 )
+                title_line = f"st.title({_lit(f'{lesson.icon} {lesson.title}')})"
+                blocks.append("\n".join([config, title_line, f"st.write({_lit(intro)})"]))
+                
                 continue
             if name == "lesson_footer":
                 continue

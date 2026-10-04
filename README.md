@@ -18,6 +18,9 @@
   <img src="https://img.shields.io/badge/License-Educational-green" alt="License"/>
 </p>
 
+<p align="center">
+  <img src="docs/screenshot-lessons.png" alt="The lesson list: numbered cards with level labels and the functions each lesson covers" width="900"/>
+</p>
 
 ---
 
@@ -47,11 +50,16 @@ No setup needed. Open the link, pick a lesson, and see every function's explanat
 
 ## What you get
 
-- **14 lessons** covering the everyday Streamlit functions, from text to authentication
-- **An interactive Home page** with search, category and level filters, and a progress bar
+- **17 lessons** covering the everyday Streamlit functions, from text to authentication, plus newer features like dialogs, fragments and streaming
+- **An interactive Home page** with search, category and level filters, colored level labels, and a progress bar
+- **A "Continue" button** that takes you to the next lesson you haven't finished
 - **Learn → Code → Try tabs** on every function, so you read it, copy it and run it
 - **A challenge at the end of each lesson** to check what you learned
 - **Tests and CI**: every change is checked automatically on GitHub
+
+<p align="center">
+  <img src="docs/screenshot-dashboard.png" alt="Home page dashboard: lesson count, functions covered, progress, a Continue button, search and filters" width="900"/>
+</p>
 
 ---
 
@@ -83,7 +91,7 @@ Every function on every page has the same three tabs:
 
 The code you see is the code that runs. Both come from the same function, so they can never drift apart.
 
-At the bottom of each lesson there is a short **🎯 Challenge** (multiple choice) and a **Mark this lesson as done** checkbox. Completed lessons count towards the progress bar on the Home page.
+At the bottom of each lesson there is a short **🎯 Challenge** (multiple choice) and a **Mark this lesson as done** checkbox. Completed lessons are labelled "Done" on the Home page and count towards the progress bar.
 
 ---
 
@@ -105,6 +113,9 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 | 12 | Chat Elements | [12_Chat_Elements.py](pages/12_Chat_Elements.py) | `chat_message`, `chat_input` |
 | 13 | Navigation | [13_Navigation.py](pages/13_Navigation.py) | `page_link`, `switch_page`, how multipage apps work |
 | 14 | Authentication | [14_Authentication.py](pages/14_Authentication.py) | DIY `session_state` login pattern, `st.login()` overview |
+| 15 | Dialogs & Pop-ups | [15_Dialogs_and_Popups.py](pages/15_Dialogs_and_Popups.py) | `dialog`, `popover`, `status` |
+| 16 | Modern Inputs | [16_Modern_Inputs.py](pages/16_Modern_Inputs.py) | `pills`, `feedback`, `data_editor` |
+| 17 | Fragments & Streaming | [17_Fragments_and_Streaming.py](pages/17_Fragments_and_Streaming.py) | `fragment`, `write_stream` |
 
 > 💡 **Tip:** read them in order the first time through. Later pages sometimes reuse ideas (like `session_state`) introduced earlier.
 
@@ -132,28 +143,34 @@ Your browser opens automatically at `http://localhost:8501`.
 
 ```text
 Streamlit-Learning-Lab/
-├── Home.py                    # Landing page: search, filters, progress
+├── Home.py                    # Landing page: hero, search, filters, progress
 ├── core/                      # Shared code used by every page
 │   ├── lessons.py             #   registry of all lessons
 │   ├── components.py          #   lesson_page, demo (Learn/Code/Try), lesson_footer
 │   ├── challenges.py          #   multiple-choice questions for each lesson
-│   └── theme.py               #   shared styling
+│   └── theme.py               #   shared look: hero, cards, level labels
 ├── pages/                     # One file per lesson (auto-detected by Streamlit)
 │   ├── 01_Text_and_Markdown.py
 │   ├── ...
-│   └── 14_Authentication.py
+│   └── 17_Fragments_and_Streaming.py
 ├── specs/                     # What each part of the app must do
 ├── tests/                     # Automated tests that check the specs
 ├── .github/workflows/ci.yml   # Runs ruff and the tests on every push and PR
-├── .streamlit/config.toml     # Theme and server settings
+├── .streamlit/config.toml     # Theme colors and server settings
 ├── assets/                    # Images and data used by the lessons
-├── docs/                      # Screenshots for this README
+├── docs/                      # Screenshots used in this README
 ├── pyproject.toml             # ruff and pytest settings
 ├── requirements.txt           # Dependencies to run the app
 └── requirements-dev.txt       # Adds pytest and ruff for development
 ```
 
-Streamlit turns every file inside `pages/` into a sidebar entry. The numbered prefixes control the order. To add a lesson, create the page, add an entry to `core/lessons.py` and a challenge to `core/challenges.py`. The tests tell you if something is missing.
+Streamlit turns every file inside `pages/` into a sidebar entry. The numbered prefixes control the order. To add a lesson:
+
+1. Create the page in `pages/`.
+2. Add an entry to `core/lessons.py`.
+3. Add a challenge to `core/challenges.py`.
+
+The tests tell you if something is missing.
 
 ---
 

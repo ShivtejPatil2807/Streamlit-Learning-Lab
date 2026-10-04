@@ -73,6 +73,15 @@ LESSONS: list[Lesson] = [
     Lesson(14, "Authentication", "🔐", "14_Authentication.py", "App Features", "Advanced",
            "Protect content with a simple login, and see real auth.",
            ("session-state login", "st.login", "st.user")),
+    Lesson(15, "Dialogs & Pop-ups", "🪟", "15_Dialogs_and_Popups.py", "Display & Content", "Intermediate",
+           "Show extra content on top of the page, only when the learner asks for it.",
+           ("st.dialog", "st.popover", "st.status")),
+    Lesson(16, "Modern Inputs", "🎛️", "16_Modern_Inputs.py", "Input & Layout", "Intermediate",
+           "Newer widgets: clickable pills, star ratings and editable tables.",
+           ("st.pills", "st.feedback", "st.data_editor")),
+    Lesson(17, "Fragments & Streaming", "🌊", "17_Fragments_and_Streaming.py", "State & Performance", "Advanced",
+           "Rerun just part of a page, and show text as it is being produced.",
+           ("st.fragment", "st.write_stream")),
 ]
 
 
