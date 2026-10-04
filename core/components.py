@@ -21,6 +21,7 @@ import textwrap
 import streamlit as st
 
 from core.challenges import CHALLENGES
+from core.export import build_script
 from core.lessons import LESSONS, neighbours
 from core.theme import apply_theme, level_pill, pill
 
@@ -143,7 +144,26 @@ def lesson_footer(number: int) -> None:
         on_change=_toggle,
     )
 
+    _download_row(number)
     _lesson_nav(number)
+
+
+@st.cache_data
+def _standalone_script(number: int) -> str:
+    return build_script(number)
+
+
+def _download_row(number: int) -> None:
+    """A button that downloads this lesson as a script that runs on its own."""
+    lesson = next(item for item in LESSONS if item.number == number)
+    st.download_button(
+        "⬇️ Download this lesson as a .py file",
+        data=_standalone_script(number),
+        file_name=lesson.file,
+        mime="text/x-python",
+        key=f"download_{number}",
+    )
+    st.caption(f"Run it on your own computer with: streamlit run {lesson.file}")
 
 
 def _lesson_nav(number: int) -> None:
