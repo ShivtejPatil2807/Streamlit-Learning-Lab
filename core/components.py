@@ -21,7 +21,7 @@ import textwrap
 import streamlit as st
 
 from core.challenges import CHALLENGES
-from core.lessons import LESSONS
+from core.lessons import LESSONS, neighbours
 from core.theme import apply_theme, level_pill, pill
 
 _COUNTER_KEY = "_demo_count"
@@ -142,3 +142,18 @@ def lesson_footer(number: int) -> None:
         key=key,
         on_change=_toggle,
     )
+
+    _lesson_nav(number)
+
+
+def _lesson_nav(number: int) -> None:
+    """Previous / Home / Next buttons at the very end of a lesson."""
+    st.divider()
+    previous, following = neighbours(number)
+    left, middle, right = st.columns(3)
+    if previous is not None and left.button(f"← {previous.title}", key=f"nav_prev_{number}"):
+        st.switch_page(previous.path)
+    if middle.button("🏠 Home", key=f"nav_home_{number}"):
+        st.switch_page("Home.py")
+    if following is not None and right.button(f"{following.title} →", key=f"nav_next_{number}"):
+        st.switch_page(following.path)

@@ -11,6 +11,7 @@ requirement it covers (for example `R3`).
 | [003-home-page.md](003-home-page.md) | `Home.py` | Implemented |
 | [004-challenges-and-progress.md](004-challenges-and-progress.md) | `core/challenges.py`, `lesson_footer` | Implemented |
 | [005-visual-style.md](005-visual-style.md) | `core/theme.py`, `.streamlit/config.toml` | Implemented |
+| [006-lesson-navigation.md](006-lesson-navigation.md) | `neighbours`, Previous / Home / Next buttons | Implemented |
 
 ## How to write a new spec
 

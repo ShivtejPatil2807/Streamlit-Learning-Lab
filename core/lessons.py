@@ -78,3 +78,11 @@ LESSONS: list[Lesson] = [
 
 def total_functions() -> int:
     return sum(len(lesson.functions) for lesson in LESSONS)
+
+
+def neighbours(number: int) -> "tuple[Lesson | None, Lesson | None]":
+    """The lessons before and after this one (None at either end)."""
+    index = next(i for i, lesson in enumerate(LESSONS) if lesson.number == number)
+    previous = LESSONS[index - 1] if index > 0 else None
+    following = LESSONS[index + 1] if index < len(LESSONS) - 1 else None
+    return previous, following
