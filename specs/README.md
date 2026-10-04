@@ -12,6 +12,7 @@ requirement it covers (for example `R3`).
 | [004-challenges-and-progress.md](004-challenges-and-progress.md) | `core/challenges.py`, `lesson_footer` | Implemented |
 | [005-visual-style.md](005-visual-style.md) | `core/theme.py`, `.streamlit/config.toml` | Implemented |
 | [006-lesson-navigation.md](006-lesson-navigation.md) | `neighbours`, Previous / Home / Next buttons | Implemented |
+| [007-lesson-download.md](007-lesson-download.md) | `core/export.py`, download button | Implemented |
 
 ## How to write a new spec
 
