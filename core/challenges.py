@@ -143,4 +143,50 @@ CHALLENGES: dict[int, list[Challenge]] = {
             "Real apps use an identity provider, for example with st.login().",
         ),
     ],
+
+    15: [
+        Challenge(
+            "Which function turns a function into a pop-up window on top of the page?",
+            ("st.popup()", "st.modal_window()", "st.dialog()", "st.overlay()"),
+            2,
+            "@st.dialog turns a function into a pop-up. Call the function to open it.",
+        ),
+        Challenge(
+            "Which function shows the progress of a longer task with a label and a state?",
+            ("st.status()", "st.progress_text()", "st.popover()", "st.toast()"),
+            0,
+            "st.status() shows a task as it runs, and can be updated to \"complete\" when done.",
+        ),
+    ],
+    16: [
+        Challenge(
+            "What does st.data_editor() return?",
+            ("True when the table is edited", "The edited data, as a DataFrame",
+             "Only the rows that changed", "Nothing"),
+            1,
+            "It returns the table with the user's edits, in the same type you passed in.",
+        ),
+        Challenge(
+            "What does st.feedback(\"stars\") return when the user clicks the third star?",
+            ("3", "2", "\"3 stars\"", "True"),
+            1,
+            "It counts from zero: one star is 0 and five stars is 4. Add 1 to show the rating.",
+        ),
+    ],
+    17: [
+        Challenge(
+            "What does st.fragment let you do?",
+            ("Cache a function forever", "Split a page into several files",
+             "Rerun just one part of the page", "Delete session state"),
+            2,
+            "A fragment reruns on its own, so the rest of the script does not run again.",
+        ),
+        Challenge(
+            "What can you give st.write_stream()?",
+            ("A generator that yields pieces of text", "A single finished string only",
+             "A DataFrame only", "A file path"),
+            0,
+            "It writes whatever a generator yields piece by piece, like a chatbot typing.",
+        ),
+    ],
 }
