@@ -18,9 +18,6 @@
   <img src="https://img.shields.io/badge/License-Educational-green" alt="License"/>
 </p>
 
-<p align="center">
-  <img src="docs/screenshot-home.png" alt="The Streamlit Learning Lab home page" width="800"/>
-</p>
 
 ---
 
@@ -55,10 +52,6 @@ No setup needed. Open the link, pick a lesson, and see every function's explanat
 - **Learn → Code → Try tabs** on every function, so you read it, copy it and run it
 - **A challenge at the end of each lesson** to check what you learned
 - **Tests and CI**: every change is checked automatically on GitHub
-
-<p align="center">
-  <img src="docs/screenshot-lesson.png" alt="A lesson page showing the Learn, Code and Try tabs" width="800"/>
-</p>
 
 ---
 
