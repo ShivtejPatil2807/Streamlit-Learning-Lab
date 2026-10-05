@@ -1,0 +1,33 @@
+name: Links
+
+on:
+  pull_request:
+    paths:
+      - "README.md"
+      - "specs/**"
+      - ".github/workflows/links.yml"
+  schedule:
+    # Every Monday morning (UTC): websites move, so links break over time.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    name: Check README links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --max-retries 3
+            --accept 200,204,206,429
+            README.md
+            specs/*.md
+          fail: true
