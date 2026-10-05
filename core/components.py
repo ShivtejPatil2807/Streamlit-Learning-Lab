@@ -22,6 +22,7 @@ import streamlit as st
 
 from core.challenges import CHALLENGES
 from core.export import build_script
+from core.feedback import feedback_url
 from core.lessons import LESSONS, neighbours
 from core.theme import apply_theme, level_pill, pill
 
@@ -145,6 +146,7 @@ def lesson_footer(number: int) -> None:
     )
 
     _download_row(number)
+    _feedback_row(number)
     _lesson_nav(number)
 
 
@@ -164,6 +166,13 @@ def _download_row(number: int) -> None:
         key=f"download_{number}",
     )
     st.caption(f"Run it on your own computer with: streamlit run {lesson.file}")
+
+
+def _feedback_row(number: int) -> None:
+    """A link that opens a pre-filled GitHub issue about this lesson."""
+    lesson = next(item for item in LESSONS if item.number == number)
+    st.link_button("💬 Was this helpful? Share feedback", feedback_url(lesson))
+    st.caption("Opens a pre-filled GitHub issue. You need a free GitHub account to send it.")
 
 
 def _lesson_nav(number: int) -> None:
