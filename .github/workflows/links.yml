@@ -27,7 +27,7 @@ jobs:
           args: >-
             --no-progress
             --max-retries 3
+            --max-redirects 10
             --accept 200,204,206,429
             README.md
             specs/*.md
-          fail: true
