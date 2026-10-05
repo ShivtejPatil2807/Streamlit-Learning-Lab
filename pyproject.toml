@@ -1,6 +1,5 @@
-[tool.ruff]
-line-length = 100
+[tool.coverage.run]
+source = ["core"]
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = [".", "tests"]
+[tool.coverage.report]
+show_missing = true

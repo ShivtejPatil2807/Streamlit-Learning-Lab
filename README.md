@@ -18,9 +18,6 @@
   <img src="https://img.shields.io/badge/License-Educational-green" alt="License"/>
 </p>
 
-<p align="center">
-  <img src="docs/screenshot-lessons.png" alt="The lesson list: numbered cards with level labels and the functions each lesson covers" width="900"/>
-</p>
 
 ---
 
@@ -57,9 +54,6 @@ No setup needed. Open the link, pick a lesson, and see every function's explanat
 - **A challenge at the end of each lesson** to check what you learned
 - **Tests and CI**: every change is checked automatically on GitHub
 
-<p align="center">
-  <img src="docs/screenshot-dashboard.png" alt="Home page dashboard: lesson count, functions covered, progress, a Continue button, search and filters" width="900"/>
-</p>
 
 ---
 
