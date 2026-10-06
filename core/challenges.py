@@ -222,4 +222,22 @@ CHALLENGES: dict[int, list[Challenge]] = {
             "AppTest runs your app in memory so a test can click, type and read the result.",
         ),
     ],
+
+    20: [
+        Challenge(
+            "Why keep some flowers hidden while the model is trained?",
+            ("To make training faster", "To check the model on flowers it has never seen",
+             "Because the data is too big", "To remove wrong flowers"),
+            1,
+            "A model can memorise the flowers it learned from. Scoring on hidden flowers "
+            "shows how it does on new ones.",
+        ),
+        Challenge(
+            "What does predict_proba() return?",
+            ("The name of the species", "The model's chance for each species",
+             "The accuracy of the model", "The training data"),
+            1,
+            "It returns one number per species, and they add up to 1.",
+        ),
+    ],
 }

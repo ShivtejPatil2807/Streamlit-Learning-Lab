@@ -17,6 +17,9 @@ from core.lessons import LESSONS
 PAGES_DIR = Path(__file__).resolve().parents[1] / "pages"
 REPO_URL = "https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab"
 
+# Some packages are imported under a different name than the one pip installs.
+PIP_NAMES = {"sklearn": "scikit-learn", "PIL": "pillow", "cv2": "opencv-python"}
+
 
 def _lit(text: str) -> str:
     """A Python string literal for `text`."""
@@ -51,16 +54,20 @@ def _heading(number: int, title: str, description: str | None) -> list[str]:
 
 
 def _packages(tree: ast.Module) -> list[str]:
-    """Third-party packages the page imports, so we can tell the learner what to install."""
+    """Third-party packages the page imports (anywhere), so we can tell the learner what to install."""
     found = {"streamlit"}
-    for node in tree.body:
+    for node in ast.walk(tree):
         if isinstance(node, ast.Import):
             names = [alias.name.split(".")[0] for alias in node.names]
         elif isinstance(node, ast.ImportFrom) and node.module:
             names = [node.module.split(".")[0]]
         else:
             continue
-        found.update(n for n in names if n != "core" and n not in sys.stdlib_module_names)
+        found.update(
+            PIP_NAMES.get(name, name)
+            for name in names
+            if name != "core" and name not in sys.stdlib_module_names
+        )
     return ["streamlit"] + sorted(found - {"streamlit"})
 
 
@@ -92,13 +99,12 @@ def build_script(number: int, pages_dir: Path = PAGES_DIR) -> str:
                 intro = lesson.summary
                 if len(call.args) > 1:
                     intro = ast.literal_eval(call.args[1])
-                    config = (
+                config = (
                     f"st.set_page_config(page_title={_lit(lesson.title)}, "
                     f"page_icon={_lit(lesson.icon)})"
                 )
                 title_line = f"st.title({_lit(f'{lesson.icon} {lesson.title}')})"
                 blocks.append("\n".join([config, title_line, f"st.write({_lit(intro)})"]))
-                
                 continue
             if name == "lesson_footer":
                 continue
