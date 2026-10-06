@@ -189,4 +189,37 @@ CHALLENGES: dict[int, list[Challenge]] = {
             "It writes whatever a generator yields piece by piece, like a chatbot typing.",
         ),
     ],
+
+    18: [
+        Challenge(
+            "Where should a real API key live?",
+            ("Directly in your Python code", "In .streamlit/secrets.toml, kept out of Git",
+             "In the README so it is easy to find", "In a code comment"),
+            1,
+            "st.secrets reads it from secrets.toml, which belongs in .gitignore. "
+            "On Community Cloud you paste its contents into the app's Secrets settings.",
+        ),
+        Challenge(
+            "Which file tells Community Cloud which Python packages to install?",
+            ("README.md", ".gitignore", "requirements.txt", "Home.py"),
+            2,
+            "The cloud starts with nothing installed, so list every package in requirements.txt.",
+        ),
+    ],
+    19: [
+        Challenge(
+            "What does a failing assert do?",
+            ("Prints a warning and carries on", "Raises an AssertionError",
+             "Restarts the app", "Nothing"),
+            1,
+            "A failed assert raises an AssertionError, which is how test tools notice a failure.",
+        ),
+        Challenge(
+            "What is AppTest for?",
+            ("Checking what an app shows without opening a browser", "Making the app load faster",
+             "Deploying the app", "Styling the app"),
+            0,
+            "AppTest runs your app in memory so a test can click, type and read the result.",
+        ),
+    ],
 }
