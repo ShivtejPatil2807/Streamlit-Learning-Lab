@@ -24,6 +24,7 @@ CATEGORIES = [
     "Data & Charts",
     "State & Performance",
     "App Features",
+    "Projects",
 ]
 LEVELS = ["Beginner", "Intermediate", "Advanced"]
 
@@ -88,6 +89,9 @@ LESSONS: list[Lesson] = [
     Lesson(19, "Testing Your App", "🧪", "19_Testing_Your_App.py", "App Features", "Advanced",
            "Check your app with automatic tests instead of clicking through it.",
            ("assert", "AppTest", "pytest", "GitHub Actions")),
+    Lesson(20, "Project: Iris Classifier", "🌸", "20_Project_Iris_Classifier.py", "Projects", "Advanced",
+           "Train a small model and predict an iris flower's species from four sliders.",
+           ("scikit-learn", "st.slider", "st.metric", "st.cache_resource")),
 ]
 
 
