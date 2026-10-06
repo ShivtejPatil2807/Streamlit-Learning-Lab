@@ -4,3 +4,4 @@ __pycache__/
 .ruff_cache/
 *.db
 .env
+.streamlit/secrets.toml

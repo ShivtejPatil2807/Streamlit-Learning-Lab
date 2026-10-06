@@ -82,6 +82,12 @@ LESSONS: list[Lesson] = [
     Lesson(17, "Fragments & Streaming", "🌊", "17_Fragments_and_Streaming.py", "State & Performance", "Advanced",
            "Rerun just part of a page, and show text as it is being produced.",
            ("st.fragment", "st.write_stream")),
+    Lesson(18, "Secrets & Deployment", "🚀", "18_Secrets_and_Deployment.py", "App Features", "Intermediate",
+           "Keep private values out of your code and put your app online.",
+           ("st.secrets", "st.__version__", "Community Cloud")),
+    Lesson(19, "Testing Your App", "🧪", "19_Testing_Your_App.py", "App Features", "Advanced",
+           "Check your app with automatic tests instead of clicking through it.",
+           ("assert", "AppTest", "pytest", "GitHub Actions")),
 ]
 
 

@@ -110,6 +110,8 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 | 15 | Dialogs & Pop-ups | [15_Dialogs_and_Popups.py](pages/15_Dialogs_and_Popups.py) | `dialog`, `popover`, `status` |
 | 16 | Modern Inputs | [16_Modern_Inputs.py](pages/16_Modern_Inputs.py) | `pills`, `feedback`, `data_editor` |
 | 17 | Fragments & Streaming | [17_Fragments_and_Streaming.py](pages/17_Fragments_and_Streaming.py) | `fragment`, `write_stream` |
+| 18 | Secrets & Deployment | [18_Secrets_and_Deployment.py](pages/18_Secrets_and_Deployment.py) | `secrets`, `__version__`, deploying to Community Cloud |
+| 19 | Testing Your App | [19_Testing_Your_App.py](pages/19_Testing_Your_App.py) | `assert`, `AppTest`, `pytest`, GitHub Actions |
 
 > 💡 **Tip:** read them in order the first time through. Later pages sometimes reuse ideas (like `session_state`) introduced earlier.
 
