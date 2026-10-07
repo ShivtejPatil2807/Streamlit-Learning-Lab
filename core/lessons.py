@@ -92,6 +92,9 @@ LESSONS: list[Lesson] = [
     Lesson(20, "Project: Iris Classifier", "🌸", "20_Project_Iris_Classifier.py", "Projects", "Advanced",
            "Train a small model and predict an iris flower's species from four sliders.",
            ("scikit-learn", "st.slider", "st.metric", "st.cache_resource")),
+    Lesson(21, "Project: Sales Dashboard", "🛒", "21_Project_Sales_Dashboard.py", "Projects", "Intermediate",
+           "Explore sales data with filters, key numbers and graphs, using only pandas.",
+           ("pandas", "st.multiselect", "st.metric", "st.columns")),
 ]
 
 

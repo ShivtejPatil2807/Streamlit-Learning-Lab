@@ -240,4 +240,21 @@ CHALLENGES: dict[int, list[Challenge]] = {
             "It returns one number per species, and they add up to 1.",
         ),
     ],
+
+    21: [
+        Challenge(
+            "Which pandas code adds up the revenue of each region?",
+            ("sales.sort(\"Region\")", "sales.groupby(\"Region\")[\"Revenue\"].sum()",
+             "sales.filter(\"Region\")", "sales.merge(\"Region\")"),
+            1,
+            "groupby() splits the table into one group per region, and sum() adds each group up.",
+        ),
+        Challenge(
+            "What does sales[\"Region\"].isin([\"North\", \"South\"]) give you?",
+            ("The number of regions", "True for rows in North or South, False for the rest",
+             "The sum of those regions", "A new table with two columns"),
+            1,
+            "It returns True or False for every row. Use it inside sales[...] to keep only those rows.",
+        ),
+    ],
 }
