@@ -2,10 +2,10 @@
 import re
 
 from conftest import HOME
-from core.paths import PATHS, next_in_path, path_lessons, path_progress
 from streamlit.testing.v1 import AppTest
 
 from core.lessons import LESSONS
+from core.paths import PATHS, next_in_path, path_lessons, path_progress
 
 NUMBERS = {lesson.number for lesson in LESSONS}
 
