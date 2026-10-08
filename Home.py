@@ -3,6 +3,7 @@ import html
 import streamlit as st
 
 from core.lessons import CATEGORIES, LESSONS, LEVELS, total_functions
+from core.paths import PATHS, next_in_path, path_lessons, path_progress
 from core.theme import apply_theme, chips, level_pill, pill
 
 st.set_page_config(page_title="Streamlit Learning Lab", page_icon="📚", layout="wide")
@@ -39,25 +40,36 @@ def card_top(lesson) -> str:
     )
 
 
+def path_top(path, done: int, total: int) -> str:
+    """The text part of a learning-path card, as one block of HTML."""
+    titles = [lesson.title for lesson in path_lessons(path)]
+    progress_label = pill(f"{done} / {total} done", "beginner" if done == total else "category")
+    return "".join(
+        [
+            '<div class="lab-path">',
+            '<div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem">',
+            f'<span class="lab-card-icon">{path.icon}</span>',
+            f'<span class="lab-card-name">{html.escape(path.title)}</span></div>',
+            f'<div class="lab-meta">{pill(f"{total} lessons", "category")}{progress_label}</div>',
+            f'<p class="lab-summary">{html.escape(path.summary)}</p>',
+            f'<div class="lab-chips">{chips(titles)}</div>',
+            "</div>",
+        ]
+    )
+
+
 # ---------- Hero ----------
 st.markdown(
-    """
-    <div class="lab-hero">
-        <div class="lab-kicker">📚 INTERACTIVE STREAMLIT COURSE</div>
-        <h1>Streamlit Learning Lab</h1>
-        "<p>Learn one function at a time. Read it, copy the code, and watch it run ",
-        "right on the page.</p>",
-        <div class="lab-steps">
-            <span class="lab-step">📖 Learn</span>
-            <span class="lab-arrow">→</span>
-            <span class="lab-step">💻 Code</span>
-            <span class="lab-arrow">→</span>
-            <span class="lab-step">▶️ Try</span>
-            <span class="lab-arrow">→</span>
-            <span class="lab-step">🎯 Challenge</span>
-        </div>
-    </div>
-    """,
+    """<div class="lab-hero">
+<div class="lab-kicker">📚 INTERACTIVE STREAMLIT COURSE</div>
+<h1>Streamlit Learning Lab</h1>
+<p>Learn one function at a time: read it, copy the code, see it run.</p>
+<div class="lab-steps">
+<span class="lab-step">📖 Learn</span><span class="lab-arrow">→</span>
+<span class="lab-step">💻 Code</span><span class="lab-arrow">→</span>
+<span class="lab-step">▶️ Try</span><span class="lab-arrow">→</span>
+<span class="lab-step">🎯 Challenge</span>
+</div></div>""",
     unsafe_allow_html=True,
 )
 
@@ -77,13 +89,31 @@ if remaining:
 else:
     st.success("🎉 You finished every lesson. Well done!")
 
+# ---------- Learning paths ----------
+st.subheader("Learning paths")
+st.caption("Short routes through the lessons. Pick the goal you care about.")
+for col, path in zip(st.columns(len(PATHS)), PATHS):
+    done, total = path_progress(path, completed)
+    upcoming = next_in_path(path, completed)
+    with col.container(border=True):
+        st.markdown(path_top(path, done, total), unsafe_allow_html=True)
+        st.progress(done / total)
+        if upcoming is None:
+            st.caption("✓ Path completed")
+        else:
+            verb = "Start" if done == 0 else "Continue"
+            st.page_link(upcoming.path, label=f"{verb}: {upcoming.title}", icon="▶️")
+
 st.divider()
 
 # ---------- Filters ----------
-f1, f2, f3 = st.columns([2, 1, 1])
+f1, f2, f3, f4 = st.columns([2, 1, 1, 1])
 query = f1.text_input("🔎 Search lessons or functions", placeholder="e.g. chart, session, st.form")
 category = f2.selectbox("Category", ["All"] + CATEGORIES)
 levels = f3.multiselect("Level", LEVELS, default=LEVELS)
+path_name = f4.selectbox("Learning path", ["All lessons"] + [path.title for path in PATHS])
+
+chosen_path = next((path for path in PATHS if path.title == path_name), None)
 
 
 def matches(lesson) -> bool:
@@ -93,10 +123,13 @@ def matches(lesson) -> bool:
         (not q or q in haystack)
         and (category == "All" or lesson.category == category)
         and lesson.level in levels
+        and (chosen_path is None or lesson.number in chosen_path.lessons)
     )
 
 
 results = [lesson for lesson in LESSONS if matches(lesson)]
+if chosen_path is not None:
+    results.sort(key=lambda lesson: chosen_path.lessons.index(lesson.number))
 
 # ---------- Lesson grid ----------
 st.subheader(f"Lessons ({len(results)})")
@@ -104,18 +137,18 @@ st.subheader(f"Lessons ({len(results)})")
 if not results:
     st.warning("No lessons match your filters. Try clearing the search.")
 
-cols = st.columns(3)
-for i, lesson in enumerate(results):
-    with cols[i % 3].container(border=True):
-        st.markdown(card_top(lesson), unsafe_allow_html=True)
-        st.page_link(lesson.path, label="Open lesson", icon="➡️")
-        st.checkbox(
-            "Mark as done",
-            value=lesson.number in completed,
-            key=f"done_{lesson.number}",
-            on_change=toggle_done,
-            args=(lesson.number,),
-        )
+for start in range(0, len(results), 3):
+    for col, lesson in zip(st.columns(3), results[start : start + 3]):
+        with col.container(border=True):
+            st.markdown(card_top(lesson), unsafe_allow_html=True)
+            st.page_link(lesson.path, label="Open lesson", icon="➡️")
+            st.checkbox(
+                "Mark as done",
+                value=lesson.number in completed,
+                key=f"done_{lesson.number}",
+                on_change=toggle_done,
+                args=(lesson.number,),
+            )
 
 # ---------- How it works ----------
 with st.expander("How does each lesson work?"):
