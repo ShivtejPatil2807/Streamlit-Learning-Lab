@@ -16,6 +16,7 @@ requirement it covers (for example `R3`).
 | [008-lesson-feedback.md](008-lesson-feedback.md) | `core/feedback.py`, feedback button | Implemented |
 | [009-iris-classifier.md](009-iris-classifier.md) | `pages/20_Project_Iris_Classifier.py` | Implemented |
 | [010-sales-dashboard.md](010-sales-dashboard.md) | `pages/21_Project_Sales_Dashboard.py` | Implemented |
+| [011-chatbot.md](011-chatbot.md) | `pages/22_Project_Chatbot.py` | Implemented |
 
 ## How to write a new spec
 

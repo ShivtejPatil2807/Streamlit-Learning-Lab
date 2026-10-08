@@ -257,4 +257,23 @@ CHALLENGES: dict[int, list[Challenge]] = {
             "It returns True or False for every row. Use it inside sales[...] to keep only those rows.",
         ),
     ],
+
+    22: [
+        Challenge(
+            "Why does the chatbot store its messages in st.session_state?",
+            ("The page reruns on every message and would otherwise forget the conversation",
+             "To make the bot answer faster", "To hide the messages", "To save them to a file"),
+            0,
+            "Every message reruns the script, so ordinary variables reset. "
+            "Session state keeps the history between reruns.",
+        ),
+        Challenge(
+            "Why must a public app never contain your own API key?",
+            ("Keys make the app slower", "Every visitor would spend your credit",
+             "Keys cannot be read by Python", "Streamlit forbids keys"),
+            1,
+            "Anyone using the app would be using your account. "
+            "Keep keys in st.secrets, or ask each visitor for their own.",
+        ),
+    ],
 }
