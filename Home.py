@@ -29,7 +29,7 @@ def card_top(lesson) -> str:
     return "".join(
         [
             '<div class="lab-card-title">',
-            f'<span class="lab-card-icon">{lesson.icon}</span>',
+            f'<span class="lab-card-icon" aria-hidden="true">{lesson.icon}</span>',
             '<span class="lab-card-name">',
             f'<span class="lab-card-num">{lesson.number:02d}</span>{html.escape(lesson.title)}',
             "</span></div>",
@@ -48,7 +48,7 @@ def path_top(path, done: int, total: int) -> str:
         [
             '<div class="lab-path">',
             '<div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem">',
-            f'<span class="lab-card-icon">{path.icon}</span>',
+            f'<span class="lab-card-icon" aria-hidden="true">{path.icon}</span>',
             f'<span class="lab-card-name">{html.escape(path.title)}</span></div>',
             f'<div class="lab-meta">{pill(f"{total} lessons", "category")}{progress_label}</div>',
             f'<p class="lab-summary">{html.escape(path.summary)}</p>',
@@ -59,19 +59,20 @@ def path_top(path, done: int, total: int) -> str:
 
 
 # ---------- Hero ----------
-st.markdown(
-    """<div class="lab-hero">
-<div class="lab-kicker">📚 INTERACTIVE STREAMLIT COURSE</div>
-<h1>Streamlit Learning Lab</h1>
-<p>Learn one function at a time: read it, copy the code, see it run.</p>
-<div class="lab-steps">
-<span class="lab-step">📖 Learn</span><span class="lab-arrow">→</span>
-<span class="lab-step">💻 Code</span><span class="lab-arrow">→</span>
-<span class="lab-step">▶️ Try</span><span class="lab-arrow">→</span>
-<span class="lab-step">🎯 Challenge</span>
-</div></div>""",
-    unsafe_allow_html=True,
+HERO_HTML = (
+    '<div class="lab-hero">'
+    '<div class="lab-kicker">📚 INTERACTIVE STREAMLIT COURSE</div>'
+    "<h1>Streamlit Learning Lab</h1>"
+    "<p>Learn one function at a time: read it, copy the code, see it run.</p>"
+    '<div class="lab-steps">'
+    '<span class="lab-step">📖 Learn</span><span class="lab-arrow">→</span>'
+    '<span class="lab-step">💻 Code</span><span class="lab-arrow">→</span>'
+    '<span class="lab-step">▶️ Try</span><span class="lab-arrow">→</span>'
+    '<span class="lab-step">🎯 Challenge</span>'
+    "</div></div>"
 )
+st.markdown(HERO_HTML, unsafe_allow_html=True)
+
 
 # ---------- Stats ----------
 c1, c2, c3 = st.columns(3)
@@ -141,9 +142,9 @@ for start in range(0, len(results), 3):
     for col, lesson in zip(st.columns(3), results[start : start + 3]):
         with col.container(border=True):
             st.markdown(card_top(lesson), unsafe_allow_html=True)
-            st.page_link(lesson.path, label="Open lesson", icon="➡️")
+            st.page_link(lesson.path, label=lesson.open_label, icon="➡️")
             st.checkbox(
-                "Mark as done",
+                lesson.done_label,
                 value=lesson.number in completed,
                 key=f"done_{lesson.number}",
                 on_change=toggle_done,

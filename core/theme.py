@@ -14,6 +14,7 @@ _CSS = """
 :root {
     --lab-accent: #7C5CFF;
     --lab-accent-2: #FF5C8A;
+    --lab-accent-text: #A592FF;
     --lab-border: rgba(255, 255, 255, 0.10);
     --lab-muted: rgba(232, 236, 244, 0.65);
 }
@@ -62,7 +63,7 @@ _CSS = """
 .lab-card-title { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
 .lab-card-icon { font-size: 1.7rem; line-height: 1; }
 .lab-card-name { font-size: 1.15rem; font-weight: 700; line-height: 1.2; }
-.lab-card-num { color: var(--lab-accent); margin-right: 0.35rem; }
+.lab-card-num { color: var(--lab-accent-text); margin-right: 0.35rem; }
 .lab-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.7rem; }
 .lab-pill {
     padding: 0.14rem 0.65rem;
@@ -91,9 +92,11 @@ _CSS = """
     border-radius: 16px;
     transition: transform 0.15s ease, border-color 0.15s ease;
 }
-[data-testid="stVerticalBlockBorderWrapper"]:has(.lab-card-title):hover {
-    transform: translateY(-3px);
-    border-color: var(--lab-accent);
+@media (hover: hover) {
+    [data-testid="stVerticalBlockBorderWrapper"]:has(.lab-card-title):hover {
+        transform: translateY(-3px);
+        border-color: var(--lab-accent);
+    }
 }
 
 [data-testid="stMetric"] {
@@ -105,6 +108,40 @@ _CSS = """
 
 button[data-baseweb="tab"] { font-weight: 600; }
 button[data-baseweb="tab"]:focus:not(:focus-visible) { outline: none; box-shadow: none; }
+button[data-baseweb="tab"]:focus-visible {
+    outline: 2px solid var(--lab-accent-text);
+    outline-offset: 2px;
+}
+
+/* a wide table in the lesson text scrolls sideways instead of widening the page */
+[data-testid="stMarkdownContainer"] table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* bigger tap targets on touch screens */
+@media (pointer: coarse) {
+    [data-testid="stButton"] button,
+    [data-testid="stDownloadButton"] button,
+    a[data-testid^="stBaseLinkButton"] {
+        min-height: 2.75rem;
+    }
+}
+
+/* small screens: a smaller hero */
+@media (max-width: 640px) {
+    .lab-hero { padding: 1.4rem 1.1rem 1.2rem 1.1rem; border-radius: 16px; }
+    .lab-hero h1 { font-size: 1.9rem; }
+    .lab-hero p { font-size: 1rem; }
+    .lab-step { font-size: 0.8rem; padding: 0.22rem 0.6rem; }
+}
+
+/* people who ask their system for less motion get none */
+@media (prefers-reduced-motion: reduce) {
+    [data-testid="stVerticalBlockBorderWrapper"] { transition: none; }
+    [data-testid="stVerticalBlockBorderWrapper"]:has(.lab-card-title):hover { transform: none; }
+}
 
 h2 {
     border-left: 4px solid var(--lab-accent);
