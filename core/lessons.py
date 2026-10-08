@@ -95,6 +95,9 @@ LESSONS: list[Lesson] = [
     Lesson(21, "Project: Sales Dashboard", "🛒", "21_Project_Sales_Dashboard.py", "Projects", "Intermediate",
            "Explore sales data with filters, key numbers and graphs, using only pandas.",
            ("pandas", "st.multiselect", "st.metric", "st.columns")),
+    Lesson(22, "Project: Chatbot", "🤖", "22_Project_Chatbot.py", "Projects", "Advanced",
+           "Build a chatbot that remembers the conversation, using simple rules instead of a paid AI model.",
+           ("st.chat_message", "st.chat_input", "st.session_state", "st.write_stream")),
 ]
 
 
