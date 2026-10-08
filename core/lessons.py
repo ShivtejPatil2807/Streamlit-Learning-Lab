@@ -17,6 +17,16 @@ class Lesson:
     def path(self) -> str:
         return f"pages/{self.file}"
 
+    @property
+    def open_label(self) -> str:
+        """Text of the link that opens this lesson. Unique, so screen readers can tell links apart."""
+        return f"Open {self.title}"
+
+    @property
+    def done_label(self) -> str:
+        """Text of the 'mark as done' checkbox on the Home page. Unique for the same reason."""
+        return f"Mark {self.title} as done"
+
 
 CATEGORIES = [
     "Display & Content",
