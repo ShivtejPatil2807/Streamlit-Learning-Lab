@@ -53,7 +53,7 @@ No setup needed. Open the link, pick a lesson, and see every function's explanat
 - **Learn → Code → Try tabs** on every function, so you read it, copy it and run it
 - **A challenge at the end of each lesson** to check what you learned
 - **Tests and CI**: every change is checked automatically on GitHub
-
+- **Learning paths** such as "Build a chatbot", so you don't have to choose from 22 lessons
 
 ---
 
@@ -112,6 +112,9 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 | 17 | Fragments & Streaming | [17_Fragments_and_Streaming.py](pages/17_Fragments_and_Streaming.py) | `fragment`, `write_stream` |
 | 18 | Secrets & Deployment | [18_Secrets_and_Deployment.py](pages/18_Secrets_and_Deployment.py) | `secrets`, `__version__`, deploying to Community Cloud |
 | 19 | Testing Your App | [19_Testing_Your_App.py](pages/19_Testing_Your_App.py) | `assert`, `AppTest`, `pytest`, GitHub Actions |
+| 20 | Project: Iris Classifier | [20_Project_Iris_Classifier.py](pages/20_Project_Iris_Classifier.py) | `scikit-learn`, sliders, `st.metric`, `st.cache_resource` |
+| 21 | Project: Sales Dashboard | [21_Project_Sales_Dashboard.py](pages/21_Project_Sales_Dashboard.py) | pandas, `groupby`, filters, `st.metric` |
+| 22 | Project: Chatbot | [22_Project_Chatbot.py](pages/22_Project_Chatbot.py) | `chat_message`, `chat_input`, `session_state`, `write_stream` |
 
 > 💡 **Tip:** read them in order the first time through. Later pages sometimes reuse ideas (like `session_state`) introduced earlier.
 
