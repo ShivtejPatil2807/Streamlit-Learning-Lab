@@ -19,7 +19,6 @@ requirement it covers (for example `R3`).
 | [011-chatbot.md](011-chatbot.md) | `pages/22_Project_Chatbot.py` | Implemented |
 | [012-learning-paths.md](012-learning-paths.md) | `core/paths.py`, Home page paths | Implemented |
 | [013-mobile-and-accessibility.md](013-mobile-and-accessibility.md) | `core/theme.py`, `Home.py` | Implemented |
-| [014-data-files.md](014-data-files.md) | `data/*.yaml`, `core/lessons.py`, `core/challenges.py`, `core/paths.py` | Implemented |
 
 ## How to write a new spec
 

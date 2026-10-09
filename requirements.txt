@@ -3,4 +3,3 @@ pandas
 numpy
 pytest
 scikit-learn
-pyyaml
