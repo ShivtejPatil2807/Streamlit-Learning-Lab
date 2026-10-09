@@ -1,5 +1,17 @@
-"""Single source of truth for every lesson in the Learning Lab."""
+"""The lesson registry.
+
+The lessons themselves are described in data/lessons.yaml, so adding a lesson
+does not need any Python code. This module loads that file, checks that each
+entry is complete, and offers a few helpers.
+"""
 from dataclasses import dataclass
+from pathlib import Path
+
+import yaml
+
+DATA_DIR = Path(__file__).resolve().parents[1] / "data"
+
+REQUIRED_FIELDS = ("number", "title", "icon", "file", "category", "level", "summary", "functions")
 
 
 @dataclass(frozen=True)
@@ -28,87 +40,32 @@ class Lesson:
         return f"Mark {self.title} as done"
 
 
-CATEGORIES = [
-    "Display & Content",
-    "Input & Layout",
-    "Data & Charts",
-    "State & Performance",
-    "App Features",
-    "Projects",
-]
-LEVELS = ["Beginner", "Intermediate", "Advanced"]
+def load_lessons(path: Path) -> tuple[list[str], list[str], list[Lesson]]:
+    """Read a lessons file and return (categories, levels, lessons)."""
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    lessons = []
+    for position, entry in enumerate(data["lessons"], start=1):
+        missing = [field for field in REQUIRED_FIELDS if field not in entry]
+        if missing:
+            raise ValueError(
+                f"{path.name}: lesson entry {position} is missing {', '.join(missing)}"
+            )
+        lessons.append(
+            Lesson(
+                number=int(entry["number"]),
+                title=entry["title"],
+                icon=entry["icon"],
+                file=entry["file"],
+                category=entry["category"],
+                level=entry["level"],
+                summary=entry["summary"],
+                functions=tuple(entry["functions"]),
+            )
+        )
+    return list(data["categories"]), list(data["levels"]), lessons
 
-LESSONS: list[Lesson] = [
-    Lesson(1, "Text & Markdown", "✍️", "01_Text_and_Markdown.py", "Display & Content", "Beginner",
-           "Show titles, text, code and tables on the page.",
-           ("st.title", "st.header", "st.subheader", "st.write", "st.markdown",
-            "st.caption", "st.code", "st.divider", "st.table", "st.expander")),
-    Lesson(2, "Input Widgets", "🔘", "02_Input_Widgets.py", "Input & Layout", "Beginner",
-           "Collect input with buttons, sliders, text boxes and selectors.",
-           ("st.button", "st.checkbox", "st.radio", "st.selectbox", "st.multiselect",
-            "st.slider", "st.text_input", "st.text_area", "st.number_input", "st.date_input")),
-    Lesson(3, "Layouts", "📐", "03_Layouts.py", "Input & Layout", "Beginner",
-           "Arrange content with columns, tabs, containers and placeholders.",
-           ("st.columns", "st.tabs", "st.container", "st.sidebar", "st.empty")),
-    Lesson(4, "Data Display", "📊", "04_Data_Display.py", "Data & Charts", "Beginner",
-           "Present tables, metrics and JSON.",
-           ("st.dataframe", "st.table", "st.metric", "st.json")),
-    Lesson(5, "Charts", "📈", "05_Charts.py", "Data & Charts", "Intermediate",
-           "Plot data with Streamlit's built-in charts and maps.",
-           ("st.line_chart", "st.bar_chart", "st.area_chart", "st.scatter_chart", "st.map")),
-    Lesson(6, "File Handling", "📁", "06_File_Handling.py", "Data & Charts", "Intermediate",
-           "Upload and download files, and show images, audio and video.",
-           ("st.file_uploader", "st.download_button", "st.image", "st.audio", "st.video")),
-    Lesson(7, "UI & Styling", "🎨", "07_UI_and_Styling.py", "Display & Content", "Intermediate",
-           "Customize the look with page config, colors and CSS.",
-           ("st.set_page_config", "st.color_picker", "st.markdown (CSS)", "st.image")),
-    Lesson(8, "Status & Messages", "💬", "08_Status_and_Messages.py", "Display & Content", "Beginner",
-           "Give users feedback with alerts, spinners and progress.",
-           ("st.success", "st.error", "st.warning", "st.info",
-            "st.progress", "st.spinner", "st.toast", "st.balloons")),
-    Lesson(9, "Session State", "🧠", "09_Session_State.py", "State & Performance", "Intermediate",
-           "Remember values between reruns.",
-           ("st.session_state", "widget key=")),
-    Lesson(10, "Forms", "📝", "10_Forms.py", "Input & Layout", "Intermediate",
-           "Group inputs and submit them together.",
-           ("st.form", "st.form_submit_button")),
-    Lesson(11, "Caching", "⚡", "11_Caching.py", "State & Performance", "Advanced",
-           "Speed up apps by caching data and resources.",
-           ("st.cache_data", "st.cache_resource", "ttl", "cache.clear()")),
-    Lesson(12, "Chat Elements", "🗨️", "12_Chat_Elements.py", "App Features", "Intermediate",
-           "Build chat interfaces.",
-           ("st.chat_message", "st.chat_input")),
-    Lesson(13, "Navigation", "🔄", "13_Navigation.py", "App Features", "Advanced",
-           "Link and jump between pages.",
-           ("st.page_link", "st.switch_page")),
-    Lesson(14, "Authentication", "🔐", "14_Authentication.py", "App Features", "Advanced",
-           "Protect content with a simple login, and see real auth.",
-           ("session-state login", "st.login", "st.user")),
-    Lesson(15, "Dialogs & Pop-ups", "🪟", "15_Dialogs_and_Popups.py", "Display & Content", "Intermediate",
-           "Show extra content on top of the page, only when the learner asks for it.",
-           ("st.dialog", "st.popover", "st.status")),
-    Lesson(16, "Modern Inputs", "🎛️", "16_Modern_Inputs.py", "Input & Layout", "Intermediate",
-           "Newer widgets: clickable pills, star ratings and editable tables.",
-           ("st.pills", "st.feedback", "st.data_editor")),
-    Lesson(17, "Fragments & Streaming", "🌊", "17_Fragments_and_Streaming.py", "State & Performance", "Advanced",
-           "Rerun just part of a page, and show text as it is being produced.",
-           ("st.fragment", "st.write_stream")),
-    Lesson(18, "Secrets & Deployment", "🚀", "18_Secrets_and_Deployment.py", "App Features", "Intermediate",
-           "Keep private values out of your code and put your app online.",
-           ("st.secrets", "st.__version__", "Community Cloud")),
-    Lesson(19, "Testing Your App", "🧪", "19_Testing_Your_App.py", "App Features", "Advanced",
-           "Check your app with automatic tests instead of clicking through it.",
-           ("assert", "AppTest", "pytest", "GitHub Actions")),
-    Lesson(20, "Project: Iris Classifier", "🌸", "20_Project_Iris_Classifier.py", "Projects", "Advanced",
-           "Train a small model and predict an iris flower's species from four sliders.",
-           ("scikit-learn", "st.slider", "st.metric", "st.cache_resource")),
-    Lesson(21, "Project: Sales Dashboard", "🛒", "21_Project_Sales_Dashboard.py", "Projects", "Intermediate",
-           "Explore sales data with filters, key numbers and graphs, using only pandas.",
-           ("pandas", "st.multiselect", "st.metric", "st.columns")),
-    Lesson(22, "Project: Chatbot", "🤖", "22_Project_Chatbot.py", "Projects", "Advanced",
-           "Build a chatbot that remembers the conversation, using simple rules instead of a paid AI model.",
-           ("st.chat_message", "st.chat_input", "st.session_state", "st.write_stream")),
-]
+
+CATEGORIES, LEVELS, LESSONS = load_lessons(DATA_DIR / "lessons.yaml")
 
 
 def total_functions() -> int:
