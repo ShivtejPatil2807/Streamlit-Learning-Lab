@@ -1,5 +1,6 @@
 """Tests for specs/015-home-page-redesign.md (the layout of Home.py)."""
 import tomllib
+
 from conftest import HOME, ROOT
 from streamlit.testing.v1 import AppTest
 from test_accessibility import contrast, hex_rgb
