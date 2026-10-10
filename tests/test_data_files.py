@@ -73,7 +73,7 @@ def test_r4_an_answer_outside_the_options_is_rejected(tmp_path):
 
 def test_r5_adding_a_lesson_needs_no_python_code(tmp_path):
     second = {**GOOD_LESSON, "number": 2, "title": "Another", "file": "02_Another.py"}
-    categories, levels, lessons = load_lessons(lessons_file(tmp_path, [GOOD_LESSON, second]))
+    _categories, _levels, lessons = load_lessons(lessons_file(tmp_path, [GOOD_LESSON, second]))
     assert [lesson.title for lesson in lessons] == ["Example", "Another"]
     assert lessons[1].path == "pages/02_Another.py"
     assert lessons[0].functions == ("st.write",)  # a list in the file, a tuple in the code

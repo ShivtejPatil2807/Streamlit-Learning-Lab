@@ -87,6 +87,28 @@ _CSS = """
     background: rgba(124, 92, 255, 0.12);
 }
 
+/* ---------- feature tiles (Home) ---------- */
+.lab-tile { padding: 0.2rem 0.2rem 0.6rem 0.2rem; }
+.lab-tile-icon { font-size: 1.7rem; line-height: 1; margin-bottom: 0.6rem; }
+.lab-tile h3 { margin: 0 0 0.35rem 0; padding: 0; font-size: 1.05rem; line-height: 1.3; }
+.lab-tile p { margin: 0; color: var(--lab-muted); font-size: 0.93rem; line-height: 1.5; }
+
+/* ---------- footer (Home) ---------- */
+.lab-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.6rem 1.6rem;
+    margin-top: 3rem;
+    padding: 1.4rem 0 0.4rem 0;
+    border-top: 1px solid var(--lab-border);
+    color: var(--lab-muted);
+    font-size: 0.9rem;
+}
+.lab-footer-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.3rem; }
+.lab-footer a { color: var(--lab-accent-text); text-decoration: none; }
+.lab-footer a:hover, .lab-footer a:focus-visible { text-decoration: underline; }
+
 /* ---------- Streamlit elements ---------- */
 [data-testid="stVerticalBlockBorderWrapper"] {
     border-radius: 16px;
