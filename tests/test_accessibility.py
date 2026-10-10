@@ -1,7 +1,7 @@
 """Tests for specs/013-mobile-and-accessibility.md."""
 import re
-
 import tomllib
+
 from conftest import HOME, ROOT
 from streamlit.testing.v1 import AppTest
 

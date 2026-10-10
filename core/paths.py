@@ -1,7 +1,15 @@
-"""Learning paths: short, ordered lists of lessons that lead to a goal."""
-from dataclasses import dataclass
+"""Learning paths: short, ordered lists of lessons that lead to a goal.
 
-from core.lessons import LESSONS
+The paths live in data/paths.yaml. This module loads them and offers helpers.
+"""
+from dataclasses import dataclass
+from pathlib import Path
+
+import yaml
+
+from core.lessons import DATA_DIR, LESSONS
+
+REQUIRED_FIELDS = ("slug", "title", "icon", "summary", "lessons")
 
 
 @dataclass(frozen=True)
@@ -13,28 +21,27 @@ class LearningPath:
     lessons: tuple[int, ...]  # lesson numbers, in the order to study them
 
 
-PATHS: list[LearningPath] = [
-    LearningPath(
-        "beginner", "Beginner in 5 lessons", "🌱",
-        "The basics: show text, take input, arrange a page, give feedback and remember things.",
-        (1, 2, 3, 8, 9),
-    ),
-    LearningPath(
-        "dashboard", "Build a dashboard", "📊",
-        "Take input, arrange the page, show data and graphs, then build a sales dashboard.",
-        (2, 3, 4, 5, 21),
-    ),
-    LearningPath(
-        "chatbot", "Build a chatbot", "💬",
-        "Take input, remember state, build a chat window, stream replies, then build a chatbot.",
-        (2, 9, 12, 17, 22),
-    ),
-    LearningPath(
-        "machine-learning", "Machine learning demo", "🔬",
-        "Take input, remember state, cache a model, then train an iris classifier.",
-        (2, 9, 11, 20),
-    ),
-]
+def load_paths(path: Path) -> list[LearningPath]:
+    """Read a paths file and return the learning paths."""
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    paths = []
+    for position, entry in enumerate(data["paths"], start=1):
+        missing = [field for field in REQUIRED_FIELDS if field not in entry]
+        if missing:
+            raise ValueError(f"{path.name}: path entry {position} is missing {', '.join(missing)}")
+        paths.append(
+            LearningPath(
+                slug=entry["slug"],
+                title=entry["title"],
+                icon=entry["icon"],
+                summary=entry["summary"],
+                lessons=tuple(int(number) for number in entry["lessons"]),
+            )
+        )
+    return paths
+
+
+PATHS: list[LearningPath] = load_paths(DATA_DIR / "paths.yaml")
 
 
 def path_lessons(path: LearningPath) -> list:
