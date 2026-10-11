@@ -11,11 +11,13 @@
 
 <p align="center">
   <a href="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml">
-    <img src="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml/badge.svg" alt="CI status"/>
+    <img src="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml/badge.svg" alt="CI Status"/>
   </a>
-  <img src="https://img.shields.io/badge/Python-3.12%2B-blue?logo=python&logoColor=white" alt="Python 3.12+"/>
-  <img src="https://img.shields.io/badge/Streamlit-App-red?logo=streamlit&logoColor=white" alt="Streamlit"/>
-  <img src="https://img.shields.io/badge/License-Educational-green" alt="License"/>
+  <img src="https://img.shields.io/badge/Python-3.12%20%7C%203.14-3776AB?logo=python&logoColor=white" alt="Python Versions"/>
+  <img src="https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B?logo=streamlit&logoColor=white" alt="Streamlit Version"/>
+  <img src="https://img.shields.io/badge/Code%20Style-Ruff-000000?logo=ruff&logoColor=white" alt="Ruff Formatted"/>
+  <img src="https://img.shields.io/badge/Tests-Pytest%20Passing-brightgreen?logo=pytest&logoColor=white" alt="Tests"/>
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License"/>
 </p>
 
 
@@ -23,9 +25,15 @@
 
 ## 🚀 Try it live
 
-**[Open the live app and learn from here](https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/)**
+Experience the full interactive course directly in your browser without local setup:
 
-No setup needed. Open the link, pick a lesson, and see every function's explanation, code and live result side by side in your browser.
+<p align="center">
+  <a href="https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/">
+    <img src="https://img.shields.io/badge/Launch%20App-Streamlit%20Community%20Cloud-FF4B4B?style=for-the-badge&logo=streamlit" alt="Launch Streamlit App"/>
+  </a>
+</p>
+
+> 💡 **Tip:** No setup needed. Open the link, pick a lesson, and see every function's explanation, code and live result side by side in your browser.
 
 ---
 
