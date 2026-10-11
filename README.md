@@ -151,7 +151,7 @@ Streamlit-Learning-Lab/
 ├── pages/                     # One file per lesson (auto-detected by Streamlit)
 │   ├── 01_Text_and_Markdown.py
 │   ├── ...
-│   └── 17_Fragments_and_Streaming.py
+│   └── 22_Project: Chatbot 
 ├── specs/                     # What each part of the app must do
 ├── tests/                     # Automated tests that check the specs
 ├── .github/workflows/ci.yml   # Runs ruff and the tests on every push and PR
