@@ -10,6 +10,12 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab">
+    <img src="https://img.shields.io/badge/View_Source_Code-181717?style=for-the-badge&logo=github&logoColor=white" alt="View source code" />
+  </a>
+</p>
+
+<p align="center">
   <a href="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml">
     <img src="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml/badge.svg" alt="CI Status"/>
   </a>
