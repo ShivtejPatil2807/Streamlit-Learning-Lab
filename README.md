@@ -33,7 +33,7 @@ Experience the full interactive course directly in your browser without local se
   </a>
 </p>
 
-> 💡 **Tip:** No setup needed. Open the link, pick a lesson, and see every function's explanation, code and live result side by side in your browser.
+> 💡**Tip:** No setup needed. Open the link, pick a lesson, and see every function's explanation, code and live result side by side in your browser.
 
 ---
 
