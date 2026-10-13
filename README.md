@@ -105,32 +105,51 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 
 ## Topics covered
 
-| # | Topic | File | What you'll learn |
-|---|-------|------|-------------------|
-| 1 | Text & Markdown | [01_Text_and_Markdown.py](pages/01_Text_and_Markdown.py) | `title`, `header`, `subheader`, `write`, `markdown`, `caption`, `code`, `divider`, `table`, `expander` |
-| 2 | Input Widgets | [02_Input_Widgets.py](pages/02_Input_Widgets.py) | `button`, `checkbox`, `radio`, `selectbox`, `multiselect`, `slider`, `text_input`, `text_area`, `number_input`, `date_input` |
-| 3 | Layouts | [03_Layouts.py](pages/03_Layouts.py) | `columns`, `tabs`, `container`, `sidebar`, `empty` |
-| 4 | Data Display | [04_Data_Display.py](pages/04_Data_Display.py) | `dataframe`, `table`, `metric`, `json` |
-| 5 | Charts | [05_Charts.py](pages/05_Charts.py) | `line_chart`, `bar_chart`, `area_chart`, `scatter_chart`, `map` |
-| 6 | File Handling | [06_File_Handling.py](pages/06_File_Handling.py) | `file_uploader`, `download_button`, `image`, `audio`, `video` |
-| 7 | UI & Styling | [07_UI_and_Styling.py](pages/07_UI_and_Styling.py) | `set_page_config`, `color_picker`, custom CSS with `st.markdown` |
-| 8 | Status & Messages | [08_Status_and_Messages.py](pages/08_Status_and_Messages.py) | `success`, `error`, `warning`, `info`, `progress`, `spinner`, `toast`, `balloons` |
-| 9 | Session State | [09_Session_State.py](pages/09_Session_State.py) | Reading and writing `st.session_state` across reruns |
-| 10 | Forms | [10_Forms.py](pages/10_Forms.py) | `form`, `form_submit_button` |
-| 11 | Caching | [11_Caching.py](pages/11_Caching.py) | `cache_data`, `cache_resource` |
-| 12 | Chat Elements | [12_Chat_Elements.py](pages/12_Chat_Elements.py) | `chat_message`, `chat_input` |
-| 13 | Navigation | [13_Navigation.py](pages/13_Navigation.py) | `page_link`, `switch_page`, how multipage apps work |
-| 14 | Authentication | [14_Authentication.py](pages/14_Authentication.py) | DIY `session_state` login pattern, `st.login()` overview |
-| 15 | Dialogs & Pop-ups | [15_Dialogs_and_Popups.py](pages/15_Dialogs_and_Popups.py) | `dialog`, `popover`, `status` |
-| 16 | Modern Inputs | [16_Modern_Inputs.py](pages/16_Modern_Inputs.py) | `pills`, `feedback`, `data_editor` |
-| 17 | Fragments & Streaming | [17_Fragments_and_Streaming.py](pages/17_Fragments_and_Streaming.py) | `fragment`, `write_stream` |
-| 18 | Secrets & Deployment | [18_Secrets_and_Deployment.py](pages/18_Secrets_and_Deployment.py) | `secrets`, `__version__`, deploying to Community Cloud |
-| 19 | Testing Your App | [19_Testing_Your_App.py](pages/19_Testing_Your_App.py) | `assert`, `AppTest`, `pytest`, GitHub Actions |
-| 20 | Project: Iris Classifier | [20_Project_Iris_Classifier.py](pages/20_Project_Iris_Classifier.py) | `scikit-learn`, sliders, `st.metric`, `st.cache_resource` |
-| 21 | Project: Sales Dashboard | [21_Project_Sales_Dashboard.py](pages/21_Project_Sales_Dashboard.py) | pandas, `groupby`, filters, `st.metric` |
-| 22 | Project: Chatbot | [22_Project_Chatbot.py](pages/22_Project_Chatbot.py) | `chat_message`, `chat_input`, `session_state`, `write_stream` |
+<details open>
+<summary><strong>🟢 Foundations and UI</strong></summary>
 
-> 💡 **Tip:** read them in order the first time through. Later pages sometimes reuse ideas (like `session_state`) introduced earlier.
+| Page | Topic | Key concepts |
+| --- | --- | --- |
+| [01 — Text & Markdown](pages/01_Text_and_Markdown.py) | Display text and content | `st.title`, `st.write`, `st.markdown`, `st.code`, `st.expander` |
+| [02 — Input Widgets](pages/02_Input_Widgets.py) | Collect user input | Buttons, checkboxes, selectors, sliders, text and number inputs |
+| [03 — Layouts](pages/03_Layouts.py) | Arrange the interface | Columns, tabs, containers, sidebar, empty placeholders |
+| [04 — Data Display](pages/04_Data_Display.py) | Present structured information | Dataframes, tables, metrics, JSON |
+| [05 — Charts](pages/05_Charts.py) | Visualize data | Line, bar, area, scatter charts, maps |
+| [06 — File Handling](pages/06_File_Handling.py) | Work with uploaded and downloadable files | Uploads, downloads, images, audio, video |
+| [07 — UI & Styling](pages/07_UI_and_Styling.py) | Configure and personalize the app | Page config, color picker, custom CSS |
+| [08 — Status & Messages](pages/08_Status_and_Messages.py) | Give users feedback | Success, error, warning, info, progress, spinner, toast |
+</details>
+
+<details>
+<summary><strong>🟡 App behavior and reusable patterns</strong></summary>
+
+| Page | Topic | Key concepts |
+| --- | --- | --- |
+| [09 — Session State](pages/09_Session_State.py) | Preserve values across reruns | `st.session_state` |
+| [10 — Forms](pages/10_Forms.py) | Group and submit input | Forms and submit buttons |
+| [11 — Caching](pages/11_Caching.py) | Avoid repeating expensive work | `st.cache_data`, `st.cache_resource` |
+| [12 — Chat Elements](pages/12_Chat_Elements.py) | Create chat interfaces | `st.chat_message`, `st.chat_input` |
+| [13 — Navigation](pages/13_Navigation.py) | Move between pages | `st.page_link`, `st.switch_page`, multipage apps |
+| [14 — Authentication](pages/14_Authentication.py) | Explore login patterns | Session-state example, `st.login()` overview |
+| [15 — Dialogs & Pop-ups](pages/15_Dialogs_and_Popups.py) | Show contextual UI | Dialogs, popovers, status containers |
+| [16 — Modern Inputs](pages/16_Modern_Inputs.py) | Explore newer components | Pills, feedback, data editor |
+| [17 — Fragments & Streaming](pages/17_Fragments_and_Streaming.py) | Build responsive experiences | `st.fragment`, `st.write_stream` |
+| [18 — Secrets & Deployment](pages/18_Secrets_and_Deployment.py) | Manage configuration and deploy | Secrets, version info, Community Cloud |
+| [19 — Testing Your App](pages/19_Testing_Your_App.py) | Test Streamlit behavior | Assertions, `AppTest`, pytest, GitHub Actions |
+</details>
+
+<details>
+<summary><strong>🔵 Practical mini-projects</strong></summary>
+
+| Page | Project | Practice areas |
+| --- | --- | --- |
+| [20 — Iris Classifier](pages/20_Project_Iris_Classifier.py) | Interactive classification app | scikit-learn, sliders, metrics, model caching |
+| [21 — Sales Dashboard](pages/21_Project_Sales_Dashboard.py) | Explore sales data | pandas, grouping, filters, metrics |
+| [22 — Chatbot](pages/22_Project_Chatbot.py) | Chat-style interface | Chat components, session state, streaming |
+| [23 — AI Mentor](pages/23_AI_Mentor.py) | Optional AI learning assistant | OpenAI API integration; requires your own API key |
+</details>
+
+> **Suggested path:** start with pages 1–8, then learn state and caching, and finish by building the mini-projects. You can also use the Home page filters to jump directly to a topic.
 
 ---
 
