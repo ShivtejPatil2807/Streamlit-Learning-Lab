@@ -1,11 +1,11 @@
 """Tests for specs/013-mobile-and-accessibility.md."""
 import re
-import tomllib
 
+import tomllib
 from conftest import HOME, ROOT
 from streamlit.testing.v1 import AppTest
 
-from core.lessons import LESSONS
+from core.lessons import LESSONS, LEVELS
 from core.theme import _CSS
 
 
@@ -100,10 +100,12 @@ def test_r8_card_icons_are_hidden_from_screen_readers():
     at = AppTest.from_file(str(HOME), default_timeout=30)
     at.run()
     assert not at.exception, at.exception
-    cards = [m.value for m in at.markdown if 'class="lab-card-title"' in m.value]
-    paths = [m.value for m in at.markdown if 'class="lab-path"' in m.value]
-    assert len(cards) == len(LESSONS)
-    assert all('class="lab-card-icon" aria-hidden="true"' in block for block in cards + paths)
+    at.button(key="stage_beginner").click().run()
+    assert not at.exception, at.exception
+    for marker in ("lab-stage", "lab-path", "lab-card-title"):
+        found = [m.value for m in at.markdown if f'class="{marker}"' in m.value]
+        assert found, marker
+        assert all('class="lab-card-icon" aria-hidden="true"' in block for block in found), marker
 
 
 def test_r9_every_readme_image_has_alt_text():
@@ -119,8 +121,13 @@ def test_r10_every_lesson_has_its_own_link_text_and_checkbox_label():
     assert len({lesson.open_label for lesson in LESSONS}) == len(LESSONS)
     assert len({lesson.done_label for lesson in LESSONS}) == len(LESSONS)
 
-    at = AppTest.from_file(str(HOME), default_timeout=30)
-    at.run()
-    assert not at.exception, at.exception
-    labels = [checkbox.label for checkbox in at.checkbox]
-    assert labels == [lesson.done_label for lesson in LESSONS]
+    seen = []
+    for level in LEVELS:
+        at = AppTest.from_file(str(HOME), default_timeout=30)
+        at.run()
+        at.button(key=f"stage_{level.lower()}").click().run()
+        assert not at.exception, at.exception
+        labels = [checkbox.label for checkbox in at.checkbox]
+        assert labels == [lesson.done_label for lesson in LESSONS if lesson.level == level]
+        seen += labels
+    assert sorted(seen) == sorted(lesson.done_label for lesson in LESSONS)

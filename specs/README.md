@@ -21,6 +21,7 @@ requirement it covers (for example `R3`).
 | [013-mobile-and-accessibility.md](013-mobile-and-accessibility.md) | `core/theme.py`, `Home.py` | Implemented |
 | [014-data-files.md](014-data-files.md) | `data/*.yaml`, `core/lessons.py`, `core/challenges.py`, `core/paths.py` | Implemented |
 | [015-home-page-redesign.md](015-home-page-redesign.md) | `Home.py`, `core/theme.py` | Implemented |
+| [016-level-stages.md](016-level-stages.md) | `Home.py` level cards | Implemented |
 
 ## How to write a new spec
 

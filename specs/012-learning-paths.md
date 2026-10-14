@@ -6,8 +6,7 @@
 ## Purpose
 With 22 lessons, a new visitor does not know where to start. A learning path is
 a short, ordered list of lessons that leads to a goal, such as "Build a chatbot".
-The Home page shows the paths, tracks progress along each one, and can show only
-a path's lessons.
+The Home page shows the paths and tracks progress along each one.
 
 ## Requirements
 - **R1** Every path has a unique slug, a unique title, and at least three lessons.
@@ -24,11 +23,12 @@ a path's lessons.
 - **R7** A completed path shows "Path completed" instead of a link. Other paths
   show a link to their next lesson, labelled "Start" or "Continue". This link is
   checked by hand.
-- **R8** The "Learning path" filter starts on "All lessons". Choosing a path shows
-  only that path's lessons, in the path's order.
-- **R9** The path filter combines with the search, category and level filters.
 
 ## Notes
 - Path cards use their own CSS class (`lab-path`), so they are never counted as
   lesson cards.
 - A path is data, not code: add one by adding a `LearningPath(...)` to `PATHS`.
+
+## History
+- A "Learning path" filter used to show only one path's lessons. It was removed
+  together with the "All lessons" list (see spec 003).

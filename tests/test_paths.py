@@ -1,6 +1,4 @@
-"""Tests for specs/012-learning-paths.md (core/paths.py and the Home page)."""
-import re
-
+"""Tests for specs/012-learning-paths.md (core/paths.py and the path cards on the Home page)."""
 from conftest import HOME
 from streamlit.testing.v1 import AppTest
 
@@ -22,14 +20,6 @@ def load_home(completed=None) -> AppTest:
 def blocks(at: AppTest, marker: str) -> list[str]:
     """Markdown blocks that contain an element with this CSS class."""
     return [m.value for m in at.markdown if f'class="{marker}"' in m.value]
-
-
-def card_numbers(at: AppTest) -> list[int]:
-    """Lesson numbers of the lesson cards, in the order they are shown."""
-    found = []
-    for block in blocks(at, "lab-card-title"):
-        found.append(int(re.search(r'lab-card-num">(\d+)<', block).group(1)))
-    return found
 
 
 def test_r1_paths_have_unique_names_and_enough_lessons():
@@ -89,27 +79,3 @@ def test_r7_a_completed_path_says_so_and_others_do_not():
     at = load_home(completed=set(path.lessons))
     assert sum(c.value == "✓ Path completed" for c in at.caption) == 1
     assert f"{len(path.lessons)} / {len(path.lessons)} done" in blocks(at, "lab-path")[0]
-
-
-def test_r8_path_filter_shows_only_that_path_in_its_order():
-    at = load_home()
-    assert len(card_numbers(at)) == len(LESSONS)  # "All lessons" by default
-
-    path = PATHS[2]
-    at.selectbox[1].select(path.title).run()
-    assert not at.exception, at.exception
-    assert card_numbers(at) == list(path.lessons)
-
-
-def test_r9_path_filter_combines_with_the_level_filter():
-    path = PATHS[1]
-    at = load_home()
-    at.selectbox[1].select(path.title).run()
-    at.multiselect[0].set_value(["Beginner"]).run()
-    expected = [
-        lesson.number
-        for lesson in path_lessons(path)
-        if lesson.level == "Beginner"
-    ]
-    assert expected  # the test only means something if some lessons are left
-    assert card_numbers(at) == expected

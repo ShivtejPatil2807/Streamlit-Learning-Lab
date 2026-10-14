@@ -23,12 +23,12 @@ buttons at the bottom of each page are how a phone user moves around.
 - **R7** The text colours used for labels, chips and card numbers have a
   contrast of at least 4.5:1 against both theme backgrounds (the WCAG AA
   level for normal text).
-- **R8** The decorative emoji on lesson and path cards are hidden from screen
+- **R8** The decorative emoji on lesson, path and level cards are hidden from screen
   readers.
 - **R9** Every image in the README has alt text.
 - **R10** Every lesson card has its own link text ("Open <title>") and its own
   checkbox label ("Mark <title> as done"). Screen readers list links and form
-  fields out of context, and 22 links that all say "Open lesson" are
+  fields out of context, and links that all say "Open lesson" are
   indistinguishable.
 
 ## Not covered (known limits)
