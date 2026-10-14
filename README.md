@@ -18,7 +18,6 @@
   <img src="https://img.shields.io/badge/License-Educational-green" alt="License"/>
 </p>
 
-
 ---
 
 ## 🚀 Try it live
