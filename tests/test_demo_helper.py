@@ -3,6 +3,7 @@
 Each test writes a tiny page to a temp folder and runs it with Streamlit's
 AppTest, because the helper needs a real source file to read the code from.
 """
+
 from textwrap import dedent
 
 from streamlit.testing.v1 import AppTest
@@ -38,7 +39,7 @@ def test_r2_lesson_page_falls_back_to_the_summary(tmp_path):
 def test_r3_numbering_starts_at_one_on_every_run(tmp_path):
     at = run_page(
         tmp_path,
-        '''
+        """
         lesson_page(1)
 
         @demo("st.first()", "one")
@@ -48,7 +49,7 @@ def test_r3_numbering_starts_at_one_on_every_run(tmp_path):
         @demo("st.second()", "two")
         def _():
             st.write("B")
-        ''',
+        """,
     )
     assert [h.value for h in at.header] == ["1. st.first()", "2. st.second()"]
     at.run()  # a rerun must not continue counting
@@ -58,14 +59,14 @@ def test_r3_numbering_starts_at_one_on_every_run(tmp_path):
 def test_r3_section_shares_the_numbering(tmp_path):
     at = run_page(
         tmp_path,
-        '''
+        """
         lesson_page(1)
         section("Plain section")
 
         @demo("st.demo()", "text")
         def _():
             st.write("A")
-        ''',
+        """,
     )
     assert [h.value for h in at.header] == ["1. Plain section", "2. st.demo()"]
 
@@ -73,13 +74,13 @@ def test_r3_section_shares_the_numbering(tmp_path):
 def test_r4_and_r5_demo_shows_the_body_and_runs_it(tmp_path):
     at = run_page(
         tmp_path,
-        '''
+        """
         lesson_page(1)
 
         @demo("st.write()", "text")
         def _():
             st.write("LIVE OUTPUT")
-        ''',
+        """,
     )
     assert at.code[0].value == 'st.write("LIVE OUTPUT")'
     assert any(m.value == "LIVE OUTPUT" for m in at.markdown)
@@ -88,13 +89,13 @@ def test_r4_and_r5_demo_shows_the_body_and_runs_it(tmp_path):
 def test_r6_run_false_shows_the_code_but_never_runs_it(tmp_path):
     at = run_page(
         tmp_path,
-        '''
+        """
         lesson_page(1)
 
         @demo("st.write()", "text", run=False)
         def _():
             st.write("SHOULD NOT RUN")
-        ''',
+        """,
     )
     assert at.code[0].value == 'st.write("SHOULD NOT RUN")'
     assert not any(m.value == "SHOULD NOT RUN" for m in at.markdown)
@@ -103,13 +104,13 @@ def test_r6_run_false_shows_the_code_but_never_runs_it(tmp_path):
 def test_r7_caption_appears_after_the_output(tmp_path):
     at = run_page(
         tmp_path,
-        '''
+        """
         lesson_page(1)
 
         @demo("st.write()", "text", caption="My caption")
         def _():
             st.write("A")
-        ''',
+        """,
     )
     assert at.caption[0].value == "My caption"
 
@@ -117,7 +118,7 @@ def test_r7_caption_appears_after_the_output(tmp_path):
 def test_r8_show_setup_returns_the_function_unchanged(tmp_path):
     at = run_page(
         tmp_path,
-        '''
+        """
         lesson_page(1)
 
         @show_setup
@@ -125,7 +126,7 @@ def test_r8_show_setup_returns_the_function_unchanged(tmp_path):
             return 42
 
         st.write(f"value is {make_value()}")
-        ''',
+        """,
     )
     assert at.expander[0].label == "Sample data used on this page"
     assert any(m.value == "value is 42" for m in at.markdown)
@@ -134,7 +135,7 @@ def test_r8_show_setup_returns_the_function_unchanged(tmp_path):
 def test_r9_every_demo_has_learn_code_try_tabs(tmp_path):
     at = run_page(
         tmp_path,
-        '''
+        """
         lesson_page(1)
 
         @demo("st.first()", "one")
@@ -144,7 +145,7 @@ def test_r9_every_demo_has_learn_code_try_tabs(tmp_path):
         @demo("st.second()", "two")
         def _():
             st.write("B")
-        ''',
+        """,
     )
     labels = [tab.label for tab in at.tabs]
     assert labels == ["📖 Learn", "💻 Code", "▶️ Try"] * 2
@@ -153,13 +154,13 @@ def test_r9_every_demo_has_learn_code_try_tabs(tmp_path):
 def test_r10_description_goes_in_learn_and_output_in_try(tmp_path):
     at = run_page(
         tmp_path,
-        '''
+        """
         lesson_page(1)
 
         @demo("st.write()", "my description")
         def _():
             st.write("LIVE OUTPUT")
-        ''',
+        """,
     )
     learn, code, try_tab = at.tabs
     assert any(m.value == "my description" for m in learn.markdown)
@@ -171,13 +172,13 @@ def test_r10_description_goes_in_learn_and_output_in_try(tmp_path):
 def test_r11_run_false_shows_a_note_in_the_try_tab(tmp_path):
     at = run_page(
         tmp_path,
-        '''
+        """
         lesson_page(1)
 
         @demo("st.write()", "text", run=False)
         def _():
             st.write("SHOULD NOT RUN")
-        ''',
+        """,
     )
     try_tab = at.tabs[2]
     assert len(try_tab.info) == 1

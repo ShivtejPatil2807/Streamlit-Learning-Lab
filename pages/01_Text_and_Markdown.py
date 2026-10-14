@@ -2,10 +2,14 @@ import streamlit as st
 
 from core.components import demo, lesson_footer, lesson_page
 
-lesson_page(1, "This page shows the basic functions Streamlit gives you to display text.")
+lesson_page(
+    1, "This page shows the basic functions Streamlit gives you to display text."
+)
 
 
-@demo("st.title()", "Shows the biggest heading, usually used once at the top of the app.")
+@demo(
+    "st.title()", "Shows the biggest heading, usually used once at the top of the app."
+)
 def _():
     st.title("My Streamlit App")
 
@@ -15,17 +19,25 @@ def _():
     st.header("Student Information")
 
 
-@demo("st.subheader()", "Shows a heading smaller than st.header(), good for sub-sections.")
+@demo(
+    "st.subheader()", "Shows a heading smaller than st.header(), good for sub-sections."
+)
 def _():
     st.subheader("Personal Details")
 
 
-@demo("st.write()", "The all-purpose function. Can display text, numbers, lists, and more.")
+@demo(
+    "st.write()",
+    "The all-purpose function. Can display text, numbers, lists, and more.",
+)
 def _():
     st.write("Hello, Streamlit!")
 
 
-@demo("st.markdown()", "Displays text with Markdown formatting, like **bold** or *italic*.")
+@demo(
+    "st.markdown()",
+    "Displays text with Markdown formatting, like **bold** or *italic*.",
+)
 def _():
     st.markdown("**Hello, Streamlit!**")
 
@@ -40,7 +52,10 @@ def _():
     st.code('print("Hello, World!")')
 
 
-@demo("st.divider()", "Draws a horizontal line to separate sections (used all over this page!).")
+@demo(
+    "st.divider()",
+    "Draws a horizontal line to separate sections (used all over this page!).",
+)
 def _():
     st.divider()
 

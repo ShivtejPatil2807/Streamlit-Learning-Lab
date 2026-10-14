@@ -1,4 +1,5 @@
 """Tests for specs/015-home-page-redesign.md (the layout of Home.py)."""
+
 import tomllib
 from conftest import HOME, ROOT
 from streamlit.testing.v1 import AppTest
@@ -84,7 +85,9 @@ def test_r6_the_footer_links_to_the_source_the_issues_and_the_docs():
 
 
 def test_r7_white_text_is_readable_on_the_primary_button():
-    config = tomllib.loads((ROOT / ".streamlit" / "config.toml").read_text(encoding="utf-8"))
+    config = tomllib.loads(
+        (ROOT / ".streamlit" / "config.toml").read_text(encoding="utf-8")
+    )
     primary = hex_rgb(config["theme"]["primaryColor"])
     assert contrast((255, 255, 255), primary) >= 4.5
 

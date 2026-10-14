@@ -2,6 +2,7 @@
 
 Pure Python: no Streamlit needed.
 """
+
 from conftest import PAGES_DIR
 
 from core.lessons import CATEGORIES, LESSONS, LEVELS, total_functions

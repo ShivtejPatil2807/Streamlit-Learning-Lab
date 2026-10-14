@@ -5,7 +5,10 @@ from core.components import demo, lesson_footer, lesson_page
 lesson_page(2, "Widgets let the user send information back into your app.")
 
 
-@demo("st.button()", "A clickable button. Returns True only on the run right after it's clicked.")
+@demo(
+    "st.button()",
+    "A clickable button. Returns True only on the run right after it's clicked.",
+)
 def _():
     if st.button("Click me"):
         st.success("Button was clicked!")

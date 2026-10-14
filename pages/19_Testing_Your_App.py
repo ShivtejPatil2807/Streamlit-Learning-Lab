@@ -2,7 +2,9 @@ import streamlit as st
 
 from core.components import demo, lesson_footer, lesson_page, section
 
-lesson_page(19, "Check your app with automatic tests instead of clicking through it every time.")
+lesson_page(
+    19, "Check your app with automatic tests instead of clicking through it every time."
+)
 
 
 @demo(

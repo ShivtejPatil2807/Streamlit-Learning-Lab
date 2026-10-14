@@ -32,7 +32,17 @@ def _():
 )
 def _():
     def word_stream():
-        for word in ["Streamlit", "can", "stream", "text", "one", "word", "at", "a", "time."]:
+        for word in [
+            "Streamlit",
+            "can",
+            "stream",
+            "text",
+            "one",
+            "word",
+            "at",
+            "a",
+            "time.",
+        ]:
             yield word + " "
             time.sleep(0.15)
 

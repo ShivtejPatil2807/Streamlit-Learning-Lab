@@ -5,7 +5,10 @@ from core.components import demo, lesson_footer, lesson_page
 lesson_page(12, "These functions are built specifically for chatbot-style interfaces.")
 
 
-@demo("st.chat_message()", "Displays a chat bubble styled for a given role (user or assistant).")
+@demo(
+    "st.chat_message()",
+    "Displays a chat bubble styled for a given role (user or assistant).",
+)
 def _():
     with st.chat_message("user"):
         st.write("Hello!")

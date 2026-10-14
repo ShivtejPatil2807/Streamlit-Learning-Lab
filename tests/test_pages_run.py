@@ -1,4 +1,5 @@
 """Smoke test: every lesson page runs from top to bottom without an error."""
+
 from conftest import ROOT
 from streamlit.testing.v1 import AppTest
 

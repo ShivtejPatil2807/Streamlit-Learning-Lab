@@ -4,6 +4,7 @@ The lessons themselves are described in data/lessons.yaml, so adding a lesson
 does not need any Python code. This module loads that file, checks that each
 entry is complete, and offers a few helpers.
 """
+
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -11,7 +12,16 @@ import yaml
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 
-REQUIRED_FIELDS = ("number", "title", "icon", "file", "category", "level", "summary", "functions")
+REQUIRED_FIELDS = (
+    "number",
+    "title",
+    "icon",
+    "file",
+    "category",
+    "level",
+    "summary",
+    "functions",
+)
 
 
 @dataclass(frozen=True)

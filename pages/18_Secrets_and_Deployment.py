@@ -4,7 +4,9 @@ import streamlit as st
 
 from core.components import demo, lesson_footer, lesson_page, section
 
-lesson_page(18, "Keep private values out of your code, and put your app online for everyone.")
+lesson_page(
+    18, "Keep private values out of your code, and put your app online for everyone."
+)
 
 
 @demo(
@@ -27,7 +29,9 @@ def _():
 def _():
     try:
         api_key = st.secrets["demo_api_key"]
-        st.success(f"Found demo_api_key ({len(api_key)} characters). Its value stays hidden.")
+        st.success(
+            f"Found demo_api_key ({len(api_key)} characters). Its value stays hidden."
+        )
     except (KeyError, FileNotFoundError):
         st.info("No secret called demo_api_key was found.")
 
@@ -38,7 +42,9 @@ section(
     "Add that file to .gitignore so it never reaches GitHub.",
 )
 st.code('demo_api_key = "paste-your-key-here"', language="toml")
-st.caption("On Community Cloud you paste the same text into the app's Secrets settings.")
+st.caption(
+    "On Community Cloud you paste the same text into the app's Secrets settings."
+)
 
 section(
     "Deploying to Streamlit Community Cloud",

@@ -2,6 +2,7 @@
 
 Pure Python: no Streamlit needed.
 """
+
 from core.challenges import CHALLENGES
 from core.lessons import LESSONS
 

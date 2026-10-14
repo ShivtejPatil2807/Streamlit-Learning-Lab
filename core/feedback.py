@@ -3,6 +3,7 @@
 The link opens a new GitHub issue with the lesson's name already filled in,
 so no extra service or database is needed.
 """
+
 from urllib.parse import quote, urlencode
 
 from core.export import REPO_URL

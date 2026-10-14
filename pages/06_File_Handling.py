@@ -4,7 +4,9 @@ import streamlit as st
 
 from core.components import demo, lesson_footer, lesson_page
 
-lesson_page(6, "These functions let users upload files, or let you show and offer files.")
+lesson_page(
+    6, "These functions let users upload files, or let you show and offer files."
+)
 
 
 @demo("st.file_uploader()", "Lets the user upload a file from their device.")

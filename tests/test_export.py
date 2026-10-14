@@ -1,4 +1,5 @@
 """Tests for specs/007-lesson-download.md (core/export.py and the download button)."""
+
 import ast
 import re
 from textwrap import dedent
@@ -19,7 +20,9 @@ def page_demo_count(lesson) -> int:
     for node in tree.body:
         if isinstance(node, ast.FunctionDef):
             for decorator in node.decorator_list:
-                target = decorator.func if isinstance(decorator, ast.Call) else decorator
+                target = (
+                    decorator.func if isinstance(decorator, ast.Call) else decorator
+                )
                 if getattr(target, "id", None) == "demo":
                     count += 1
         elif (
@@ -43,12 +46,18 @@ def test_r2_scripts_use_no_project_helpers():
             if isinstance(node, ast.ImportFrom):
                 assert (node.module or "").split(".")[0] != "core", lesson.file
             if isinstance(node, ast.Import):
-                assert all(a.name.split(".")[0] != "core" for a in node.names), lesson.file
+                assert all(a.name.split(".")[0] != "core" for a in node.names), (
+                    lesson.file
+                )
             if isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
-                assert node.func.id not in HELPERS, f"{lesson.file} calls {node.func.id}"
+                assert node.func.id not in HELPERS, (
+                    f"{lesson.file} calls {node.func.id}"
+                )
             if isinstance(node, ast.FunctionDef):
                 for decorator in node.decorator_list:
-                    target = decorator.func if isinstance(decorator, ast.Call) else decorator
+                    target = (
+                        decorator.func if isinstance(decorator, ast.Call) else decorator
+                    )
                     assert getattr(target, "id", None) not in HELPERS, lesson.file
 
 

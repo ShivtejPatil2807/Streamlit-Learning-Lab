@@ -29,10 +29,26 @@ HERO_HTML = (
 )
 
 TILES = [
-    ("📖", "Learn → Code → Try", "Every function has a short explanation, the exact code and a live result on the page."),
-    ("🎯", "Challenges", "End each lesson with a quick question, and tick it off to track your progress."),
-    ("🚀", "Real projects", "Build an iris classifier, a sales dashboard and a chatbot."),
-    ("⬇️", "Take it home", "Download any lesson as a .py file and run it on your own computer."),
+    (
+        "📖",
+        "Learn → Code → Try",
+        "Every function has a short explanation, the exact code and a live result on the page.",
+    ),
+    (
+        "🎯",
+        "Challenges",
+        "End each lesson with a quick question, and tick it off to track your progress.",
+    ),
+    (
+        "🚀",
+        "Real projects",
+        "Build an iris classifier, a sales dashboard and a chatbot.",
+    ),
+    (
+        "⬇️",
+        "Take it home",
+        "Download any lesson as a .py file and run it on your own computer.",
+    ),
 ]
 
 FOOTER_HTML = (
@@ -47,7 +63,10 @@ FOOTER_HTML = (
 
 
 STAGE_INFO = {
-    "Beginner": ("🌱", "Start here. Learn to show content, take input and arrange a page."),
+    "Beginner": (
+        "🌱",
+        "Start here. Learn to show content, take input and arrange a page.",
+    ),
     "Intermediate": ("🌿", "Data, files, state, forms and your first dashboard."),
     "Advanced": ("🌳", "Caching, navigation, login, testing and the bigger projects."),
 }
@@ -102,7 +121,9 @@ def stage_top(level: str, lessons: list, done: int, is_open: bool) -> str:
     icon, text = STAGE_INFO.get(level, ("📚", ""))
     total = len(lessons)
     badges = pill(f"{total} lessons", "category")
-    badges += pill(f"{done} / {total} done", "beginner" if total and done == total else "category")
+    badges += pill(
+        f"{done} / {total} done", "beginner" if total and done == total else "category"
+    )
     if is_open:
         badges += pill("▼ Showing below", level.lower())
     titles = [lesson.title for lesson in lessons[:5]]
@@ -123,7 +144,9 @@ def stage_top(level: str, lessons: list, done: int, is_open: bool) -> str:
 def path_top(path, done: int, total: int) -> str:
     """The text part of a learning-path card, as one block of HTML."""
     titles = [lesson.title for lesson in path_lessons(path)]
-    progress_label = pill(f"{done} / {total} done", "beginner" if done == total else "category")
+    progress_label = pill(
+        f"{done} / {total} done", "beginner" if done == total else "category"
+    )
     return (
         '<div class="lab-path">'
         '<div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem">'
@@ -153,7 +176,11 @@ with st.container(border=True):
         left, right = st.columns([3, 1])
         left.progress(len(completed) / len(LESSONS))
         left.caption(f"Next up: {next_lesson.number}. {next_lesson.title}")
-        if right.button("▶ Continue" if completed else "▶ Start learning", type="primary", key="start"):
+        if right.button(
+            "▶ Continue" if completed else "▶ Start learning",
+            type="primary",
+            key="start",
+        ):
             st.switch_page(next_lesson.path)
     else:
         st.progress(1.0)
@@ -187,7 +214,9 @@ for col, level in zip(st.columns(len(LEVELS)), LEVELS):
     in_level = [lesson for lesson in LESSONS if lesson.level == level]
     done = sum(1 for lesson in in_level if lesson.number in completed)
     with col.container(border=True):
-        st.markdown(stage_top(level, in_level, done, selected == level), unsafe_allow_html=True)
+        st.markdown(
+            stage_top(level, in_level, done, selected == level), unsafe_allow_html=True
+        )
         st.progress(done / len(in_level) if in_level else 0.0)
         st.button(
             f"Open {level}",

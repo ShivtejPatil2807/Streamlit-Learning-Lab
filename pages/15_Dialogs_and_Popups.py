@@ -4,7 +4,9 @@ import streamlit as st
 
 from core.components import demo, lesson_footer, lesson_page
 
-lesson_page(15, "Show extra content on top of the page, only when the learner asks for it.")
+lesson_page(
+    15, "Show extra content on top of the page, only when the learner asks for it."
+)
 
 
 @demo(

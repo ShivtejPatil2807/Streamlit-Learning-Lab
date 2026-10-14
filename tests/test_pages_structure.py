@@ -2,6 +2,7 @@
 
 Pure Python: the pages are parsed, not run, so no Streamlit is needed.
 """
+
 import ast
 
 from conftest import PAGES_DIR

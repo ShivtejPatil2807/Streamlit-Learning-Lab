@@ -14,19 +14,58 @@ lesson_page(
 @show_setup
 def make_answers():
     return [
-        (("hello", "hey"), "Hi! Ask me how to do something in Streamlit, for example how to draw a chart."),
-        (("chart", "plot", "graph"), "Use st.line_chart(), st.bar_chart() or st.area_chart() with a table of numbers. See lesson 5."),
-        (("button", "click"), "st.button() returns True on the run right after it is clicked. See lesson 2."),
-        (("remember", "state", "session"), "st.session_state keeps values between reruns. See lesson 9."),
-        (("cache", "slow", "fast"), "Wrap slow functions with @st.cache_data or @st.cache_resource. See lesson 11."),
-        (("column", "layout", "side"), "st.columns() puts things side by side. st.tabs() and st.sidebar organise a page. See lesson 3."),
-        (("upload", "download", "file"), "st.file_uploader() takes a file in and st.download_button() gives one out. See lesson 6."),
-        (("form", "submit"), "st.form() groups widgets so the app reruns only when you submit. See lesson 10."),
-        (("login", "password", "auth"), "Keep a logged_in flag in session state, or use st.login(). See lesson 14."),
-        (("secret", "key"), "Keep keys in st.secrets, never in your code. See lesson 18."),
-        (("deploy", "online", "share"), "Push to GitHub and deploy on Streamlit Community Cloud. See lesson 18."),
-        (("test",), "Use pytest and Streamlit's AppTest to check your app automatically. See lesson 19."),
-        (("chat", "bot"), "That is what you are using right now! See lessons 12 and 17, and this project."),
+        (
+            ("hello", "hey"),
+            "Hi! Ask me how to do something in Streamlit, for example how to draw a chart.",
+        ),
+        (
+            ("chart", "plot", "graph"),
+            "Use st.line_chart(), st.bar_chart() or st.area_chart() with a table of numbers. See lesson 5.",
+        ),
+        (
+            ("button", "click"),
+            "st.button() returns True on the run right after it is clicked. See lesson 2.",
+        ),
+        (
+            ("remember", "state", "session"),
+            "st.session_state keeps values between reruns. See lesson 9.",
+        ),
+        (
+            ("cache", "slow", "fast"),
+            "Wrap slow functions with @st.cache_data or @st.cache_resource. See lesson 11.",
+        ),
+        (
+            ("column", "layout", "side"),
+            "st.columns() puts things side by side. st.tabs() and st.sidebar organise a page. See lesson 3.",
+        ),
+        (
+            ("upload", "download", "file"),
+            "st.file_uploader() takes a file in and st.download_button() gives one out. See lesson 6.",
+        ),
+        (
+            ("form", "submit"),
+            "st.form() groups widgets so the app reruns only when you submit. See lesson 10.",
+        ),
+        (
+            ("login", "password", "auth"),
+            "Keep a logged_in flag in session state, or use st.login(). See lesson 14.",
+        ),
+        (
+            ("secret", "key"),
+            "Keep keys in st.secrets, never in your code. See lesson 18.",
+        ),
+        (
+            ("deploy", "online", "share"),
+            "Push to GitHub and deploy on Streamlit Community Cloud. See lesson 18.",
+        ),
+        (
+            ("test",),
+            "Use pytest and Streamlit's AppTest to check your app automatically. See lesson 19.",
+        ),
+        (
+            ("chat", "bot"),
+            "That is what you are using right now! See lessons 12 and 17, and this project.",
+        ),
     ]
 
 
@@ -53,7 +92,7 @@ def _():
 @demo(
     "Find the answer",
     "Split the question into words, then return the first answer that has a matching keyword. "
-    "rstrip(\"s\") turns \"charts\" into \"chart\", so plurals work too.",
+    'rstrip("s") turns "charts" into "chart", so plurals work too.',
 )
 def _():
     question = st.text_input("Ask me about Streamlit", value="How do I make a chart?")
@@ -87,7 +126,10 @@ def _():
 
     if "messages" not in st.session_state:
         st.session_state.messages = [
-            {"role": "assistant", "content": "Hi! Ask me how to do something in Streamlit."}
+            {
+                "role": "assistant",
+                "content": "Hi! Ask me how to do something in Streamlit.",
+            }
         ]
 
     for message in st.session_state.messages:

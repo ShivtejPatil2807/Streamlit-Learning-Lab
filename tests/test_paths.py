@@ -1,4 +1,5 @@
 """Tests for specs/012-learning-paths.md (core/paths.py and the path cards on the Home page)."""
+
 from conftest import HOME
 from streamlit.testing.v1 import AppTest
 
@@ -45,7 +46,10 @@ def test_r3_a_project_can_only_be_the_last_lesson_of_a_path():
 def test_r4_progress_counts_only_the_lessons_of_the_path():
     path = PATHS[0]
     assert path_progress(path, set()) == (0, len(path.lessons))
-    assert path_progress(path, {path.lessons[0], path.lessons[1]}) == (2, len(path.lessons))
+    assert path_progress(path, {path.lessons[0], path.lessons[1]}) == (
+        2,
+        len(path.lessons),
+    )
     outside = next(number for number in NUMBERS if number not in path.lessons)
     assert path_progress(path, {outside}) == (0, len(path.lessons))
 
@@ -78,4 +82,6 @@ def test_r7_a_completed_path_says_so_and_others_do_not():
     path = PATHS[0]
     at = load_home(completed=set(path.lessons))
     assert sum(c.value == "✓ Path completed" for c in at.caption) == 1
-    assert f"{len(path.lessons)} / {len(path.lessons)} done" in blocks(at, "lab-path")[0]
+    assert (
+        f"{len(path.lessons)} / {len(path.lessons)} done" in blocks(at, "lab-path")[0]
+    )

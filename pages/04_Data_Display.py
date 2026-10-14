@@ -8,10 +8,12 @@ lesson_page(4, "These functions show data: tables, numbers, and raw structures."
 
 @show_setup
 def make_df():
-    return pd.DataFrame({
-        "Name": ["Shivtej", "Tejas", "Amit"],
-        "Score": [70, 85, 78],
-    })
+    return pd.DataFrame(
+        {
+            "Name": ["Shivtej", "Tejas", "Amit"],
+            "Score": [70, 85, 78],
+        }
+    )
 
 
 df = make_df()
@@ -32,7 +34,10 @@ def _():
     st.metric("Average Score", "84.3", "+2.1")
 
 
-@demo("st.json()", "Displays a dictionary or JSON-like data in a readable, collapsible format.")
+@demo(
+    "st.json()",
+    "Displays a dictionary or JSON-like data in a readable, collapsible format.",
+)
 def _():
     st.json({"name": "Shivtej", "skills": ["Python", "Streamlit"]})
 

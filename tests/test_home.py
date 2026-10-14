@@ -1,4 +1,5 @@
 """Tests for specs/003-home-page.md (the core of Home.py), using Streamlit's AppTest."""
+
 from conftest import HOME
 from streamlit.testing.v1 import AppTest
 
