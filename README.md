@@ -33,11 +33,11 @@
 
 Experience the full interactive course directly in your browser without local setup:
 
-<p align="center">
   <a href="https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/">
-    <img src="https://img.shields.io/badge/Launch%20App-Streamlit%20Community%20Cloud-FF4B4B?style=for-the-badge&logo=streamlit" alt="Launch Streamlit App"/>
+    <img src="https://img.shields.io/badge/Open_Interactive_Lab-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Open Interactive Lab"/>
   </a>
-</p>
+
+---
 
 > 💡**Tip:** No setup needed. Open the link, pick a lesson, and see every function's explanation, code and live result side by side in your browser.
 
@@ -146,7 +146,6 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 | [20 — Iris Classifier](pages/20_Project_Iris_Classifier.py) | Interactive classification app | scikit-learn, sliders, metrics, model caching |
 | [21 — Sales Dashboard](pages/21_Project_Sales_Dashboard.py) | Explore sales data | pandas, grouping, filters, metrics |
 | [22 — Chatbot](pages/22_Project_Chatbot.py) | Chat-style interface | Chat components, session state, streaming |
-| [23 — AI Mentor](pages/23_AI_Mentor.py) | Optional AI learning assistant | OpenAI API integration; requires your own API key |
 </details>
 
 > **Suggested path:** start with pages 1–8, then learn state and caching, and finish by building the mini-projects. You can also use the Home page filters to jump directly to a topic.
