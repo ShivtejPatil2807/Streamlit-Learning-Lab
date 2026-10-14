@@ -3,6 +3,7 @@
 The questions live in data/challenges.yaml. This module loads them and checks
 that each one is complete.
 """
+
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -32,7 +33,9 @@ def load_challenges(path: Path) -> dict[int, list[Challenge]]:
             if missing:
                 raise ValueError(f"{where} is missing {', '.join(missing)}")
             if not 0 <= entry["answer"] < len(entry["options"]):
-                raise ValueError(f"{where}: the answer does not point to one of the options")
+                raise ValueError(
+                    f"{where}: the answer does not point to one of the options"
+                )
             challenges.setdefault(int(number), []).append(
                 Challenge(
                     question=entry["question"],

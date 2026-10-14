@@ -21,7 +21,10 @@ def _():
         st.write("Content for Tab B")
 
 
-@demo("st.container()", "Groups elements together so you can add to them later in the code.")
+@demo(
+    "st.container()",
+    "Groups elements together so you can add to them later in the code.",
+)
 def _():
     box = st.container(border=True)
     box.write("I'm inside a container")

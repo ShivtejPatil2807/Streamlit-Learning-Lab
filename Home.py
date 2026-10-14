@@ -3,7 +3,7 @@ import html
 import streamlit as st
 
 from core.export import REPO_URL
-from core.lessons import CATEGORIES, LESSONS, LEVELS, total_functions
+from core.lessons import LESSONS, LEVELS, total_functions
 from core.paths import PATHS, next_in_path, path_lessons, path_progress
 from core.theme import apply_theme, chips, level_pill, pill
 
@@ -29,10 +29,26 @@ HERO_HTML = (
 )
 
 TILES = [
-    ("📖", "Learn → Code → Try", "Every function has a short explanation, the exact code and a live result on the page."),
-    ("🎯", "Challenges", "End each lesson with a quick question, and tick it off to track your progress."),
-    ("🚀", "Real projects", "Build an iris classifier, a sales dashboard and a chatbot."),
-    ("⬇️", "Take it home", "Download any lesson as a .py file and run it on your own computer."),
+    (
+        "📖",
+        "Learn → Code → Try",
+        "Every function has a short explanation, the exact code and a live result on the page.",
+    ),
+    (
+        "🎯",
+        "Challenges",
+        "End each lesson with a quick question, and tick it off to track your progress.",
+    ),
+    (
+        "🚀",
+        "Real projects",
+        "Build an iris classifier, a sales dashboard and a chatbot.",
+    ),
+    (
+        "⬇️",
+        "Take it home",
+        "Download any lesson as a .py file and run it on your own computer.",
+    ),
 ]
 
 FOOTER_HTML = (
@@ -44,6 +60,26 @@ FOOTER_HTML = (
     '<a href="https://docs.streamlit.io" target="_blank" rel="noopener noreferrer">Streamlit docs</a>'
     "</div></div>"
 )
+
+
+STAGE_INFO = {
+    "Beginner": (
+        "🌱",
+        "Start here. Learn to show content, take input and arrange a page.",
+    ),
+    "Intermediate": ("🌿", "Data, files, state, forms and your first dashboard."),
+    "Advanced": ("🌳", "Caching, navigation, login, testing and the bigger projects."),
+}
+
+st.session_state.setdefault("stage", None)  # the level whose lessons are open, or None
+
+
+def open_stage(level: str) -> None:
+    st.session_state["stage"] = level
+
+
+def close_stage() -> None:
+    st.session_state["stage"] = None
 
 
 def toggle_done(number: int) -> None:
@@ -80,10 +116,37 @@ def card_top(lesson) -> str:
     )
 
 
+def stage_top(level: str, lessons: list, done: int, is_open: bool) -> str:
+    """The text part of a level card, as one block of HTML."""
+    icon, text = STAGE_INFO.get(level, ("📚", ""))
+    total = len(lessons)
+    badges = pill(f"{total} lessons", "category")
+    badges += pill(
+        f"{done} / {total} done", "beginner" if total and done == total else "category"
+    )
+    if is_open:
+        badges += pill("▼ Showing below", level.lower())
+    titles = [lesson.title for lesson in lessons[:5]]
+    if total > 5:
+        titles.append(f"+{total - 5} more")
+    return (
+        '<div class="lab-stage">'
+        '<div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem">'
+        f'<span class="lab-card-icon" aria-hidden="true">{icon}</span>'
+        f'<span class="lab-card-name">{html.escape(level)}</span></div>'
+        f'<div class="lab-meta">{badges}</div>'
+        f'<p class="lab-summary">{html.escape(text)}</p>'
+        f'<div class="lab-chips">{chips(titles)}</div>'
+        "</div>"
+    )
+
+
 def path_top(path, done: int, total: int) -> str:
     """The text part of a learning-path card, as one block of HTML."""
     titles = [lesson.title for lesson in path_lessons(path)]
-    progress_label = pill(f"{done} / {total} done", "beginner" if done == total else "category")
+    progress_label = pill(
+        f"{done} / {total} done", "beginner" if done == total else "category"
+    )
     return (
         '<div class="lab-path">'
         '<div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem">'
@@ -113,7 +176,11 @@ with st.container(border=True):
         left, right = st.columns([3, 1])
         left.progress(len(completed) / len(LESSONS))
         left.caption(f"Next up: {next_lesson.number}. {next_lesson.title}")
-        if right.button("▶ Continue" if completed else "▶ Start learning", type="primary"):
+        if right.button(
+            "▶ Continue" if completed else "▶ Start learning",
+            type="primary",
+            key="start",
+        ):
             st.switch_page(next_lesson.path)
     else:
         st.progress(1.0)
@@ -139,49 +206,43 @@ for col, path in zip(st.columns(len(PATHS)), PATHS):
             verb = "Start" if done == 0 else "Continue"
             st.page_link(upcoming.path, label=f"{verb}: {upcoming.title}", icon="▶️")
 
-# ---------- All lessons ----------
-st.header("All lessons")
-f1, f2, f3, f4 = st.columns([2, 1, 1, 1])
-query = f1.text_input("🔎 Search lessons or functions", placeholder="e.g. chart, session, st.form")
-category = f2.selectbox("Category", ["All"] + CATEGORIES)
-levels = f3.multiselect("Level", LEVELS, default=LEVELS)
-path_name = f4.selectbox("Learning path", ["All lessons"] + [path.title for path in PATHS])
+# ---------- Choose your level ----------
+st.header("Choose your level")
+st.caption("Open a level to see its lessons.")
+selected = st.session_state["stage"]
+for col, level in zip(st.columns(len(LEVELS)), LEVELS):
+    in_level = [lesson for lesson in LESSONS if lesson.level == level]
+    done = sum(1 for lesson in in_level if lesson.number in completed)
+    with col.container(border=True):
+        st.markdown(
+            stage_top(level, in_level, done, selected == level), unsafe_allow_html=True
+        )
+        st.progress(done / len(in_level) if in_level else 0.0)
+        st.button(
+            f"Open {level}",
+            key=f"stage_{level.lower()}",
+            type="primary" if selected == level else "secondary",
+            on_click=open_stage,
+            args=(level,),
+        )
 
-chosen_path = next((path for path in PATHS if path.title == path_name), None)
-
-
-def matches(lesson) -> bool:
-    q = query.strip().lower()
-    haystack = " ".join([lesson.title, lesson.summary, *lesson.functions]).lower()
-    return (
-        (not q or q in haystack)
-        and (category == "All" or lesson.category == category)
-        and lesson.level in levels
-        and (chosen_path is None or lesson.number in chosen_path.lessons)
-    )
-
-
-results = [lesson for lesson in LESSONS if matches(lesson)]
-if chosen_path is not None:
-    results.sort(key=lambda lesson: chosen_path.lessons.index(lesson.number))
-
-st.caption(f"Showing {len(results)} of {len(LESSONS)} lessons")
-
-if not results:
-    st.warning("No lessons match your filters. Try clearing the search.")
-
-for start in range(0, len(results), 3):
-    for col, lesson in zip(st.columns(3), results[start : start + 3]):
-        with col.container(border=True):
-            st.markdown(card_top(lesson), unsafe_allow_html=True)
-            st.page_link(lesson.path, label=lesson.open_label, icon="➡️")
-            st.checkbox(
-                lesson.done_label,
-                value=lesson.number in completed,
-                key=f"done_{lesson.number}",
-                on_change=toggle_done,
-                args=(lesson.number,),
-            )
+if selected in LEVELS:
+    in_stage = [lesson for lesson in LESSONS if lesson.level == selected]
+    st.header(f"{selected} lessons")
+    st.caption(f"{len(in_stage)} lessons. Tick each one off as you finish it.")
+    st.button("Hide these lessons", key="stage_close", on_click=close_stage)
+    for start in range(0, len(in_stage), 3):
+        for col, lesson in zip(st.columns(3), in_stage[start : start + 3]):
+            with col.container(border=True):
+                st.markdown(card_top(lesson), unsafe_allow_html=True)
+                st.page_link(lesson.path, label=lesson.open_label, icon="➡️")
+                st.checkbox(
+                    lesson.done_label,
+                    value=lesson.number in completed,
+                    key=f"done_{lesson.number}",
+                    on_change=toggle_done,
+                    args=(lesson.number,),
+                )
 
 # ---------- Footer ----------
 st.markdown(FOOTER_HTML, unsafe_allow_html=True)

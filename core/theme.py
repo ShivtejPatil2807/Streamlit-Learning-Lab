@@ -5,6 +5,7 @@ target Streamlit's own elements (tabs, metrics, bordered containers) are
 cosmetic: if a future Streamlit version renames those elements, the app keeps
 working and only the extra styling is lost.
 """
+
 import html
 
 import streamlit as st
@@ -188,4 +189,6 @@ def level_pill(level: str) -> str:
 
 def chips(names) -> str:
     """Function names as small code-style chips, as HTML."""
-    return "".join(f'<span class="lab-chip">{html.escape(name)}</span>' for name in names)
+    return "".join(
+        f'<span class="lab-chip">{html.escape(name)}</span>' for name in names
+    )

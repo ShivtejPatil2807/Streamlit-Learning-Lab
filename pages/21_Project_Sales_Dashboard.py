@@ -71,7 +71,9 @@ def _():
     "Widgets give you values. isin() keeps the rows whose value is in a list.",
 )
 def _():
-    regions = st.multiselect("Regions", sorted(sales["Region"].unique()), default=["North", "South"])
+    regions = st.multiselect(
+        "Regions", sorted(sales["Region"].unique()), default=["North", "South"]
+    )
     product = st.selectbox("Product", ["All"] + sorted(sales["Product"].unique()))
 
     view = sales[sales["Region"].isin(regions)]
@@ -95,7 +97,9 @@ def _():
     show_regions = left.multiselect("Show regions", regions, default=regions)
     show_products = right.multiselect("Show products", products, default=products)
 
-    view = sales[sales["Region"].isin(show_regions) & sales["Product"].isin(show_products)]
+    view = sales[
+        sales["Region"].isin(show_regions) & sales["Product"].isin(show_products)
+    ]
 
     if view.empty:
         st.warning("Pick at least one region and one product.")

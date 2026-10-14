@@ -6,6 +6,7 @@ this module rewrites a page as plain Streamlit code. The code of every demo is
 copied from the page itself, so the download always matches what the lesson
 shows.
 """
+
 import ast
 import json
 import sys
@@ -104,15 +105,22 @@ def build_script(number: int, pages_dir: Path = PAGES_DIR) -> str:
                     f"page_icon={_lit(lesson.icon)})"
                 )
                 title_line = f"st.title({_lit(f'{lesson.icon} {lesson.title}')})"
-                blocks.append("\n".join([config, title_line, f"st.write({_lit(intro)})"]))
+                blocks.append(
+                    "\n".join([config, title_line, f"st.write({_lit(intro)})"])
+                )
                 continue
             if name == "lesson_footer":
                 continue
             if name == "section":
                 counter += 1
                 title = ast.literal_eval(call.args[0])
-                description = ast.literal_eval(call.args[1]) if len(call.args) > 1 else None
-                blocks.append(f"# {counter}. {title}\n" + "\n".join(_heading(counter, title, description)))
+                description = (
+                    ast.literal_eval(call.args[1]) if len(call.args) > 1 else None
+                )
+                blocks.append(
+                    f"# {counter}. {title}\n"
+                    + "\n".join(_heading(counter, title, description))
+                )
                 continue
 
         if isinstance(node, ast.FunctionDef):
@@ -123,12 +131,18 @@ def build_script(number: int, pages_dir: Path = PAGES_DIR) -> str:
                 decorator = node.decorator_list[names.index("demo")]
                 title = ast.literal_eval(decorator.args[0])
                 description = ast.literal_eval(decorator.args[1])
-                options = {kw.arg: ast.literal_eval(kw.value) for kw in decorator.keywords}
+                options = {
+                    kw.arg: ast.literal_eval(kw.value) for kw in decorator.keywords
+                }
 
                 first = _start_line(node.body[0])
                 body = textwrap.dedent("\n".join(lines[first - 1 : node.end_lineno]))
 
-                parts = [f"# {counter}. {title}", *_heading(counter, title, description), ""]
+                parts = [
+                    f"# {counter}. {title}",
+                    *_heading(counter, title, description),
+                    "",
+                ]
                 if not options.get("run", True):
                     parts.append("# This demo is not run here: it needs extra setup.")
                     body = _comment_out(body)

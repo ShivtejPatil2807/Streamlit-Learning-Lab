@@ -1,4 +1,5 @@
 """Tests for specs/010-sales-dashboard.md (the sales dashboard project page)."""
+
 from conftest import PAGES_DIR
 from streamlit.testing.v1 import AppTest
 
@@ -71,7 +72,11 @@ def test_r5_dashboard_shows_revenue_orders_and_average_order():
 
 def test_r6_narrowing_the_filters_lowers_the_revenue():
     everything = money(metrics(run_page())["Revenue"])
-    north = money(metrics(run_page(lambda app: app.multiselect[1].set_value(["North"])))["Revenue"])
+    north = money(
+        metrics(run_page(lambda app: app.multiselect[1].set_value(["North"])))[
+            "Revenue"
+        ]
+    )
     assert 0 < north < everything
 
 

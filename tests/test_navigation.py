@@ -1,4 +1,5 @@
 """Tests for specs/006-lesson-navigation.md."""
+
 from textwrap import dedent
 
 from streamlit.testing.v1 import AppTest

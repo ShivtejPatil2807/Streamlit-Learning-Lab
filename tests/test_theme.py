@@ -1,4 +1,5 @@
 """Tests for specs/005-visual-style.md (core/theme.py and the lesson meta line)."""
+
 from textwrap import dedent
 
 from streamlit.testing.v1 import AppTest

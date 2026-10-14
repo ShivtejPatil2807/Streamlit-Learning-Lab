@@ -3,12 +3,14 @@ import streamlit as st
 
 from core.components import demo, lesson_footer, lesson_page
 
-lesson_page(16, "Newer input widgets: clickable pills, star ratings and tables you can edit.")
+lesson_page(
+    16, "Newer input widgets: clickable pills, star ratings and tables you can edit."
+)
 
 
 @demo(
     "st.pills()",
-    "A row of clickable pill buttons. Pick one, or several with selection_mode=\"multi\".",
+    'A row of clickable pill buttons. Pick one, or several with selection_mode="multi".',
 )
 def _():
     topic = st.pills("Favorite topic", ["Layouts", "Forms", "Caching"])

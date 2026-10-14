@@ -1,4 +1,5 @@
 """Tests for specs/008-lesson-feedback.md (core/feedback.py and the footer button)."""
+
 from textwrap import dedent
 from urllib.parse import parse_qs, urlparse
 
@@ -42,8 +43,12 @@ def test_r4_link_has_no_spaces_or_line_breaks():
 
 
 def test_r5_decoding_gives_back_the_original_text():
-    lesson = next(item for item in LESSONS if "&" in item.title)  # "&" must survive encoding
-    assert fields(lesson)["title"] == f"Feedback on lesson {lesson.number}: {lesson.title}"
+    lesson = next(
+        item for item in LESSONS if "&" in item.title
+    )  # "&" must survive encoding
+    assert (
+        fields(lesson)["title"] == f"Feedback on lesson {lesson.number}: {lesson.title}"
+    )
 
 
 def test_r6_every_lesson_page_has_a_feedback_button(tmp_path):

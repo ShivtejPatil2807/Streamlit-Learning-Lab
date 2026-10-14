@@ -2,6 +2,7 @@
 
 The paths live in data/paths.yaml. This module loads them and offers helpers.
 """
+
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -28,7 +29,9 @@ def load_paths(path: Path) -> list[LearningPath]:
     for position, entry in enumerate(data["paths"], start=1):
         missing = [field for field in REQUIRED_FIELDS if field not in entry]
         if missing:
-            raise ValueError(f"{path.name}: path entry {position} is missing {', '.join(missing)}")
+            raise ValueError(
+                f"{path.name}: path entry {position} is missing {', '.join(missing)}"
+            )
         paths.append(
             LearningPath(
                 slug=entry["slug"],

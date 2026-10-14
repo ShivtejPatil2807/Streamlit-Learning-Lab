@@ -26,7 +26,9 @@ section(
     "Streamlit orders them by filename, so this repo uses numbered prefixes like "
     "01_Text_and_Markdown.py, 02_Input_Widgets.py, and so on.",
 )
-st.code("your-app/\n├── Home.py\n└── pages/\n    ├── 01_Text_and_Markdown.py\n    └── 02_Input_Widgets.py")
+st.code(
+    "your-app/\n├── Home.py\n└── pages/\n    ├── 01_Text_and_Markdown.py\n    └── 02_Input_Widgets.py"
+)
 
 
 lesson_footer(13)

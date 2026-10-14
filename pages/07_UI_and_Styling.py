@@ -12,6 +12,7 @@ section(
 st.code('st.set_page_config(page_title="My App", page_icon="🎨", layout="wide")')
 st.caption("This page calls it at the top, which is why the tab shows 🎨 UI & Styling.")
 
+
 @demo("st.color_picker()", "Lets the user pick a color.")
 def _():
     color = st.color_picker("Pick a color", "#1D9E75")

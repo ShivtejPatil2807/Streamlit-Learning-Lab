@@ -1,4 +1,5 @@
 """Tests for specs/004-challenges-and-progress.md (lesson_footer and Home)."""
+
 from textwrap import dedent
 
 from conftest import HOME

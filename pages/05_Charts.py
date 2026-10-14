@@ -37,10 +37,12 @@ def _():
 
 @demo("st.map()", "Plots points on a map, given latitude and longitude columns.")
 def _():
-    map_data = pd.DataFrame({
-        "lat": [16.7050, 18.5204],
-        "lon": [74.2433, 73.8567],
-    })
+    map_data = pd.DataFrame(
+        {
+            "lat": [16.7050, 18.5204],
+            "lon": [74.2433, 73.8567],
+        }
+    )
     st.map(map_data)
 
 

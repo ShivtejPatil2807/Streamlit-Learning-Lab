@@ -49,7 +49,9 @@ def _():
     if st.button("Load model"):
         model = load_model()
         st.write("Model:", model["name"])
-        st.write("Loaded at:", time.strftime("%H:%M:%S", time.localtime(model["loaded_at"])))
+        st.write(
+            "Loaded at:", time.strftime("%H:%M:%S", time.localtime(model["loaded_at"]))
+        )
 
 
 section("cache_data vs cache_resource")

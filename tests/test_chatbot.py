@@ -1,4 +1,5 @@
 """Tests for specs/011-chatbot.md (the chatbot project page)."""
+
 from conftest import PAGES_DIR
 from streamlit.testing.v1 import AppTest
 
@@ -54,7 +55,9 @@ def test_r3_the_bot_lists_what_it_knows():
 
 def test_r4_find_the_answer_step():
     at = run_page()
-    assert any("st.line_chart()" in m.value for m in at.markdown)  # the starting question
+    assert any(
+        "st.line_chart()" in m.value for m in at.markdown
+    )  # the starting question
 
     at.text_input[0].set_value("how do i cache a slow function?").run()
     assert any("@st.cache_data" in m.value for m in at.markdown)

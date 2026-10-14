@@ -1,4 +1,5 @@
 """Tests for specs/009-iris-classifier.md (the iris classifier project page)."""
+
 from conftest import PAGES_DIR
 from streamlit.testing.v1 import AppTest
 
@@ -9,7 +10,12 @@ FILE = "20_Project_Iris_Classifier.py"
 PAGE = PAGES_DIR / FILE
 
 SETOSA = None  # the sliders' starting values
-VERSICOLOR = [5.9, 2.8, 4.3, 1.3]  # sepal length, sepal width, petal length, petal width
+VERSICOLOR = [
+    5.9,
+    2.8,
+    4.3,
+    1.3,
+]  # sepal length, sepal width, petal length, petal width
 VIRGINICA = [6.6, 3.0, 5.6, 2.0]
 
 
