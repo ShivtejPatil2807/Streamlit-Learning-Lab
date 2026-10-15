@@ -135,7 +135,7 @@ def test_r9_every_readme_image_has_alt_text():
     for image in images:
         match = re.search(r'\balt="([^"]+)"', image)
         assert match and match.group(1).strip(), image
-
+        
 
 def test_r10_every_lesson_has_its_own_link_text_and_checkbox_label():
     assert len({lesson.open_label for lesson in LESSONS}) == len(LESSONS)
