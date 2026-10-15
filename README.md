@@ -26,7 +26,6 @@
   <img src="https://img.shields.io/badge/License-MIT-green" alt="License"/>
 </p>
 
-
 ---
 
 ## 🚀 Try it live

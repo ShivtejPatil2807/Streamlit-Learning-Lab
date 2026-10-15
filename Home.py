@@ -162,6 +162,7 @@ def path_top(path, done: int, total: int) -> str:
 # ---------- Hero ----------
 st.markdown(HERO_HTML, unsafe_allow_html=True)
 
+
 # ---------- Stats ----------
 c1, c2, c3 = st.columns(3)
 c1.metric("Lessons", len(LESSONS))
