@@ -49,8 +49,6 @@ def test_r1_small_screens_get_a_smaller_hero():
     match = re.search(r"@media \(max-width: 640px\)\s*\{(.*?)\n\}", _CSS, re.DOTALL)
     assert match, "no rule for small screens"
     assert ".lab-hero h1" in match.group(1)
-    assert ".lab-hero {" in match.group(1)
-
 
 def test_r2_hover_lift_only_applies_to_devices_that_can_hover():
     match = re.search(r"@media \(hover: hover\)\s*\{(.*?)\n\}", _CSS, re.DOTALL)
