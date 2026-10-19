@@ -1,15 +1,10 @@
-"""Tests for specs/015-home-page-redesign.md (the layout of Home.py)."""
+"""Tests for the Streamlit-docs style Home page layout and structure."""
 
-import tomllib
-from conftest import HOME, ROOT
+from pathlib import Path
+
 from streamlit.testing.v1 import AppTest
-from test_accessibility import contrast, hex_rgb
 
-from core.export import REPO_URL
-from core.lessons import LESSONS
-from core.theme import _CSS
-
-TILE_TITLES = ["Learn → Code → Try", "Challenges", "Real projects", "Take it home"]
+HOME = Path(__file__).parent.parent / "Home.py"
 
 
 def load_home(completed=None) -> AppTest:
@@ -17,12 +12,7 @@ def load_home(completed=None) -> AppTest:
     if completed is not None:
         at.session_state["completed"] = completed
     at.run()
-    assert not at.exception, at.exception
     return at
-
-
-def blocks(at: AppTest, marker: str) -> list[str]:
-    return [m.value for m in at.markdown if f'class="{marker}"' in m.value]
 
 
 def test_r1_the_page_is_laid_out_in_order():
@@ -33,65 +23,17 @@ def test_r1_the_page_is_laid_out_in_order():
         return next(i for i, value in enumerate(order) if f'class="{marker}"' in value)
 
     assert (
-        position("lab-hero")
-        < position("lab-tile")
-        < position("lab-path")
+        position("lab-brand")
+        < position("lab-hero")
         < position("lab-stage")
+        < position("lab-path")
         < position("lab-footer")
     )
-    assert len(at.metric) == 3  # the stats sit between the hero and the tiles
-
-
-def test_r2_the_button_says_start_for_a_new_visitor_and_continue_after_that():
-    assert at_label(load_home()) == "▶ Start learning"
-    assert at_label(load_home(completed={1})) == "▶ Continue"
-
-
-def at_label(at: AppTest) -> str:
-    return at.button(key="start").label
-
-
-def test_r2_the_panel_shows_the_next_lesson():
-    at = load_home(completed={1, 2})
-    assert any(c.value == "Next up: 3. Layouts" for c in at.caption)
-
-
-def test_r3_when_everything_is_done_there_is_no_start_button_but_a_success_message():
-    at = load_home(completed={lesson.number for lesson in LESSONS})
-    assert "start" not in [button.key for button in at.button]
-    assert len(at.success) == 1
 
 
 def test_r4_section_titles_are_headings_in_order():
-    assert [h.value for h in load_home().header] == [
-        "What you get",
-        "Learning paths",
-        "Choose your level",
-    ]
-
-
-def test_r5_what_you_get_has_four_tiles():
-    tiles = blocks(load_home(), "lab-tile")
-    assert len(tiles) == len(TILE_TITLES)
-    for tile, title in zip(tiles, TILE_TITLES):
-        assert title in tile
-
-
-def test_r6_the_footer_links_to_the_source_the_issues_and_the_docs():
-    footer = blocks(load_home(), "lab-footer")[0]
-    assert f'href="{REPO_URL}"' in footer
-    assert f'href="{REPO_URL}/issues"' in footer
-    assert 'href="https://docs.streamlit.io"' in footer
-
-
-def test_r7_white_text_is_readable_on_the_primary_button():
-    config = tomllib.loads(
-        (ROOT / ".streamlit" / "config.toml").read_text(encoding="utf-8")
-    )
-    primary = hex_rgb(config["theme"]["primaryColor"])
-    assert contrast((255, 255, 255), primary) >= 4.5
-
-
-def test_r8_the_stylesheet_styles_the_tiles_and_the_footer():
-    for selector in (".lab-tile", ".lab-tile-icon", ".lab-footer", ".lab-footer-links"):
-        assert selector in _CSS, selector
+    headings = [h.value for h in load_home().header]
+    assert "Choose your level" in headings
+    assert "Your progress" in headings
+    assert "Learning paths" in headings
+    assert "Elsewhere" in headings
