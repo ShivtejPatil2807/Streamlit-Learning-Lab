@@ -5,7 +5,6 @@ target Streamlit's own elements (tabs, metrics, bordered containers) are
 cosmetic: if a future Streamlit version renames those elements, the app keeps
 working and only the extra styling is lost.
 """
-
 import html
 
 import streamlit as st
@@ -21,10 +20,7 @@ _CSS = """
 }
 
 /* ---------- hero: a plain page title, like a docs site ---------- */
-.lab-hero {
-    padding: 0.6rem 0 0.4rem 0;
-    margin-bottom: 0.6rem;
-}
+.lab-hero { padding: 0.6rem 0 0.4rem 0; margin-bottom: 0.6rem; }
 .lab-kicker {
     font-size: 0.78rem;
     letter-spacing: 0.14em;
@@ -39,13 +35,7 @@ _CSS = """
     line-height: 1.1;
     color: #FFFFFF;
 }
-.lab-hero p {
-    margin: 0 0 1.1rem 0;
-    font-size: 1.15rem;
-    line-height: 1.55;
-    color: var(--lab-muted);
-    max-width: 60rem;
-}
+.lab-hero p { margin: 0 0 1.1rem 0; font-size: 1.15rem; line-height: 1.55; color: var(--lab-muted); max-width: 60rem; }
 .lab-steps { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
 .lab-step {
     padding: 0.28rem 0.8rem;
@@ -58,13 +48,7 @@ _CSS = """
 .lab-arrow { color: var(--lab-muted); }
 
 /* ---------- top bar (Home) ---------- */
-.lab-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
+.lab-brand { display: flex; align-items: center; gap: 0.7rem; font-size: 1.3rem; font-weight: 600; }
 .lab-brand-logo { font-size: 1.9rem; line-height: 1; }
 
 /* ---------- search results (Home) ---------- */
@@ -81,26 +65,14 @@ _CSS = """
 .lab-stage[data-level="beginner"]     { background: #B45309; }
 .lab-stage[data-level="intermediate"] { background: #6D4AFF; }
 .lab-stage[data-level="advanced"]     { background: #0E7490; }
-.lab-stage:not([data-level="beginner"]):not([data-level="intermediate"]):not([data-level="advanced"]) {
-    background: #334155;
-}
+.lab-stage:not([data-level="beginner"]):not([data-level="intermediate"]):not([data-level="advanced"]) { background: #334155; }
 .lab-stage .lab-card-name { color: #FFFFFF; font-size: 1.4rem; }
 .lab-stage .lab-summary { color: rgba(255, 255, 255, 0.95); font-size: 1rem; }
-.lab-stage .lab-pill {
-    background: rgba(0, 0, 0, 0.28);
-    color: #FFFFFF;
-    border-color: rgba(255, 255, 255, 0.25);
-}
+.lab-stage .lab-pill { background: rgba(0, 0, 0, 0.28); color: #FFFFFF; border-color: rgba(255, 255, 255, 0.25); }
 .lab-stage .lab-chip { background: rgba(0, 0, 0, 0.25); color: #FFFFFF; }
 
 /* ---------- "how to use" rows (Home) ---------- */
-.lab-how {
-    display: flex;
-    align-items: center;
-    gap: 1.1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--lab-border);
-}
+.lab-how { display: flex; align-items: center; gap: 1.1rem; padding: 1rem 0; border-bottom: 1px solid var(--lab-border); }
 .lab-how-icon {
     flex: 0 0 3.2rem;
     height: 3.2rem;
@@ -133,20 +105,9 @@ _CSS = """
 }
 
 /* ---------- community card (Home) ---------- */
-.lab-community {
-    background: #F0F2F6;
-    color: #1B1F2A;
-    border-radius: 14px;
-    padding: 2rem 2.2rem;
-}
+.lab-community { background: #F0F2F6; color: #1B1F2A; border-radius: 14px; padding: 2rem 2.2rem; }
 .lab-community h3 { margin: 0 0 0.7rem 0; padding: 0; font-size: 2rem; color: #1B1F2A; }
-.lab-community p {
-    margin: 0 0 1.2rem 0;
-    font-size: 1.08rem;
-    line-height: 1.6;
-    color: #3A3F4B;
-    max-width: 46rem;
-}
+.lab-community p { margin: 0 0 1.2rem 0; font-size: 1.08rem; line-height: 1.6; color: #3A3F4B; max-width: 46rem; }
 .lab-button {
     display: inline-block;
     margin: 0 0.6rem 0.4rem 0;
@@ -162,12 +123,7 @@ _CSS = """
 .lab-button.dark:hover, .lab-button.dark:focus-visible { background: #000000; }
 
 /* ---------- "elsewhere" links (Home) ---------- */
-.lab-link-row {
-    display: flex;
-    align-items: center;
-    gap: 1.1rem;
-    padding: 0.55rem 0;
-}
+.lab-link-row { display: flex; align-items: center; gap: 1.1rem; padding: 0.55rem 0; }
 .lab-link-icon {
     flex: 0 0 3.4rem;
     height: 3.4rem;
@@ -312,6 +268,4 @@ def level_pill(level: str) -> str:
 
 def chips(names) -> str:
     """Function names as small code-style chips, as HTML."""
-    return "".join(
-        f'<span class="lab-chip">{html.escape(name)}</span>' for name in names
-    )
+    return "".join(f'<span class="lab-chip">{html.escape(name)}</span>' for name in names)

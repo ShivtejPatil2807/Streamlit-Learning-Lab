@@ -10,8 +10,7 @@ stacks columns on narrow screens and collapses the sidebar, so the lesson
 buttons at the bottom of each page are how a phone user moves around.
 
 ## Requirements
-- **R1** On screens up to 640px wide, the hero is smaller: less padding and a
-  smaller title.
+- **R1** On screens up to 640px wide, the title is smaller and so is its description.
 - **R2** The hover lift on lesson cards only applies to devices that can hover,
   so it does not stay stuck after a tap.
 - **R3** On touch screens, buttons are at least 44px tall.

@@ -3,28 +3,11 @@
 Used by the search box at the top of the Home page. Plain word matching, no
 outside service.
 """
-
 import re
 
 from core.lessons import LESSONS
 
-STOPWORDS = {
-    "a",
-    "an",
-    "the",
-    "how",
-    "to",
-    "do",
-    "i",
-    "what",
-    "is",
-    "of",
-    "in",
-    "for",
-    "with",
-    "and",
-    "st",
-}
+STOPWORDS = {"a", "an", "the", "how", "to", "do", "i", "what", "is", "of", "in", "for", "with", "and", "st"}
 
 
 def _stem(word: str) -> str:

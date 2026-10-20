@@ -1,5 +1,4 @@
 """Tests for specs/016-level-stages.md (the level cards and their lessons on the Home page)."""
-
 import re
 
 from conftest import HOME
@@ -29,10 +28,7 @@ def blocks(at: AppTest, marker: str) -> list[str]:
 
 def card_numbers(at: AppTest) -> list[int]:
     """Lesson numbers of the lesson cards on the page, in the order shown."""
-    return [
-        int(re.search(r'lab-card-num">(\d+)<', b).group(1))
-        for b in blocks(at, "lab-card-title")
-    ]
+    return [int(re.search(r'lab-card-num">(\d+)<', b).group(1)) for b in blocks(at, "lab-card-title")]
 
 
 def lessons_in(level: str) -> list:
@@ -43,7 +39,8 @@ def test_r1_there_is_no_all_lessons_list_search_or_filter():
     at = load_home()
     assert card_numbers(at) == []
     assert len(at.checkbox) == 0
-    assert len(at.selectbox) == 0 and len(at.multiselect) == 0
+    assert len(at.selectbox) == 0 and len(at.multiselect) == 0  # no filters
+    assert [box.key for box in at.text_input] == ["search"]  # only the search box in the top bar
     assert "All lessons" not in [h.value for h in at.header]
 
 
@@ -68,11 +65,10 @@ def test_r3_every_level_has_an_open_button_and_none_is_open_at_first():
 def test_r4_opening_a_level_shows_exactly_its_lessons_in_course_order():
     for level in LEVELS:
         at = open_stage(load_home(), level)
-        assert f"{level} lessons" in [h.value for h in at.header]
-        assert f"{level} lessons" in [h.value for h in at.header]
-        assert [c.label for c in at.checkbox] == [
-            lesson.done_label for lesson in lessons_in(level)
-        ]
+        assert card_numbers(at) == [lesson.number for lesson in lessons_in(level)]
+        headers = [h.value for h in at.header]
+        assert headers[headers.index("Choose your level") + 1] == f"{level} lessons"
+        assert [c.label for c in at.checkbox] == [lesson.done_label for lesson in lessons_in(level)]
 
 
 def test_r5_opening_another_level_replaces_the_first():
