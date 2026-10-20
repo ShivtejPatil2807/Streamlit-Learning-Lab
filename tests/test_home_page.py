@@ -1,9 +1,9 @@
 """Tests for specs/015-home-page-redesign.md (the layout of Home.py)."""
 import html
 import re
-import tomllib
-from datetime import date
+from datetime import datetime, timezone
 
+import tomllib
 from conftest import HOME, ROOT
 from streamlit.testing.v1 import AppTest
 from test_accessibility import contrast, hex_rgb
@@ -114,7 +114,7 @@ def test_r10_the_footer_links_to_the_source_the_issues_and_the_docs():
     assert f'href="{REPO_URL}"' in footer
     assert f'href="{REPO_URL}/issues"' in footer
     assert 'href="https://docs.streamlit.io"' in footer
-    assert f"© {date.today().year}" in footer
+    assert f"© {datetime.now(timezone.utc).date().year}" in footer
     assert "not affiliated" in footer
 
 

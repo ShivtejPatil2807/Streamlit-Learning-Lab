@@ -1,5 +1,5 @@
 import html
-from datetime import date
+from datetime import datetime, timezone
 
 import streamlit as st
 
@@ -70,7 +70,7 @@ FOOTER_HTML = (
     f'<a href="{REPO_URL}/issues" target="_blank" rel="noopener noreferrer">Report an issue</a>'
     '<a href="https://docs.streamlit.io" target="_blank" rel="noopener noreferrer">Streamlit docs</a>'
     "</div>"
-    f'<div class="lab-footer-copy">© {date.today().year} Streamlit Learning Lab. '
+    f'<div class="lab-footer-copy">© {datetime.now(timezone.utc).date().year} Streamlit Learning Lab. '
     "An independent learning project, not affiliated with Streamlit or Snowflake.</div>"
     "</div>"
 )
