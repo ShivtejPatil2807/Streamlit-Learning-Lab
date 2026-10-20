@@ -23,9 +23,9 @@ the next lesson.
   line.
 
 ## History
-- The search box, the category, level and path filters and the "All lessons"
-  list were removed. Lessons are now reached through the level cards (spec 016)
-  and the learning paths (spec 012).
+- The category, level and path filters and the "All lessons" list were removed.
+  Lessons are now reached through the level cards (spec 016), the learning paths
+  (spec 012) and the search box (spec 017).
 
 ## Out of scope (for now)
 - Saving progress permanently (file or database).

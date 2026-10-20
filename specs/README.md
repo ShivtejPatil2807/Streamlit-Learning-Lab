@@ -20,8 +20,9 @@ requirement it covers (for example `R3`).
 | [012-learning-paths.md](012-learning-paths.md) | `core/paths.py`, Home page paths | Implemented |
 | [013-mobile-and-accessibility.md](013-mobile-and-accessibility.md) | `core/theme.py`, `Home.py` | Implemented |
 | [014-data-files.md](014-data-files.md) | `data/*.yaml`, `core/lessons.py`, `core/challenges.py`, `core/paths.py` | Implemented |
-| [015-home-page-redesign.md](015-home-page-redesign.md) | `Home.py`, `core/theme.py` | Implemented |
+| [015-home-page-redesign.md](015-home-page-redesign.md) | `Home.py`, `core/theme.py` (docs-style Home page) | Implemented |
 | [016-level-stages.md](016-level-stages.md) | `Home.py` level cards | Implemented |
+| [017-lesson-search.md](017-lesson-search.md) | `core/search.py`, search box | Implemented |
 
 ## How to write a new spec
 
