@@ -31,10 +31,12 @@
 ## 🚀 Try it live
 
 Experience the full interactive course directly in your browser without local setup:
+<div align="center">
 
-  <a href="https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/">
-    <img src="https://img.shields.io/badge/Open_Interactive_Lab-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Open Interactive Lab"/>
-  </a>
+[![Try Live App](https://img.shields.io/badge/🔥_Try_It_Live-Experience_the_Course-red?style=for-the-badge&logo=streamlit&logoColor=white)](YOUR_STREAMLIT_APP_URL_HERE)
+[![Streamlit Cloud](https://img.shields.io/badge/Hosted%20on-Streamlit%20Cloud-blue?style=for-the-badge&logo=streamlit&logoColor=white)](YOUR_STREAMLIT_APP_URL_HERE)
+
+</div>
 
 ---
 
