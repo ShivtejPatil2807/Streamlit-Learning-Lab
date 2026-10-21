@@ -18,7 +18,6 @@ from core.lessons import LESSONS
 PAGES_DIR = Path(__file__).resolve().parents[1] / "pages"
 REPO_URL = "https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab"
 
-# Some packages are imported under a different name than the one pip installs.
 PIP_NAMES = {"sklearn": "scikit-learn", "PIL": "pillow", "cv2": "opencv-python"}
 
 
