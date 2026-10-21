@@ -39,7 +39,7 @@ def lesson_page(number: int, intro: str | None = None) -> None:
     lesson = next(item for item in LESSONS if item.number == number)
     st.set_page_config(page_title=lesson.title, page_icon=lesson.icon)
     apply_theme()
-    st.session_state[_COUNTER_KEY] = 0  # restart numbering on every run
+    st.session_state[_COUNTER_KEY] = 0  
     st.title(f"{lesson.icon} {lesson.title}")
     st.markdown(
         '<div class="lab-meta">'
