@@ -18,7 +18,7 @@ REQUIRED_FIELDS = ("question", "options", "answer", "explanation")
 class Challenge:
     question: str
     options: tuple[str, ...]
-    answer: int  # index into options
+    answer: int  
     explanation: str
 
 
