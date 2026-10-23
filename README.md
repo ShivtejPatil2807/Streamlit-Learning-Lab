@@ -33,7 +33,7 @@
 Experience the full interactive course directly in your browser without local setup:
 <div align="center">
 
-[![Try Live App](https://img.shields.io/badge/🔥_Try_It_Live-Experience_the_Course-red?style=for-the-badge&logo=streamlit&logoColor=white)](https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/)
+[![Try Live App](https://img.shields.io/badge/_Open_Here-Experience_the_Course-red?style=for-the-badge&logo=streamlit&logoColor=white)](https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/)
 [![Streamlit Cloud](https://img.shields.io/badge/Hosted%20on-Streamlit%20Cloud-blue?style=for-the-badge&logo=streamlit&logoColor=white)](https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/)
 
 </div>
