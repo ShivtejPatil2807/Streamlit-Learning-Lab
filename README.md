@@ -78,6 +78,18 @@ Experience the full interactive course directly in your browser without local se
 
 You write a normal `.py` script using Streamlit's functions (`st.title()`, `st.button()`, `st.dataframe()`, etc.), and Streamlit turns it into a live web page. Every time the user interacts with something (clicks a button, moves a slider, types text), Streamlit **reruns your script from top to bottom** and updates the page automatically.
 
+## Installation
+Open a terminal and run:
+
+```bash
+
+$ pip install streamlit
+$ streamlit hello
+
+```
+If this opens our sweet Streamlit Hello app in your browser, you're all set! If not, head over to our docs for specific installs.
+
+
 **Why people like it:**
 
 - ⚡ **Fast to build:** a working app in a few lines of code
