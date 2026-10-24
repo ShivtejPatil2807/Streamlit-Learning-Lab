@@ -87,7 +87,7 @@ $ pip install streamlit
 $ streamlit hello
 
 ```
-If this opens our sweet Streamlit Hello app in your browser, you're all set! If not, head over to our docs for specific installs.
+If this opens our sweet Streamlit Hello app in your browser, you're all set! If not, head over to [our docs](https://docs.streamlit.io/get-started) for specific installs.
 
 
 **Why people like it:**
