@@ -116,7 +116,7 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 
 ---
 
-Topics covered
+## Topics covered
 
 <!-- course:start -->
 Every lesson belongs to one of three levels. In total there are **22** pages: 19 lessons and 3 mini-projects.
