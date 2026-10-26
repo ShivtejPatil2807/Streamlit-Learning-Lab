@@ -122,7 +122,7 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 Every lesson belongs to one of three levels. In total there are **22** pages: 19 lessons and 3 mini-projects.
 
 <details open>
-<summary><strong>🌱 Beginner</strong> · 5 lessons</summary>
+<summary><strong>🌱 Beginner</strong> : 5 lessons</summary>
 
 | Lesson | What you learn | Key functions |
 | --- | --- | --- |
@@ -134,7 +134,7 @@ Every lesson belongs to one of three levels. In total there are **22** pages: 19
 </details>
 
 <details>
-<summary><strong>🌿 Intermediate</strong> · 10 lessons</summary>
+<summary><strong>🌿 Intermediate</strong> : 10 lessons</summary>
 
 | Lesson | What you learn | Key functions |
 | --- | --- | --- |
@@ -151,7 +151,7 @@ Every lesson belongs to one of three levels. In total there are **22** pages: 19
 </details>
 
 <details>
-<summary><strong>🌳 Advanced</strong> · 7 lessons</summary>
+<summary><strong>🌳 Advanced</strong> : 7 lessons</summary>
 
 | Lesson | What you learn | Key functions |
 | --- | --- | --- |
