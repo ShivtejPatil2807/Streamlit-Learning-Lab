@@ -5,7 +5,7 @@
 <h1 align="center">📚 Streamlit Learning Lab</h1>
 
 <p align="center">
-  A hands-on, beginner-friendly reference for learning <b>Streamlit</b> —<br>
+  A hands-on, beginner-friendly reference for learning <b>Streamlit</b> <br>
   one function at a time, with real, runnable examples.
 </p>
 
