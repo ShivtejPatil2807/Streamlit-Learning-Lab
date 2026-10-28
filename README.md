@@ -5,37 +5,33 @@
 <h1 align="center">📚 Streamlit Learning Lab</h1>
 
 <p align="center">
-  A hands-on, beginner-friendly reference for learning <b>Streamlit</b> <br>
-  one function at a time, with real, runnable examples.
+  A hands-on, beginner-friendly course for learning <b>Streamlit</b> —<br>
+  one function at a time, with real, runnable examples and three mini-projects.
 </p>
 
+<p align="center">
+  <a href="https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/">
+    <img src="https://img.shields.io/badge/Open_the_Live_Course-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Open the live course"/>
+  </a>
+</p>
 
 <p align="center">
   <a href="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml">
-    <img src="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml/badge.svg" alt="CI Status"/>
+    <img src="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml/badge.svg" alt="CI status"/>
   </a>
-  <img src="https://img.shields.io/badge/Python-3.12%20%7C%203.14-3776AB?logo=python&logoColor=white" alt="Python Versions"/>
-  <img src="https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B?logo=streamlit&logoColor=white" alt="Streamlit Version"/>
-  <img src="https://img.shields.io/badge/Code%20Style-Ruff-000000?logo=ruff&logoColor=white" alt="Ruff Formatted"/>
-  <img src="https://img.shields.io/badge/Tests-Pytest%20Passing-brightgreen?logo=pytest&logoColor=white" alt="Tests"/>
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="License"/>
+  <img src="https://img.shields.io/badge/Python-3.12%20%7C%203.14-3776AB?logo=python&logoColor=white" alt="Python 3.12 and 3.14"/>
+  <img src="https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B?logo=streamlit&logoColor=white" alt="Streamlit 1.40 or newer"/>
+  <img src="https://img.shields.io/badge/Linted%20with-Ruff-000000?logo=ruff&logoColor=white" alt="Linted with Ruff"/>
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT license"/>
 </p>
 
 ---
 
 ## 🚀 Try it live
 
-Experience the full interactive course directly in your browser without local setup:
-<div align="center">
+No setup needed. Open the course in your browser, pick a level, and see every function's explanation, code and live result side by side.
 
-[![Try Live App](https://img.shields.io/badge/_Open_Here-Experience_the_Course-red?style=for-the-badge&logo=streamlit&logoColor=white)](https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/)
-[![Streamlit Cloud](https://img.shields.io/badge/Hosted%20on-Streamlit%20Cloud-blue?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/cloud)
-
-</div>
-
----
-
-> 💡**Tip:** No setup needed. Open the link, pick a lesson, and see every function's explanation, code and live result side by side in your browser.
+> 💡 **Tip:** new to Streamlit? Open **Beginner**, or follow the learning path called *Beginner in 5 lessons*.
 
 ---
 
@@ -47,7 +43,9 @@ Experience the full interactive course directly in your browser without local se
 - [Topics covered](#topics-covered)
 - [Running locally](#running-locally)
 - [Project structure](#project-structure)
+- [Adding a lesson](#adding-a-lesson)
 - [Development](#development)
+- [Contributing](#contributing)
 - [Core Streamlit concepts](#core-streamlit-concepts)
 - [Who this is for](#who-this-is-for)
 - [Further reading](#further-reading)
@@ -57,13 +55,15 @@ Experience the full interactive course directly in your browser without local se
 
 ## What you get
 
-- **17 lessons** covering the everyday Streamlit functions, from text to authentication, plus newer features like dialogs, fragments and streaming
-- **An interactive Home page** with search, category and level filters, colored level labels, and a progress bar
-- **A "Continue" button** that takes you to the next lesson you haven't finished
+- **Lessons from the basics to real projects:** text and widgets, layouts, data and charts, state, caching, deployment and testing, plus three mini-projects (an iris classifier, a sales dashboard and a chatbot)
+- **A Home page in the style of a docs site:** a search box, three levels (Beginner, Intermediate, Advanced), learning paths and a progress bar
 - **Learn → Code → Try tabs** on every function, so you read it, copy it and run it
 - **A challenge at the end of each lesson** to check what you learned
-- **Tests and CI**: every change is checked automatically on GitHub
-- **Learning paths** such as "Build a chatbot", so you don't have to choose from 22 lessons
+- **Download any lesson as a `.py` file** and run it on your own computer
+- **A feedback link on every lesson** that opens a pre-filled GitHub issue
+- **Tests and CI:** every change is checked automatically on GitHub
+
+> ℹ️ Your progress ("Mark this lesson as done") is kept for your browser session. It resets when you refresh the page.
 
 ---
 
@@ -72,18 +72,6 @@ Experience the full interactive course directly in your browser without local se
 [Streamlit](https://streamlit.io/) is an open-source Python library that lets you build interactive web apps — dashboards, data tools, ML demos, forms — using **only Python**. No HTML, CSS, or JavaScript required.
 
 You write a normal `.py` script using Streamlit's functions (`st.title()`, `st.button()`, `st.dataframe()`, etc.), and Streamlit turns it into a live web page. Every time the user interacts with something (clicks a button, moves a slider, types text), Streamlit **reruns your script from top to bottom** and updates the page automatically.
-
-## Installation
-Open a terminal and run:
-
-```bash
-
-$ pip install streamlit
-$ streamlit hello
-
-```
-If this opens our sweet Streamlit Hello app in your browser, you're all set! If not, head over to [our docs](https://docs.streamlit.io/get-started) for specific installs.
-
 
 **Why people like it:**
 
@@ -107,7 +95,7 @@ Every function on every page has the same three tabs:
 
 The code you see is the code that runs. Both come from the same function, so they can never drift apart.
 
-At the bottom of each lesson there is a short **🎯 Challenge** (multiple choice) and a **Mark this lesson as done** checkbox. Completed lessons are labelled "Done" on the Home page and count towards the progress bar.
+At the bottom of each lesson there is a short **🎯 Challenge** (multiple choice), a **Mark this lesson as done** checkbox, a button to **download the lesson as a `.py` file**, and **Previous / Home / Next** buttons.
 
 ---
 
@@ -117,7 +105,7 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 Every lesson belongs to one of three levels. In total there are **22** pages: 19 lessons and 3 mini-projects.
 
 <details open>
-<summary><strong>🌱 Beginner</strong> : 5 lessons</summary>
+<summary><strong>🌱 Beginner</strong> · 5 lessons</summary>
 
 | Lesson | What you learn | Key functions |
 | --- | --- | --- |
@@ -129,7 +117,7 @@ Every lesson belongs to one of three levels. In total there are **22** pages: 19
 </details>
 
 <details>
-<summary><strong>🌿 Intermediate</strong> : 10 lessons</summary>
+<summary><strong>🌿 Intermediate</strong> · 10 lessons</summary>
 
 | Lesson | What you learn | Key functions |
 | --- | --- | --- |
@@ -146,7 +134,7 @@ Every lesson belongs to one of three levels. In total there are **22** pages: 19
 </details>
 
 <details>
-<summary><strong>🌳 Advanced</strong> : 7 lessons</summary>
+<summary><strong>🌳 Advanced</strong> · 7 lessons</summary>
 
 | Lesson | What you learn | Key functions |
 | --- | --- | --- |
@@ -159,7 +147,25 @@ Every lesson belongs to one of three levels. In total there are **22** pages: 19
 | [22 — Project: Chatbot](pages/22_Project_Chatbot.py) | Build a chatbot that remembers the conversation, using simple rules instead of a paid AI model. | `st.chat_message`, `st.chat_input`, `st.session_state`, `st.write_stream` |
 </details>
 
+### Learning paths
+
+Short routes through the lessons, in the order to study them:
+
+| Path | Lessons in order |
+| --- | --- |
+| 🌱 **Beginner in 5 lessons** | Text & Markdown → Input Widgets → Layouts → Status & Messages → Session State |
+| 📊 **Build a dashboard** | Input Widgets → Layouts → Data Display → Charts → Project: Sales Dashboard |
+| 💬 **Build a chatbot** | Input Widgets → Session State → Chat Elements → Fragments & Streaming → Project: Chatbot |
+| 🔬 **Machine learning demo** | Input Widgets → Session State → Caching → Project: Iris Classifier |
+<!-- course:end -->
+
+> **Suggested path:** start with *Beginner*, then pick a learning path that leads to a project. Use the search box on the Home page to jump straight to a topic.
+
+---
+
 ## Running locally
+
+You need **Python 3.12 or newer** (CI tests 3.12 and 3.14) and **Streamlit 1.40 or newer** (1.40 is the first version with `st.pills`, used in lesson 16).
 
 ```bash
 # 1. Clone the repo
@@ -181,32 +187,49 @@ Your browser opens automatically at `http://localhost:8501`.
 
 ```text
 Streamlit-Learning-Lab/
-├── Home.py                    # Landing page: hero, search, filters, progress
-├── core/                      # Shared code used by every page
-│   ├── lessons.py             #   registry of all lessons
-│   ├── components.py          #   lesson_page, demo (Learn/Code/Try), lesson_footer
-│   ├── challenges.py          #   multiple-choice questions for each lesson
-│   └── theme.py               #   shared look: hero, cards, level labels
-├── pages/                     # One file per lesson (auto-detected by Streamlit)
+├── Home.py                    # Home page: search, level tiles, progress, learning paths
+├── pages/                     # One file per lesson or project (Streamlit shows each as a page)
 │   ├── 01_Text_and_Markdown.py
 │   ├── ...
-│   └── 22_Project: Chatbot 
-├── specs/                     # What each part of the app must do
+│   └── 22_Project_Chatbot.py
+├── data/                      # The course itself, as plain text
+│   ├── lessons.yaml           #   every lesson: title, level, summary, functions
+│   ├── challenges.yaml        #   the quiz questions
+│   └── paths.yaml             #   the learning paths
+├── core/                      # Shared code
+│   ├── lessons.py             #   loads data/lessons.yaml
+│   ├── challenges.py          #   loads data/challenges.yaml
+│   ├── paths.py               #   loads data/paths.yaml, progress along a path
+│   ├── components.py          #   lesson_page, demo (Learn/Code/Try), lesson_footer
+│   ├── export.py              #   turns a lesson into a downloadable .py file
+│   ├── feedback.py            #   the pre-filled GitHub issue link
+│   ├── search.py              #   the Home page search
+│   └── theme.py               #   shared look: colours, cards, tiles
+├── specs/                     # What each part must do, as numbered requirements
 ├── tests/                     # Automated tests that check the specs
-├── .github/workflows/ci.yml   # Runs ruff and the tests on every push and PR
-├── .streamlit/config.toml     # Theme colors and server settings
-├── assets/                    # Images and data used by the lessons
-├── docs/                      # Screenshots used in this README
+├── scripts/update_readme.py   # Refreshes the course tables in this README from data/
+├── .github/                   # CI (ruff and the tests), the link checker, Dependabot
+├── .streamlit/config.toml     # Theme colours and server settings
 ├── pyproject.toml             # ruff and pytest settings
-├── requirements.txt           # Dependencies to run the app
-└── requirements-dev.txt       # Adds pytest and ruff for development
+├── requirements.txt           # What the app needs to run
+├── requirements-dev.txt       # Adds pytest, pytest-cov and ruff
+└── LICENSE
 ```
 
-Streamlit turns every file inside `pages/` into a sidebar entry. The numbered prefixes control the order. To add a lesson:
+---
 
-1. Create the page in `pages/`.
-2. Add an entry to `core/lessons.py`.
-3. Add a challenge to `core/challenges.py`.
+## Adding a lesson
+
+1. Create the page in `pages/` (copy an existing one). It calls `lesson_page(NN)`, has one `@demo(...)` per function, and ends with `lesson_footer(NN)`.
+2. Add an entry for it to `data/lessons.yaml` (number, title, icon, file, category, level, summary, functions).
+3. Add at least one question for it to `data/challenges.yaml`.
+4. Optionally add it to a learning path in `data/paths.yaml`.
+5. Refresh the tables in this README and run the tests:
+
+```bash
+python -m scripts.update_readme
+python -m pytest
+```
 
 The tests tell you if something is missing.
 
@@ -221,9 +244,20 @@ python -m pytest -v     # run the tests
 ruff check .            # check the code style
 ```
 
-- **Specs** in [`specs/`](specs/) describe what each part must do as short numbered requirements (R1, R2, ...). Each test names the requirement it checks.
-- **CI** runs ruff and the tests on Python 3.12 and 3.14 for every pull request and every push to `main`.
+- **Specs** in [`specs/`](specs/README.md) describe what each part must do as short numbered requirements (R1, R2, ...). Each test names the requirement it checks.
+- **CI** runs ruff and the tests on Python 3.12 and 3.14 for every pull request, every push to `main` and once a week. A second workflow checks the links in this README.
 - Changes go through a branch and a pull request. Merge once the checks are green.
+
+---
+
+## Contributing
+
+Found a mistake or have an idea for a lesson? [Open an issue](https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/issues). To change something yourself:
+
+1. Fork the repository and create a branch.
+2. Make your change. If it changes what the app does, update the matching spec in `specs/` and its tests.
+3. Run `python -m pytest` and `ruff check .`.
+4. Open a pull request.
 
 ---
 
@@ -250,7 +284,9 @@ Beginners learning Streamlit from scratch, or anyone who wants a quick, copy-pas
 
 ## License
 
-This project is available for educational and learning purposes.
+Released under the [MIT License](LICENSE).
+
+This is an independent learning project. It is not affiliated with Streamlit or Snowflake Inc.
 
 ---
 
