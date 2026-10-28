@@ -23,6 +23,7 @@ requirement it covers (for example `R3`).
 | [015-home-page-redesign.md](015-home-page-redesign.md) | `Home.py`, `core/theme.py` (docs-style Home page) | Implemented |
 | [016-level-stages.md](016-level-stages.md) | `Home.py` level cards | Implemented |
 | [017-lesson-search.md](017-lesson-search.md) | `core/search.py`, search box | Implemented |
+| [018-readme.md](018-readme.md) | `README.md`, `LICENSE`, `scripts/update_readme.py` | Implemented |
 
 ## How to write a new spec
 
