@@ -16,6 +16,7 @@
 </p>
 
 <p align="center">
+  
   <a href="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml">
     <img src="https://github.com/ShivtejPatil2807/Streamlit-Learning-Lab/actions/workflows/ci.yml/badge.svg" alt="CI status"/>
   </a>
@@ -28,6 +29,17 @@
 ---
 
 ## 🚀 Try it live
+
+Experience the full interactive course directly in your browser without local setup:
+<div align="center">
+
+[![Try Live App](https://img.shields.io/badge/_Open_Here-Experience_the_Course-red?style=for-the-badge&logo=streamlit&logoColor=white)](https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/)
+[![Streamlit Cloud](https://img.shields.io/badge/Hosted%20on-Streamlit%20Cloud-blue?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/cloud)
+
+</div>
+
+---
+
 
 No setup needed. Open the course in your browser, pick a level, and see every function's explanation, code and live result side by side.
 
