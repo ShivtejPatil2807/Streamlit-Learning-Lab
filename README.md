@@ -9,11 +9,6 @@
   one function at a time, with real, runnable examples and three mini-projects.
 </p>
 
-<p align="center">
-  <a href="https://shivtejpatil2807-streamlit-cookbook-home-2l87yc.streamlit.app/">
-    <img src="https://img.shields.io/badge/Open_the_Live_Course-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Open the live course"/>
-  </a>
-</p>
 
 <p align="center">
   
