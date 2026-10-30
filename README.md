@@ -35,7 +35,6 @@ Experience the full interactive course directly in your browser without local se
 
 ---
 
-
 No setup needed. Open the course in your browser, pick a level, and see every function's explanation, code and live result side by side.
 
 > 💡 **Tip:** new to Streamlit? Open **Beginner**, or follow the learning path called *Beginner in 5 lessons*.
