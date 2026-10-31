@@ -1,4 +1,5 @@
 import html
+import inspect
 from datetime import datetime, timezone
 
 import streamlit as st
@@ -17,6 +18,10 @@ st.session_state.setdefault("completed", set())
 completed: set[int] = st.session_state["completed"]
 st.session_state.setdefault("stage", None)  # the level whose lessons are open, or None
 
+# A magnifier inside the search box. Text boxes only have an `icon` option in newer
+# Streamlit versions, so on older ones the magnifier goes into the placeholder text.
+HAS_INPUT_ICON = "icon" in inspect.signature(st.text_input).parameters
+SEARCH_HINT = "Search lessons, for example chart or session"
 BRAND_HTML = '<div class="lab-brand"><span class="lab-brand-logo" aria-hidden="true">📚</span>Learning Lab</div>'
 
 HERO_HTML = (
@@ -197,8 +202,9 @@ brand_col.markdown(BRAND_HTML, unsafe_allow_html=True)
 query = search_col.text_input(
     "Search lessons",
     key="search",
-    placeholder="Search lessons, for example chart or session",
+    placeholder=SEARCH_HINT if HAS_INPUT_ICON else f"🔍 {SEARCH_HINT}",
     label_visibility="collapsed",
+    **({"icon": ":material/search:"} if HAS_INPUT_ICON else {}),
 )
 if query.strip():
     with st.container(border=True):
