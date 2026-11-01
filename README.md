@@ -168,6 +168,7 @@ Short routes through the lessons, in the order to study them:
 > **Suggested path:** start with *Beginner*, then pick a learning path that leads to a project. Use the search box on the Home page to jump straight to a topic.
 
 ---
+Our vibrant creators community also extends Streamlit capabilities using  🧩 [Streamlit_Components](https://streamlit.io/components)
 
 ## Running locally
 
