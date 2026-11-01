@@ -108,6 +108,9 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 ## Topics covered
 
 <!-- course:start -->
+Streamlit comes in with [a ton of additional powerful elements](https://docs.streamlit.io/develop/api-reference) to spice up your data apps and delight your viewers.
+
+
 Every lesson belongs to one of three levels. In total there are **22** pages: 19 lessons and 3 mini-projects.
 
 <details open>
