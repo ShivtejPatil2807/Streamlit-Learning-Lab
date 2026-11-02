@@ -108,8 +108,6 @@ At the bottom of each lesson there is a short **🎯 Challenge** (multiple choic
 ## Topics covered
 
 <!-- course:start -->
-Streamlit comes in with a [ton of additional powerful elements](https://docs.streamlit.io/develop/api-reference) to spice up your data apps and delight your viewers.
-
 Every lesson belongs to one of three levels. In total there are **22** pages: 19 lessons and 3 mini-projects.
 
 <details open>
@@ -154,8 +152,6 @@ Every lesson belongs to one of three levels. In total there are **22** pages: 19
 | [20 — Project: Iris Classifier](pages/20_Project_Iris_Classifier.py) | Train a small model and predict an iris flower's species from four sliders. | `scikit-learn`, `st.slider`, `st.metric`, `st.cache_resource` |
 | [22 — Project: Chatbot](pages/22_Project_Chatbot.py) | Build a chatbot that remembers the conversation, using simple rules instead of a paid AI model. | `st.chat_message`, `st.chat_input`, `st.session_state`, `st.write_stream` |
 </details>
-
-Our vibrant creators community also extends Streamlit capabilities using  🧩 [Streamlit Components.](https://streamlit.io/components)
 
 ### Learning paths
 
