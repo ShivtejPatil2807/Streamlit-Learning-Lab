@@ -1,9 +1,9 @@
 """Tests for specs/015-home-page-redesign.md (the layout of Home.py)."""
 import html
 import re
-import tomllib
 from datetime import UTC, datetime
 
+import tomllib
 from conftest import HOME, ROOT
 from streamlit.testing.v1 import AppTest
 from test_accessibility import contrast, hex_rgb
