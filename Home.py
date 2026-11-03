@@ -1,6 +1,6 @@
 import html
 import inspect
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import streamlit as st
 
@@ -22,6 +22,7 @@ st.session_state.setdefault("stage", None)  # the level whose lessons are open, 
 # Streamlit versions, so on older ones the magnifier goes into the placeholder text.
 HAS_INPUT_ICON = "icon" in inspect.signature(st.text_input).parameters
 SEARCH_HINT = "Search lessons, for example chart or session"
+
 BRAND_HTML = '<div class="lab-brand"><span class="lab-brand-logo" aria-hidden="true">📚</span>Learning Lab</div>'
 
 HERO_HTML = (
@@ -75,7 +76,7 @@ FOOTER_HTML = (
     f'<a href="{REPO_URL}/issues" target="_blank" rel="noopener noreferrer">Report an issue</a>'
     '<a href="https://docs.streamlit.io" target="_blank" rel="noopener noreferrer">Streamlit docs</a>'
     "</div>"
-    f'<div class="lab-footer-copy">© {datetime.now(timezone.utc).date().year} Streamlit Learning Lab. '
+    f'<div class="lab-footer-copy">© {datetime.now(UTC).year} Streamlit Learning Lab. '
     "An independent learning project, not affiliated with Streamlit or Snowflake.</div>"
     "</div>"
 )
